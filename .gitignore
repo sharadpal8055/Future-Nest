@@ -1,0 +1,96 @@
+# ==========================
+# Dependencies
+# ==========================
+**/node_modules/
+
+# ==========================
+# Build files
+# ==========================
+**/dist/
+**/build/
+**/.vite/
+
+# ==========================
+# Environment files
+# ==========================
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Optional (keep example env)
+!.env.example
+
+# ==========================
+# Logs
+# ==========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================
+# Runtime files
+# ==========================
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ==========================
+# Coverage
+# ==========================
+coverage/
+.nyc_output/
+
+# ==========================
+# Cache
+# ==========================
+.cache/
+.parcel-cache/
+.eslintcache
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================
+# VS Code
+# ==========================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# ==========================
+# JetBrains
+# ==========================
+.idea/
+
+# ==========================
+# Temporary
+# ==========================
+tmp/
+temp/
+
+# ==========================
+# Test files
+# ==========================
+jest-html-reporters-*
+
+# ==========================
+# Misc
+# ==========================
+*.tgz
+*.zip
+
+# ==========================
+# Optional Uploads
+# (Remove if storing uploads)
+# ==========================
+uploads/
