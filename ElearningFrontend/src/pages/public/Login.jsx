@@ -52,7 +52,7 @@ export default function Login() {
         >
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-800">
-              Welcome Back 👋
+              Welcome Back 
             </h1>
 
             <p className="text-gray-500 mt-2">Login to continue learning.</p>

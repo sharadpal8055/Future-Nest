@@ -146,7 +146,9 @@ export default function Signup() {
               <Phone className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
 
               <input
-                className={inputClass}
+              type="tel"
+              autoComplete="tel"
+                className={inputClass?inputClass:""}
                 placeholder="+91 9876543210"
                 value={form.phone}
                 onChange={(e) =>
