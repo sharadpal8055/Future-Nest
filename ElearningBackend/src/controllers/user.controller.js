@@ -1,6 +1,9 @@
 import User from "../models/User.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import bcrypt from "bcryptjs";
+import cloudinary from "../config/cloudinary.js";
+import { Readable } from "stream";
+
 export const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find()
     .select("name email role createdAt")
@@ -134,5 +137,92 @@ export const changePassword = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
     message: "Password changed successfully",
+  });
+});
+
+export const uploadAvatar = asyncHandler(async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({
+      success: false,
+      message: "Please upload an image",
+    });
+  }
+
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User not found",
+    });
+  }
+
+  // Delete previous avatar
+  if (user.avatar?.publicId) {
+    await cloudinary.uploader.destroy(user.avatar.publicId);
+  }
+
+  const uploadStream = () =>
+    new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        {
+          folder: "future-nest/avatars",
+        },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      );
+
+      Readable.from(req.file.buffer).pipe(stream);
+    });
+
+  const result = await uploadStream();
+
+  user.avatar = {
+    url: result.secure_url,
+    publicId: result.public_id,
+  };
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Avatar uploaded successfully",
+    data: user,
+  });
+});
+
+/**
+ * DELETE /api/users/me
+ */
+export const deleteAccount = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      message: "User not found",
+    });
+  }
+
+  // Delete avatar from Cloudinary
+  if (user.avatar?.publicId) {
+    await cloudinary.uploader.destroy(user.avatar.publicId);
+  }
+
+  // Delete user
+  await User.findByIdAndDelete(user._id);
+
+  // Clear authentication cookie
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none",
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Account deleted successfully",
   });
 });
