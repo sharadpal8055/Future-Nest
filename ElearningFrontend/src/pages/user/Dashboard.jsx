@@ -21,7 +21,7 @@ export default function Dashboard() {
         <div className="bg-white rounded-2xl shadow p-6 flex flex-col sm:flex-row sm:justify-between gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-              Welcome back, {user.name} 👋
+              Welcome back, {user.name} 
             </h1>
             <p className="text-gray-500 mt-1">
               Continue learning and track your progress
