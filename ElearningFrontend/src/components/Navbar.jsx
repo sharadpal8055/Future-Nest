@@ -2,10 +2,16 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
 import { useState } from "react";
 import { Menu, X, LogOut } from "lucide-react";
-
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 const APP_NAME = "Future-Nest";
 
 export default function Navbar() {
+  const location = useLocation();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
 
@@ -13,6 +19,27 @@ export default function Navbar() {
   const handleLogout = async () => {
     await logout();
   };
+  // Close Menu on Desktop Resize
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 768) {
+        setOpen(false);
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  //Prevent Background Scroll
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   const linkClass = ({ isActive }) =>
     `relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
@@ -26,10 +53,9 @@ export default function Navbar() {
      ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full"}`;
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-gray-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-
           {/* Brand */}
           <NavLink
             to="/"
@@ -39,7 +65,6 @@ export default function Navbar() {
           >
             {APP_NAME}
           </NavLink>
-
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-2">
             {!user && (
@@ -104,8 +129,16 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div
-          className="md:hidden border-t bg-white px-4 py-4 space-y-2
-          animate-in slide-in-from-top-2 duration-200"
+          className="
+      absolute
+      top-16
+      left-0
+      w-full
+      bg-white
+      border-t
+      shadow-lg
+      md:hidden
+    "
         >
           {!user && (
             <>
@@ -130,15 +163,27 @@ export default function Navbar() {
 
           {user && (
             <>
-              <NavLink to="/dashboard" onClick={() => setOpen(false)} className={linkClass}>
+              <NavLink
+                to="/dashboard"
+                onClick={() => setOpen(false)}
+                className={linkClass}
+              >
                 Dashboard
               </NavLink>
 
-              <NavLink to="/courses" onClick={() => setOpen(false)} className={linkClass}>
+              <NavLink
+                to="/courses"
+                onClick={() => setOpen(false)}
+                className={linkClass}
+              >
                 Courses
               </NavLink>
 
-              <NavLink to="/my-courses" onClick={() => setOpen(false)} className={linkClass}>
+              <NavLink
+                to="/my-courses"
+                onClick={() => setOpen(false)}
+                className={linkClass}
+              >
                 My Courses
               </NavLink>
 

@@ -1,8 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import RequireAuth from "./routes/RequireAuth";
 import RequireAdmin from "./routes/RequireAdmin";
-
+//components
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Public pages
 import Home from "./pages/public/Home";
@@ -26,7 +27,7 @@ function App() {
   return (
     <>
       <Navbar />
-
+  <main className="pt-16 min-h-screen">
       <Routes>
         {/* ===== Public Routes ===== */}
         <Route path="/" element={<Home />} />
@@ -77,6 +78,8 @@ function App() {
         {/* ===== 404 ===== */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </main>
+        <Footer />
     </>
   );
 }
