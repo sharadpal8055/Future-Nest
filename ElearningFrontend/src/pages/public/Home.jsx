@@ -16,8 +16,8 @@ export default function Home() {
     <div className="bg-gradient-to-br from-slate-50 via-indigo-50 to-white">
 
       {/* HERO */}
-      <section className="max-w-7xl mx-auto px-6 pt-24 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+ <section className="max-w-7xl mx-auto px-6 pt-32 md:pt-36 pb-24">
+ <div className="grid lg:grid-cols-2 gap-20 items-center">
 
           {/* Left */}
           <div>
@@ -80,10 +80,16 @@ export default function Home() {
 
           <div className="flex justify-center">
             <img
-              src={heroImage}
-              alt="Learning Illustration"
-              className="w-full max-w-md"
-            />
+  src={heroImage}
+  alt="Future Nest Learning"
+  className="
+      w-full
+      max-w-lg
+      mx-auto
+      object-contain
+      drop-shadow-xl
+  "
+/>
           </div>
 
         </div>
@@ -91,7 +97,7 @@ export default function Home() {
 
       {/* STATS */}
 
-      <section className="max-w-7xl mx-auto px-6 pb-20">
+      <section className="max-w-7xl mx-auto px-6 py-20">
 
         <div className="grid md:grid-cols-3 gap-6">
 
@@ -105,7 +111,7 @@ export default function Home() {
 
       {/* FEATURES */}
 
-      <section className="max-w-7xl mx-auto px-6 pb-24">
+      <section className="max-w-7xl mx-auto px-6 py-24">
 
         <div className="text-center mb-12">
 
@@ -146,7 +152,7 @@ export default function Home() {
 
       {/* CTA */}
 
-<section className="max-w-7xl mx-auto px-6 pb-24">
+<section className="max-w-7xl mx-auto px-6 py-24">
   <div className="rounded-3xl bg-indigo-600 text-white p-10 md:p-16 text-center">
 
     <h2 className="text-3xl md:text-4xl font-bold">
