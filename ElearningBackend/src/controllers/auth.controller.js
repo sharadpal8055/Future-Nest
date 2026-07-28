@@ -3,7 +3,6 @@ import User from "../models/User.js";
 import { generateToken } from "../utils/jwt.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
-
 export const signup = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -25,17 +24,17 @@ export const signup = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     email,
-    passwordHash
+    passwordHash,
   });
 
   const token = generateToken({ id: user._id, role: user.role });
 
   res
     .cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none" 
-})
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
 
     .status(201)
     .json({
@@ -44,11 +43,10 @@ export const signup = asyncHandler(async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
-      }
+        role: user.role,
+      },
     });
 });
-
 
 export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -59,7 +57,7 @@ export const login = asyncHandler(async (req, res) => {
     throw err;
   }
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select("+passwordHash");
   if (!user) {
     const err = new Error("Invalid credentials");
     err.statusCode = 401;
@@ -73,28 +71,31 @@ export const login = asyncHandler(async (req, res) => {
     throw err;
   }
 
+  user.lastLogin = new Date();
+  await user.save();
+
   const token = generateToken({ id: user._id, role: user.role });
 
   res
     .cookie("token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none" 
-})
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
 
     .status(200)
     .json({
       success: true,
       message: "Login successful",
+      token,
       data: {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
-      }
+        role: user.role,
+      },
     });
 });
-
 
 export const getMe = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id).select("-passwordHash");
@@ -102,17 +103,15 @@ export const getMe = asyncHandler(async (req, res) => {
   if (!user) {
     return res.status(404).json({
       success: false,
-      message: "User not found"
+      message: "User not found",
     });
   }
 
   res.status(200).json({
     success: true,
-    data: user
+    data: user,
   });
 });
-
-
 
 /**
  * POST /api/auth/logout
@@ -123,11 +122,11 @@ export const logout = asyncHandler(async (req, res) => {
       httpOnly: true,
       expires: new Date(0),
       secure: true,
-      sameSite: "none"
+      sameSite: "none",
     })
     .status(200)
     .json({
       success: true,
-      message: "Logged out successfully"
+      message: "Logged out successfully",
     });
 });
