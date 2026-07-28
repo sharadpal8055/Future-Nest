@@ -4,7 +4,7 @@ import { generateToken } from "../utils/jwt.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
 export const signup = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password ,phone} = req.body;
 
   if (!name || !email || !password) {
     const err = new Error("Name, email and password are required");
@@ -25,6 +25,7 @@ export const signup = asyncHandler(async (req, res) => {
     name,
     email,
     passwordHash,
+    phone
   });
 
   const token = generateToken({ id: user._id, role: user.role });

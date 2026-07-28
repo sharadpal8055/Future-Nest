@@ -83,7 +83,9 @@ export default function Navbar() {
                 <NavLink to="/dashboard" className={linkClass}>
                   Dashboard
                 </NavLink>
-
+                <NavLink to="/profile" className={linkClass}>
+                  Profile
+                </NavLink>
                 <NavLink to="/courses" className={linkClass}>
                   Courses
                 </NavLink>
@@ -170,7 +172,13 @@ export default function Navbar() {
               >
                 Dashboard
               </NavLink>
-
+<NavLink
+  to="/profile"
+  onClick={() => setOpen(false)}
+  className={linkClass}
+>
+  Profile
+</NavLink>
               <NavLink
                 to="/courses"
                 onClick={() => setOpen(false)}

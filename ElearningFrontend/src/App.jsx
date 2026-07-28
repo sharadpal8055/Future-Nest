@@ -4,6 +4,7 @@ import RequireAdmin from "./routes/RequireAdmin";
 //components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Profile from "../src/components/profile/Profile";
 
 // Public pages
 import Home from "./pages/public/Home";
@@ -38,6 +39,15 @@ function App() {
         <Route path="/payment-success" element={<PaymentSuccess />} />
 
         {/* ===== User Protected Routes ===== */}
+<Route
+  path="/profile"
+  element={
+    <RequireAuth>
+      <Profile />
+    </RequireAuth>
+  }
+/>
+
         <Route
           path="/dashboard"
           element={

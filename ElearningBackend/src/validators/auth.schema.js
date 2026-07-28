@@ -13,6 +13,11 @@ export const signupSchema = z.object({
       .trim()
       .min(2, "Name must be at least 2 characters"),
     email: z.string().email("Invalid email"),
+   phone: z
+  .string()
+  .trim()
+  .optional()
+  .or(z.literal("")),
     password: passwordRule
   })
 });
