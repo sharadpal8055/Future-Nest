@@ -8,6 +8,7 @@ import enrollmentRoutes from "./routes/enrollment.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import errorHandler from "./middleware/error.middleware.js";
 
+
 const app = express();
 
 const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL];
