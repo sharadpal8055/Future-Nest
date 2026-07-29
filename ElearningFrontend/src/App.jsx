@@ -17,6 +17,7 @@ import Dashboard from "./pages/user/Dashboard";
 import Courses from "./pages/user/Courses";
 import MyCourses from "./pages/user/MyCourses";
 import CourseProgress from "./pages/user/CourseProgress";
+import CoursePlayer from "./pages/user/course-player/CoursePlayer";
 
 // Admin pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -28,68 +29,70 @@ function App() {
   return (
     <>
       <Navbar />
-  <main className="pt-16 min-h-screen">
-      <Routes>
-        {/* ===== Public Routes ===== */}
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/:id" element={<CourseDetail />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
+      <main className="pt-16 min-h-screen">
+        <Routes>
+          {/* ===== Public Routes ===== */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetail />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
 
-        {/* ===== User Protected Routes ===== */}
-<Route
-  path="/profile"
-  element={
-    <RequireAuth>
-      <Profile />
-    </RequireAuth>
-  }
-/>
+          {/* ===== User Protected Routes ===== */}
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
 
-        <Route
-          path="/dashboard"
-          element={
-            <RequireAuth>
-              <Dashboard />
-            </RequireAuth>
-          }
-        />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
 
-        <Route
-          path="/my-courses"
-          element={
-            <RequireAuth>
-              <MyCourses />
-            </RequireAuth>
-          }
-        />
+          <Route
+            path="/my-courses"
+            element={
+              <RequireAuth>
+                <MyCourses />
+              </RequireAuth>
+            }
+          />
 
-        <Route
+          {/* <Route
           path="/progress/:enrollmentId"
           element={
             <RequireAuth>
               <CourseProgress />
             </RequireAuth>
           }
-        />
+        /> */}
 
-        {/* ===== Admin Routes ===== */}
-        <Route
-          path="/admin"
-          element={
-            <RequireAdmin>
-              <AdminDashboard />
-            </RequireAdmin>
-          }
-        />
+          <Route path="/my-learning/:enrollmentId" element={<CoursePlayer />} />
 
-        {/* ===== 404 ===== */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          {/* ===== Admin Routes ===== */}
+          <Route
+            path="/admin"
+            element={
+              <RequireAdmin>
+                <AdminDashboard />
+              </RequireAdmin>
+            }
+          />
+
+          {/* ===== 404 ===== */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
-        <Footer />
+      <Footer />
     </>
   );
 }
