@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import RequireAuth from "./routes/RequireAuth";
 import RequireAdmin from "./routes/RequireAdmin";
 //components
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "../src/components/profile/Profile";
 
@@ -29,6 +29,7 @@ import BackendWakeup from "./pages/public/BackendWakeup";
 import { useEffect, useState } from "react";
 
 import { checkBackend } from "./services/health.service";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
@@ -49,7 +50,8 @@ if (!serverReady) {
 }
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Navbar/>
       <main className="pt-16 min-h-screen">
         <Routes>
           {/* ===== Public Routes ===== */}
