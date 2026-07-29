@@ -2,7 +2,7 @@
 
 A full-stack MERN e-learning platform that enables users to browse courses, enroll in free or premium content, track learning progress, and securely manage authentication. Built with React, Node.js, Express, MongoDB, and Stripe, the project follows modern web development practices with a scalable architecture.
 
-🔗 **Live Application:** https://elearningfrontend-alpha.vercel.app
+🔗 **Live Application:** https://future-nest-jet.vercel.app
 
 🔗 **Backend API:** https://elearningbackend-dhi6.onrender.com
 
