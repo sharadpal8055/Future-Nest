@@ -145,13 +145,19 @@ export default function EditProfileModal({
               Bio
             </label>
 
-            <textarea
-              rows={4}
-              name="bio"
-              value={form.bio}
-              onChange={handleChange}
-              className="w-full border rounded-lg mt-1 p-3"
-            />
+          <textarea
+  rows={4}
+  name="bio"
+  maxLength={300}
+  value={form.bio}
+  onChange={handleChange}
+  className="w-full border rounded-lg mt-1 p-3"
+/>
+
+<div className="mt-1 flex justify-between text-sm text-gray-500">
+  <span>Maximum 300 characters</span>
+  <span>{form.bio.length}/300</span>
+</div>
           </div>
 
           <div className="md:col-span-2 flex justify-end gap-3 pt-2">
