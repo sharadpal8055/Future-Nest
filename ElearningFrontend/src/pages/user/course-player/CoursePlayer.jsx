@@ -6,7 +6,7 @@ import LessonSidebar from "./LessonSidebar";
 import LessonContent from "./LessonContent";
 import LessonNavigation from "./LessonNavigation";
 import ProgressBar from "./ProgressBar";
-
+import { generateCertificate } from "../../../services/certificate.service";
 export default function CoursePlayer() {
   const { enrollmentId } = useParams();
 
@@ -92,9 +92,9 @@ const toggleComplete = async () => {
   if (!selectedLesson) return;
 
   try {
-    const wasCompleted =
-      !!progressObj[selectedLesson._id];
+    const wasCompleted = !!progressObj[selectedLesson._id];
 
+    // Update lesson progress
     await api.put(
       `/enrollments/${enrollmentId}/progress`,
       {
@@ -103,15 +103,35 @@ const toggleComplete = async () => {
       }
     );
 
+    // Refresh enrollment data
     await fetchEnrollment();
 
+    // Fetch latest enrollment to get updated progress
+    const res = await api.get("/enrollments/me");
+
+    const updatedEnrollment = res.data.data.find(
+      (e) => e._id === enrollmentId
+    );
+
+    // Generate certificate only when course is fully completed
+    if (
+      updatedEnrollment &&
+      updatedEnrollment.progressPercent === 100
+    ) {
+      try {
+        await generateCertificate(enrollmentId);
+      } catch (err) {
+        // Ignore duplicate certificate errors
+        console.log("Certificate already exists.");
+      }
+    }
+
+    // Move to next lesson if current lesson was just completed
     if (
       !wasCompleted &&
       selectedLessonIndex < lessons.length - 1
     ) {
-      setSelectedLessonIndex(
-        (prev) => prev + 1
-      );
+      setSelectedLessonIndex((prev) => prev + 1);
     }
   } catch (err) {
     console.error(err);
