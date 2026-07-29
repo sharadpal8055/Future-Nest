@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import heroImage from '../../assets/hero/hero.svg'
-
+import Loader from "../../components/common/Loader";
 export default function Home() {
   const { user } = useAuth();
 

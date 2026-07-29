@@ -8,6 +8,7 @@ import enrollmentRoutes from "./routes/enrollment.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import errorHandler from "./middleware/error.middleware.js";
 import certificateRoutes from "./routes/certificate.routes.js";
+import healthRoutes from"./routes/health.routes.js"
 const app = express();
 
 const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL];
@@ -39,6 +40,7 @@ app.use("/api/enrollments", enrollmentRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/certificates", certificateRoutes);
+app.use("/api/health", healthRoutes);
 app.use(errorHandler);
 
 export default app;

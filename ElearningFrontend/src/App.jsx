@@ -25,8 +25,28 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 
 // Payment
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
+import BackendWakeup from "./pages/public/BackendWakeup";
+import { useEffect, useState } from "react";
+
+import { checkBackend } from "./services/health.service";
 
 function App() {
+  const [serverReady, setServerReady] = useState(false);
+  useEffect(() => {
+    async function wakeServer() {
+        try {
+            await checkBackend();
+            setServerReady(true);
+        } catch {
+            setTimeout(wakeServer, 3000);
+        }
+    }
+
+    wakeServer();
+}, []);
+if (!serverReady) {
+    return <BackendWakeup/>;
+}
   return (
     <>
       <Navbar />
