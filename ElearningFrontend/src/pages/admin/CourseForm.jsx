@@ -8,20 +8,20 @@ const emptyForm = {
   difficulty: "beginner",
   price: "",
   thumbnailUrl: "",
-  lessons: []
+  lessons: [],
 };
 
 const emptyLesson = {
   title: "",
   contentHtml: "",
-  videoUrl: ""
+  videoUrl: "",
 };
 
 export default function CourseForm({
   selected,
   onSave,
   onCancel,
-  loading = false
+  loading = false,
 }) {
   const [form, setForm] = useState(emptyForm);
   const [lessonDraft, setLessonDraft] = useState(emptyLesson);
@@ -39,7 +39,7 @@ export default function CourseForm({
         difficulty: selected.difficulty || "beginner",
         price: selected.price ?? "",
         thumbnailUrl: selected.thumbnailUrl || "",
-        lessons: Array.isArray(selected.lessons) ? selected.lessons : []
+        lessons: Array.isArray(selected.lessons) ? selected.lessons : [],
       });
     } else {
       // 🔥 reset when switching from edit → create
@@ -54,7 +54,7 @@ export default function CourseForm({
   const addLesson = () => {
     if (!lessonDraft.title.trim()) return;
 
-    setForm(prev => ({
+    setForm((prev) => ({
       ...prev,
       lessons: [
         ...prev.lessons,
@@ -62,9 +62,9 @@ export default function CourseForm({
           title: lessonDraft.title.trim(),
           contentHtml: lessonDraft.contentHtml.trim() || "",
           videoUrl: lessonDraft.videoUrl.trim() || "",
-          order: prev.lessons.length + 1
-        }
-      ]
+          order: prev.lessons.length + 1,
+        },
+      ],
     }));
 
     // ✅ always reset lesson inputs
@@ -72,11 +72,11 @@ export default function CourseForm({
   };
 
   const removeLesson = (index) => {
-    setForm(prev => ({
+    setForm((prev) => ({
       ...prev,
       lessons: prev.lessons
         .filter((_, i) => i !== index)
-        .map((l, i) => ({ ...l, order: i + 1 }))
+        .map((l, i) => ({ ...l, order: i + 1 })),
     }));
   };
 
@@ -98,8 +98,8 @@ export default function CourseForm({
         title: l.title.trim(),
         contentHtml: l.contentHtml || "",
         videoUrl: l.videoUrl || "",
-        order: i + 1
-      }))
+        order: i + 1,
+      })),
     };
 
     await onSave(payload);
@@ -137,7 +137,7 @@ export default function CourseForm({
         placeholder="Faculty / Instructor Name"
         className="w-full border p-2 rounded"
         value={form.faculty}
-        onChange={e => setForm({ ...form, faculty: e.target.value })}
+        onChange={(e) => setForm({ ...form, faculty: e.target.value })}
         required
       />
 
@@ -145,7 +145,7 @@ export default function CourseForm({
         placeholder="Course Title"
         className="w-full border p-2 rounded"
         value={form.title}
-        onChange={e => setForm({ ...form, title: e.target.value })}
+        onChange={(e) => setForm({ ...form, title: e.target.value })}
         required
       />
 
@@ -154,7 +154,7 @@ export default function CourseForm({
         className="w-full border p-2 rounded"
         rows={3}
         value={form.description}
-        onChange={e => setForm({ ...form, description: e.target.value })}
+        onChange={(e) => setForm({ ...form, description: e.target.value })}
         required
       />
 
@@ -162,14 +162,14 @@ export default function CourseForm({
         placeholder="Category"
         className="w-full border p-2 rounded"
         value={form.category}
-        onChange={e => setForm({ ...form, category: e.target.value })}
+        onChange={(e) => setForm({ ...form, category: e.target.value })}
         required
       />
 
       <select
         className="w-full border p-2 rounded"
         value={form.difficulty}
-        onChange={e => setForm({ ...form, difficulty: e.target.value })}
+        onChange={(e) => setForm({ ...form, difficulty: e.target.value })}
       >
         <option value="beginner">Beginner</option>
         <option value="intermediate">Intermediate</option>
@@ -182,14 +182,14 @@ export default function CourseForm({
         placeholder="Price (0 = Free)"
         className="w-full border p-2 rounded"
         value={form.price}
-        onChange={e => setForm({ ...form, price: e.target.value })}
+        onChange={(e) => setForm({ ...form, price: e.target.value })}
       />
 
       <input
         placeholder="Thumbnail URL"
         className="w-full border p-2 rounded"
         value={form.thumbnailUrl}
-        onChange={e => setForm({ ...form, thumbnailUrl: e.target.value })}
+        onChange={(e) => setForm({ ...form, thumbnailUrl: e.target.value })}
       />
 
       {/* Lessons */}
@@ -200,7 +200,7 @@ export default function CourseForm({
           placeholder="Lesson Title"
           className="w-full border p-2 rounded"
           value={lessonDraft.title}
-          onChange={e =>
+          onChange={(e) =>
             setLessonDraft({ ...lessonDraft, title: e.target.value })
           }
         />
@@ -210,7 +210,7 @@ export default function CourseForm({
           className="w-full border p-2 rounded"
           rows={3}
           value={lessonDraft.contentHtml}
-          onChange={e =>
+          onChange={(e) =>
             setLessonDraft({ ...lessonDraft, contentHtml: e.target.value })
           }
         />
@@ -219,7 +219,7 @@ export default function CourseForm({
           placeholder="Video URL"
           className="w-full border p-2 rounded"
           value={lessonDraft.videoUrl}
-          onChange={e =>
+          onChange={(e) =>
             setLessonDraft({ ...lessonDraft, videoUrl: e.target.value })
           }
         />
@@ -234,7 +234,9 @@ export default function CourseForm({
 
         {form.lessons.map((l, i) => (
           <div key={i} className="flex justify-between text-sm">
-            <span>{i + 1}. {l.title}</span>
+            <span>
+              {i + 1}. {l.title}
+            </span>
             <button
               type="button"
               onClick={() => removeLesson(i)}
@@ -250,9 +252,7 @@ export default function CourseForm({
         <button
           disabled={disabled}
           className={`px-4 py-2 rounded text-white ${
-            disabled
-              ? "bg-gray-400"
-              : "bg-indigo-600 hover:bg-indigo-700"
+            disabled ? "bg-gray-400" : "bg-indigo-600 hover:bg-indigo-700"
           }`}
         >
           {loading ? "Saving..." : "Save"}

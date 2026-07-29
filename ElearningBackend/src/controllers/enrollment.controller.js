@@ -103,6 +103,8 @@ export const getAllEnrollments = asyncHandler(async (req, res) => {
 });
 
 export const updateProgress = asyncHandler(async (req, res) => {
+
+try {
   const { lessonId, completed } = req.body;
 
   if (!lessonId || typeof completed !== "boolean") {
@@ -152,6 +154,13 @@ export const updateProgress = asyncHandler(async (req, res) => {
     success: true,
     message: "Progress updated"
   });
+  
+} catch (err) {
+  console.error(err);   // <-- add this
+    throw err;
+}
+
+  
 });
 
 
