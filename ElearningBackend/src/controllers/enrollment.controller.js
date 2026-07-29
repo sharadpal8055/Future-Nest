@@ -77,16 +77,60 @@ export const enrollPaidCourse = asyncHandler(async (req, res) => {
 
 
 export const getMyEnrollments = asyncHandler(async (req, res) => {
-  const enrollments = await Enrollment.find({ userId: req.user._id })
+  const enrollments = await Enrollment.find({
+    userId: req.user._id,
+  })
     .populate({
       path: "courseId",
       select:
-        "title description lessons category difficulty thumbnailUrl price"
+        "title description lessons category difficulty thumbnailUrl price",
+    })
+    .sort({ updatedAt: -1 });
+
+  const formatted = enrollments
+    .filter((e) => e.courseId)
+    .map((enrollment) => {
+      const lessons = enrollment.courseId.lessons;
+
+      const progressObj = Object.fromEntries(
+        enrollment.progress.entries()
+      );
+
+      const validLessonIds = lessons.map((l) =>
+        l._id.toString()
+      );
+
+      const completedLessons = validLessonIds.filter(
+        (id) => progressObj[id]
+      ).length;
+
+      const totalLessons = lessons.length;
+
+      const progressPercent =
+        totalLessons === 0
+          ? 0
+          : Math.round(
+              (completedLessons / totalLessons) *
+                100
+            );
+
+     const enrollmentObj = enrollment.toObject();
+
+return {
+  ...enrollmentObj,
+
+  // Return a plain object instead of the Mongoose Map
+  progress: progressObj,
+
+  completedLessons,
+  totalLessons,
+  progressPercent,
+};
     });
 
-  res.status(200).json({
+  res.json({
     success: true,
-    data: enrollments.filter(e => e.courseId)
+    data: formatted,
   });
 });
 
@@ -103,28 +147,34 @@ export const getAllEnrollments = asyncHandler(async (req, res) => {
 });
 
 export const updateProgress = asyncHandler(async (req, res) => {
-
-try {
   const { lessonId, completed } = req.body;
 
   if (!lessonId || typeof completed !== "boolean") {
     return res.status(400).json({
-      message: "lessonId and completed(boolean) required"
+      message: "lessonId and completed(boolean) required",
     });
   }
 
   const enrollment = await Enrollment.findById(req.params.id);
+
   if (!enrollment) {
-    return res.status(404).json({ message: "Enrollment not found" });
+    return res.status(404).json({
+      message: "Enrollment not found",
+    });
   }
 
   if (enrollment.userId.toString() !== req.user._id.toString()) {
-    return res.status(403).json({ message: "Not authorized" });
+    return res.status(403).json({
+      message: "Not authorized",
+    });
   }
 
   const course = await Course.findById(enrollment.courseId);
+
   if (!course) {
-    return res.status(404).json({ message: "Course not found" });
+    return res.status(404).json({
+      message: "Course not found",
+    });
   }
 
   const isPaidEnrollment =
@@ -132,35 +182,47 @@ try {
 
   if (!isPaidEnrollment) {
     return res.status(403).json({
-      message: "Payment verification required"
+      message: "Payment verification required",
     });
   }
 
+  // Validate lesson exists
   const validLesson = course.lessons.some(
-    l => l._id.toString() === lessonId
+    (lesson) => lesson._id.toString() === lessonId
   );
 
   if (!validLesson) {
-    return res.status(400).json({ message: "Invalid lesson" });
+    return res.status(400).json({
+      message: "Invalid lesson",
+    });
   }
 
-  // ✅ ATOMIC UPDATE — NO CASTING, NO SAVE()
-  await Enrollment.updateOne(
-    { _id: enrollment._id },
-    { $set: { [`progress.${lessonId}`]: completed } }
+  // Remove progress entries for deleted lessons
+  const validLessonIds = new Set(
+    course.lessons.map((lesson) => lesson._id.toString())
   );
+
+  const cleanedProgress = {};
+
+  for (const [id, done] of enrollment.progress.entries()) {
+    if (validLessonIds.has(id)) {
+      cleanedProgress[id] = done;
+    }
+  }
+
+  // Update current lesson
+  cleanedProgress[lessonId] = completed;
+
+ enrollment.progress = new Map(
+  Object.entries(cleanedProgress)
+);
+
+  await enrollment.save();
 
   res.status(200).json({
     success: true,
-    message: "Progress updated"
+    message: "Progress updated successfully",
+    progress: cleanedProgress,
   });
-  
-} catch (err) {
-  console.error(err);   // <-- add this
-    throw err;
-}
-
-  
 });
-
 

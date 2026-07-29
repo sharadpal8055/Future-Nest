@@ -9,7 +9,11 @@ import {
   Compass,
   ShieldCheck,
 } from "lucide-react";
-
+import DashboardHeader from "../../components/dashboard/DashboardHeader";
+import StatCard from "../../components/dashboard/StatCard";
+import ContinueLearning from "../../components/dashboard/ContinueLearning";
+import QuickActions from "../../components/dashboard/QuickActions";
+import RecentActivity from "../../components/dashboard/RecentActivity";
 export default function Dashboard() {
   const { user } = useAuth();
 
@@ -17,38 +21,88 @@ export default function Dashboard() {
     enrolled: 0,
     certificates: 0,
   });
+const [continueLearning, setContinueLearning] = useState(null);
 
+const [activities, setActivities] = useState([]);
   useEffect(() => {
     loadDashboard();
   }, []);
 
-  async function loadDashboard() {
-    try {
-      const [enrollmentsRes, certificatesRes] = await Promise.all([
-        api.get("/enrollments/me"),
-        api.get("/certificates/me"),
-      ]);
+ async function loadDashboard() {
+  try {
+    const [enrollmentsRes, certificatesRes] = await Promise.all([
+      api.get("/enrollments/me"),
+      api.get("/certificates/me"),
+    ]);
 
-      setStats({
-        enrolled: enrollmentsRes.data.data.length,
-        certificates: certificatesRes.data.data.length,
-      });
-    } catch (err) {
-      console.error(err);
+    const enrollments = enrollmentsRes.data.data;
+    const certificates = certificatesRes.data.data;
 
-      setStats({
-        enrolled: 0,
-        certificates: 0,
-      });
+    setStats({
+      enrolled: enrollments.length,
+      certificates: certificates.length,
+    });
+
+    if (enrollments.length > 0) {
+      const activeEnrollment = [...enrollments]
+  .filter(e => e.progressPercent < 100)
+  .sort(
+    (a, b) =>
+      new Date(b.updatedAt) - new Date(a.updatedAt)
+  )[0];
+
+setContinueLearning(activeEnrollment || enrollments[0]);
     }
-  }
 
+    const recent = [];
+
+    certificates.forEach((certificate) => {
+      recent.push({
+        type: "certificate",
+        title: `Earned certificate for ${certificate.course.title}`,
+        time: new Date(
+          certificate.completionDate
+        ).toLocaleDateString(),
+      });
+    });
+
+    enrollments.forEach((enrollment) => {
+      recent.push({
+        type: "course",
+        title: `Enrolled in ${enrollment.courseId.title}`,
+        time: new Date(
+          enrollment.createdAt
+        ).toLocaleDateString(),
+      });
+    });
+recent.sort(
+  (a,b)=>new Date(b.time)-new Date(a.time)
+);
+
+setActivities(
+  recent.slice(0,5).map(item=>({
+    ...item,
+    time:new Date(item.time).toLocaleDateString()
+  }))
+);
+  } catch (err) {
+    console.error(err);
+
+    setStats({
+      enrolled: 0,
+      certificates: 0,
+    });
+
+    setContinueLearning(null);
+    setActivities([]);
+  }
+}
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="mx-auto max-w-7xl space-y-8">
         {/* Hero */}
 
-        <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-lg">
+        {/* <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-lg">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
               <h1 className="text-3xl font-bold">
@@ -67,11 +121,11 @@ export default function Dashboard() {
               Explore Courses
             </Link>
           </div>
-        </div>
-
+        </div> */}
+        <DashboardHeader user={user} />
         {/* Stats */}
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             icon={<BookOpen size={26} />}
             title="Enrolled Courses"
@@ -99,11 +153,46 @@ export default function Dashboard() {
             value="Active"
             color="bg-green-100 text-green-600"
           />
-        </div>
+        </div> */}
 
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <StatCard
+            icon={<BookOpen size={22} />}
+            title="Enrolled Courses"
+            value={stats.enrolled}
+            subtitle="Currently active courses"
+            color="text-blue-600"
+            to="/my-courses"
+          />
+
+          <StatCard
+            icon={<Award size={22} />}
+            title="Certificates"
+            value={stats.certificates}
+            subtitle="Certificates earned"
+            color="text-yellow-600"
+            to="/certificates"
+          />
+
+          <StatCard
+            icon={<GraduationCap size={22} />}
+            title="Role"
+            value={user.role}
+            subtitle="Learning account"
+            color="text-violet-600"
+          />
+
+          <StatCard
+            icon={<ShieldCheck size={22} />}
+            title="Account"
+            value="Active"
+            subtitle="Everything looks good"
+            color="text-green-600"
+          />
+        </div>
         {/* Quick Actions */}
 
-        <div className="rounded-2xl bg-white p-6 shadow">
+        {/* <div className="rounded-2xl bg-white p-6 shadow">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-bold">Quick Actions</h2>
 
@@ -141,7 +230,23 @@ export default function Dashboard() {
               />
             )}
           </div>
-        </div>
+        </div> */}
+<div className="grid gap-6 lg:grid-cols-3">
+
+  <div className="lg:col-span-2">
+    <ContinueLearning
+      enrollment={continueLearning}
+    />
+  </div>
+
+  <RecentActivity
+    activities={activities}
+  />
+
+</div>
+
+<QuickActions user={user} />
+
       </div>
     </div>
   );
@@ -149,37 +254,6 @@ export default function Dashboard() {
 
 /* ================================================= */
 
-function StatCard({ icon, title, value, color }) {
-  return (
-    <div className="rounded-2xl bg-white p-6 shadow transition hover:-translate-y-1 hover:shadow-lg">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-gray-500">{title}</p>
-
-          <h3 className="mt-2 text-3xl font-bold text-gray-800">{value}</h3>
-        </div>
-
-        <div className={`rounded-xl p-3 ${color}`}>{icon}</div>
-      </div>
-    </div>
-  );
-}
-
 /* ================================================= */
 
-function ActionCard({ icon, title, description, to }) {
-  return (
-    <Link
-      to={to}
-      className="group rounded-2xl border bg-white p-5 transition hover:border-indigo-500 hover:shadow-lg"
-    >
-      <div className="mb-4 inline-flex rounded-xl bg-indigo-100 p-3 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
-        {icon}
-      </div>
 
-      <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-
-      <p className="mt-2 text-sm text-gray-500">{description}</p>
-    </Link>
-  );
-}

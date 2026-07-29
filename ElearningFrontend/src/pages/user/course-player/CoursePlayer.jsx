@@ -40,13 +40,9 @@ export default function CoursePlayer() {
 
   /* ---------------- Progress Object ---------------- */
 
-  const progressObj = useMemo(() => {
-    if (!enrollment?.progress) return {};
-
-    return Object.fromEntries(
-      Object.entries(enrollment.progress)
-    );
-  }, [enrollment]);
+const progressObj = useMemo(() => {
+  return enrollment?.progress || {};
+}, [enrollment]);
 
   if (loading) {
     return (
@@ -74,32 +70,54 @@ export default function CoursePlayer() {
 
   /* ---------------- Progress ---------------- */
 
-  const completedLessons = Object.values(
-    progressObj
-  ).filter(Boolean).length;
+const validLessonIds = lessons.map((lesson) =>
+  lesson._id.toString()
+);
 
-  const progressPercent = lessons.length
-    ? Math.round(
-        (completedLessons / lessons.length) * 100
-      )
-    : 0;
+const completedLessons = validLessonIds.filter(
+  (id) => progressObj[id] === true
+).length;
+
+const totalLessons = validLessonIds.length;
+
+const progressPercent =
+  totalLessons === 0
+    ? 0
+    : Math.round(
+        (completedLessons / totalLessons) * 100
+      );
 
   /* ---------------- Toggle Complete ---------------- */
+const toggleComplete = async () => {
+  if (!selectedLesson) return;
 
-  const toggleComplete = async () => {
-    if (!selectedLesson) return;
+  try {
+    const wasCompleted =
+      !!progressObj[selectedLesson._id];
 
     await api.put(
       `/enrollments/${enrollmentId}/progress`,
       {
         lessonId: selectedLesson._id,
-        completed:
-          !progressObj[selectedLesson._id],
+        completed: !wasCompleted,
       }
     );
 
-    fetchEnrollment();
-  };
+    await fetchEnrollment();
+
+    if (
+      !wasCompleted &&
+      selectedLessonIndex < lessons.length - 1
+    ) {
+      setSelectedLessonIndex(
+        (prev) => prev + 1
+      );
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Failed to update lesson progress.");
+  }
+};
 
   /* ---------------- Navigation ---------------- */
 
@@ -141,7 +159,7 @@ export default function CoursePlayer() {
           <ProgressBar
             progress={progressPercent}
             completed={completedLessons}
-            total={lessons.length}
+            total={totalLessons}
           />
         </div>
 

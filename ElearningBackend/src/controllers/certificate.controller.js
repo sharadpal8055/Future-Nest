@@ -33,18 +33,32 @@ export const generateCertificate = async (req, res) => {
 
     /* ---------- Verify Completion ---------- */
 
-    const totalLessons = enrollment.courseId.lessons.length;
+   /* ---------- Verify Completion ---------- */
 
-    const completedLessons = Object.values(enrollment.progress || {}).filter(
-      Boolean,
-    ).length;
+// Get all valid lesson IDs from the course
+const lessonIds = enrollment.courseId.lessons.map((lesson) =>
+  lesson._id.toString()
+);
 
-    if (completedLessons < totalLessons) {
-      return res.status(400).json({
-        success: false,
-        message: "Complete all lessons before generating your certificate.",
-      });
-    }
+// Convert Mongoose Map to a plain object
+const progressObj =
+  enrollment.progress instanceof Map
+    ? Object.fromEntries(enrollment.progress.entries())
+    : enrollment.progress || {};
+
+// Count only valid completed lessons
+const completedLessons = lessonIds.filter(
+  (id) => progressObj[id] === true
+).length;
+
+const totalLessons = lessonIds.length;
+
+if (completedLessons < totalLessons) {
+  return res.status(400).json({
+    success: false,
+    message: "Complete all lessons before generating your certificate.",
+  });
+}
 
     /* ---------- Prevent Duplicate Certificate ---------- */
 
