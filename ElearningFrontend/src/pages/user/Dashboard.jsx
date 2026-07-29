@@ -2,68 +2,142 @@ import { useAuth } from "../../auth/useAuth";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api/axios";
+import {
+  BookOpen,
+  GraduationCap,
+  Award,
+  Compass,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function Dashboard() {
   const { user } = useAuth();
-  const [enrolledCount, setEnrolledCount] = useState(0);
+
+  const [stats, setStats] = useState({
+    enrolled: 0,
+    certificates: 0,
+  });
 
   useEffect(() => {
-    api.get("/enrollments/me")
-      .then(res => setEnrolledCount(res.data.data.length))
-      .catch(() => setEnrolledCount(0));
+    loadDashboard();
   }, []);
 
+  async function loadDashboard() {
+    try {
+      const [enrollmentsRes, certificatesRes] = await Promise.all([
+        api.get("/enrollments/me"),
+        api.get("/certificates/me"),
+      ]);
+
+      setStats({
+        enrolled: enrollmentsRes.data.data.length,
+        certificates: certificatesRes.data.data.length,
+      });
+    } catch (err) {
+      console.error(err);
+
+      setStats({
+        enrolled: 0,
+        certificates: 0,
+      });
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 px-4 sm:px-6 py-8">
-      <div className="max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-gray-100 py-8 px-4">
+      <div className="mx-auto max-w-7xl space-y-8">
+        {/* Hero */}
 
-        {/* Header */}
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col sm:flex-row sm:justify-between gap-4">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-              Welcome back, {user.name} 
-            </h1>
-            <p className="text-gray-500 mt-1">
-              Continue learning and track your progress
-            </p>
+        <div className="rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white shadow-lg">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h1 className="text-3xl font-bold">
+                Welcome back, {user.name} 
+              </h1>
+
+              <p className="mt-2 text-indigo-100">
+                Continue learning, earn certificates, and build your future.
+              </p>
+            </div>
+
+            <Link
+              to="/courses"
+              className="rounded-xl bg-white px-6 py-3 font-semibold text-indigo-700 transition hover:bg-gray-100"
+            >
+              Explore Courses
+            </Link>
           </div>
-
-          <Link
-            to="/courses"
-            className="px-5 py-2.5 rounded-lg bg-indigo-600 text-white
-              font-semibold hover:bg-indigo-700 transition"
-          >
-            Explore Courses
-          </Link>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <Stat label="Role" value={user.role} />
-          <Stat label="Enrolled Courses" value={enrolledCount} />
-          <Stat label="Account Status" value="Active" accent />
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <StatCard
+            icon={<BookOpen size={26} />}
+            title="Enrolled Courses"
+            value={stats.enrolled}
+            color="bg-blue-100 text-blue-600"
+          />
+
+          <StatCard
+            icon={<Award size={26} />}
+            title="Certificates"
+            value={stats.certificates}
+            color="bg-yellow-100 text-yellow-600"
+          />
+
+          <StatCard
+            icon={<GraduationCap size={26} />}
+            title="Role"
+            value={user.role}
+            color="bg-purple-100 text-purple-600"
+          />
+
+          <StatCard
+            icon={<ShieldCheck size={26} />}
+            title="Account"
+            value="Active"
+            color="bg-green-100 text-green-600"
+          />
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-2xl shadow p-6">
-          <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="rounded-2xl bg-white p-6 shadow">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-2xl font-bold">Quick Actions</h2>
+
+            <Compass className="text-indigo-600" />
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <ActionCard
-              to="/my-courses"
+              icon={<BookOpen />}
               title="My Courses"
-              desc="Resume your learning"
+              description="Resume your enrolled courses"
+              to="/my-courses"
             />
+
             <ActionCard
-              to="/courses"
+              icon={<Compass />}
               title="Browse Courses"
-              desc="Find new skills"
+              description="Explore new courses"
+              to="/courses"
             />
+
+            <ActionCard
+              icon={<Award />}
+              title="My Certificates"
+              description="Download earned certificates"
+              to="/certificates"
+            />
+
             {user.role === "admin" && (
               <ActionCard
-                to="/admin"
+                icon={<ShieldCheck />}
                 title="Admin Panel"
-                desc="Manage platform content"
+                description="Manage courses & users"
+                to="/admin"
               />
             )}
           </div>
@@ -73,26 +147,39 @@ export default function Dashboard() {
   );
 }
 
-function Stat({ label, value, accent }) {
+/* ================================================= */
+
+function StatCard({ icon, title, value, color }) {
   return (
-    <div className="bg-white rounded-xl shadow p-6">
-      <p className="text-sm text-gray-500">{label}</p>
-      <p className={`text-2xl font-bold mt-1 ${accent ? "text-green-600" : "text-gray-800"}`}>
-        {value}
-      </p>
+    <div className="rounded-2xl bg-white p-6 shadow transition hover:-translate-y-1 hover:shadow-lg">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-500">{title}</p>
+
+          <h3 className="mt-2 text-3xl font-bold text-gray-800">{value}</h3>
+        </div>
+
+        <div className={`rounded-xl p-3 ${color}`}>{icon}</div>
+      </div>
     </div>
   );
 }
 
-function ActionCard({ to, title, desc }) {
+/* ================================================= */
+
+function ActionCard({ icon, title, description, to }) {
   return (
     <Link
       to={to}
-      className="p-4 border rounded-xl hover:border-indigo-500
-        hover:bg-indigo-50 transition"
+      className="group rounded-2xl border bg-white p-5 transition hover:border-indigo-500 hover:shadow-lg"
     >
-      <p className="font-semibold text-gray-800">{title}</p>
-      <p className="text-sm text-gray-500 mt-1">{desc}</p>
+      <div className="mb-4 inline-flex rounded-xl bg-indigo-100 p-3 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
+        {icon}
+      </div>
+
+      <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+
+      <p className="mt-2 text-sm text-gray-500">{description}</p>
     </Link>
   );
 }

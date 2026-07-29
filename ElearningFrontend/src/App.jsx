@@ -18,6 +18,7 @@ import Courses from "./pages/user/Courses";
 import MyCourses from "./pages/user/MyCourses";
 import CourseProgress from "./pages/user/CourseProgress";
 import CoursePlayer from "./pages/user/course-player/CoursePlayer";
+import Certificates from "./pages/user/Certificates";
 
 // Admin pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -78,6 +79,10 @@ function App() {
 
           <Route path="/my-learning/:enrollmentId" element={<CoursePlayer />} />
 
+<Route
+  path="/certificates"
+  element={<Certificates />}
+/>
           {/* ===== Admin Routes ===== */}
           <Route
             path="/admin"
