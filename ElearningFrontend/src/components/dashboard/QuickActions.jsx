@@ -33,7 +33,7 @@ export default function QuickActions({ user }) {
           icon={<Library size={20} />}
           title="Library"
           description="Interview Questions, Notes & More"
-          to="/dashboard/library"
+          to="/library"
         />
 
         {user.role === "admin" && (
