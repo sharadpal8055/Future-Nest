@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Users, ClipboardList } from "lucide-react";
 import { toast } from "react-hot-toast";
+import InterviewSubjects from "./InterviewSubjects";
+import { MessageSquare } from "lucide-react";
 
 import api from "../../api/axios";
 
@@ -14,6 +16,7 @@ const BASE_TABS = [
   { key: "courses", label: "Courses" },
   { key: "users", label: "Users" },
   { key: "enrollments", label: "Enrollments" },
+  { key: "interview", label: "Interview Questions" },
 ];
 
 export default function AdminDashboard() {
@@ -117,47 +120,69 @@ export default function AdminDashboard() {
 
         {/* Dashboard Cards */}
 
-        <div className="grid gap-5 md:grid-cols-3">
-          <div className="rounded-xl bg-white p-5 shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-gray-500">Total Courses</div>
+       {/* Dashboard Cards */}
 
-                <div className="mt-2 text-3xl font-bold">{totalCourses}</div>
-              </div>
+<div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+  {/* Total Courses */}
+  <div className="rounded-xl bg-white p-5 shadow">
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="text-sm text-gray-500">Total Courses</div>
 
-              <BookOpen size={36} className="text-indigo-600" />
-            </div>
-          </div>
+        <div className="mt-2 text-3xl font-bold">{totalCourses}</div>
+      </div>
 
-          <div className="rounded-xl bg-white p-5 shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-gray-500">Published</div>
+      <BookOpen size={36} className="text-indigo-600" />
+    </div>
+  </div>
 
-                <div className="mt-2 text-3xl font-bold text-green-600">
-                  {publishedCourses}
-                </div>
-              </div>
+  {/* Published */}
+  <div className="rounded-xl bg-white p-5 shadow">
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="text-sm text-gray-500">Published</div>
 
-              <ClipboardList size={36} className="text-green-600" />
-            </div>
-          </div>
-
-          <div className="rounded-xl bg-white p-5 shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-sm text-gray-500">Draft Courses</div>
-
-                <div className="mt-2 text-3xl font-bold text-yellow-600">
-                  {draftCourses}
-                </div>
-              </div>
-
-              <Users size={36} className="text-yellow-600" />
-            </div>
-          </div>
+        <div className="mt-2 text-3xl font-bold text-green-600">
+          {publishedCourses}
         </div>
+      </div>
+
+      <ClipboardList size={36} className="text-green-600" />
+    </div>
+  </div>
+
+  {/* Draft Courses */}
+  <div className="rounded-xl bg-white p-5 shadow">
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="text-sm text-gray-500">Draft Courses</div>
+
+        <div className="mt-2 text-3xl font-bold text-yellow-600">
+          {draftCourses}
+        </div>
+      </div>
+
+      <Users size={36} className="text-yellow-600" />
+    </div>
+  </div>
+
+  {/* Interview Bank */}
+  <div className="rounded-xl bg-white p-5 shadow">
+    <div className="flex items-center justify-between">
+      <div>
+        <div className="text-sm text-gray-500">
+          Interview Bank
+        </div>
+
+        <div className="mt-2 text-3xl font-bold text-purple-600">
+          Manage
+        </div>
+      </div>
+
+      <MessageSquare size={36} className="text-purple-600" />
+    </div>
+  </div>
+</div>
 
         {/* Tabs */}
 
@@ -178,7 +203,7 @@ export default function AdminDashboard() {
             ))}
           </div>
         </div>
-
+     
         {/* Content */}
 
         <div className="rounded-2xl bg-white p-6 shadow">
@@ -209,6 +234,7 @@ export default function AdminDashboard() {
           {activeTab === "users" && <UsersTable />}
 
           {activeTab === "enrollments" && <EnrollmentsTable />}
+             {activeTab === "interview" && <InterviewSubjects />}
         </div>
       </div>
     </div>
