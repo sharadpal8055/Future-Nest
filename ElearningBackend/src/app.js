@@ -10,6 +10,7 @@ import errorHandler from "./middleware/error.middleware.js";
 import certificateRoutes from "./routes/certificate.routes.js";
 import healthRoutes from"./routes/health.routes.js"
 import interviewRoutes from "./routes/interview.routes.js";
+import noteRoutes from "./routes/note.routes.js";
 const app = express();
 
 const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL];
@@ -43,6 +44,7 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/certificates", certificateRoutes);
 app.use("/api/health", healthRoutes);
 app.use("/api/interview", interviewRoutes);
+app.use("/api/notes", noteRoutes);
 app.use(errorHandler);
 
 export default app;

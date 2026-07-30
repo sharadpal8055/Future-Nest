@@ -21,7 +21,8 @@ export const LIBRARY_ITEMS = [
     title: "Notes",
     description: "Quick revision notes.",
     icon: FileText,
-    available: false,
+    path: "/library/notes",
+available: true,
     color: "bg-purple-500",
   },
   {

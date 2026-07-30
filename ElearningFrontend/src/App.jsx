@@ -36,6 +36,8 @@ import { useEffect, useState } from "react";
 
 import { checkBackend } from "./services/health.service";
 import Navbar from "./components/navbar/Navbar";
+import NoteViewer from "./pages/NoteViewer";
+import Notes from "./pages/library/Notes";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
@@ -120,6 +122,9 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route path="/library/notes" element={<Notes />} />
+
+          <Route path="/library/notes/:id" element={<NoteViewer />} />
           <Route
             path="/my-courses"
             element={
