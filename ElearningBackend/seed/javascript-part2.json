@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "JavaScript",
+    "question": "What is an object in JavaScript?",
+    "answer": "An object is a collection of key-value pairs used to store related data and functionality. Properties can hold values, and methods are functions stored as object properties.",
+    "difficulty": "Beginner",
+    "tags": ["Objects", "Basics"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "How do you create an object in JavaScript?",
+    "answer": "Objects can be created using object literals ({}), the Object constructor, Object.create(), or ES6 classes.",
+    "difficulty": "Beginner",
+    "tags": ["Objects"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between dot notation and bracket notation?",
+    "answer": "Dot notation accesses properties using a fixed identifier (obj.name), while bracket notation accesses properties dynamically using strings or variables (obj['name'] or obj[key]).",
+    "difficulty": "Beginner",
+    "tags": ["Objects", "Properties"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is object destructuring?",
+    "answer": "Object destructuring is an ES6 feature that extracts properties from an object into variables using a concise syntax.",
+    "difficulty": "Beginner",
+    "tags": ["ES6", "Destructuring"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the spread operator (...) in JavaScript?",
+    "answer": "The spread operator expands elements of arrays or properties of objects. It is commonly used for copying, merging, and passing arguments.",
+    "difficulty": "Intermediate",
+    "tags": ["Spread Operator", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the rest operator?",
+    "answer": "The rest operator collects multiple values into a single array or object. It is commonly used in function parameters and destructuring.",
+    "difficulty": "Intermediate",
+    "tags": ["Rest Operator", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is an array in JavaScript?",
+    "answer": "An array is an ordered collection of values that can store elements of different data types.",
+    "difficulty": "Beginner",
+    "tags": ["Arrays"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between map() and forEach()?",
+    "answer": "map() returns a new transformed array, whereas forEach() executes a function for each element without returning a new array.",
+    "difficulty": "Intermediate",
+    "tags": ["Arrays", "map", "forEach"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between filter() and find()?",
+    "answer": "filter() returns all matching elements as an array, while find() returns only the first matching element or undefined.",
+    "difficulty": "Intermediate",
+    "tags": ["Arrays", "filter", "find"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What does reduce() do?",
+    "answer": "reduce() executes a callback on each array element and accumulates the result into a single value such as a sum, object, or array.",
+    "difficulty": "Intermediate",
+    "tags": ["Arrays", "reduce"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a function declaration?",
+    "answer": "A function declaration defines a named function and is fully hoisted, allowing it to be called before its declaration.",
+    "difficulty": "Beginner",
+    "tags": ["Functions"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a function expression?",
+    "answer": "A function expression assigns a function to a variable. Unlike function declarations, it is not fully hoisted.",
+    "difficulty": "Intermediate",
+    "tags": ["Functions"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is an arrow function?",
+    "answer": "Arrow functions provide a shorter syntax for writing functions and do not have their own 'this', 'arguments', 'super', or 'new.target'.",
+    "difficulty": "Intermediate",
+    "tags": ["Arrow Functions", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between arrow functions and regular functions?",
+    "answer": "Arrow functions inherit 'this' from the surrounding scope and cannot be used as constructors. Regular functions have their own 'this' depending on how they are called.",
+    "difficulty": "Intermediate",
+    "tags": ["Arrow Functions", "this"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the 'this' keyword in JavaScript?",
+    "answer": "The 'this' keyword refers to the object that is executing the current function. Its value depends on how the function is invoked.",
+    "difficulty": "Intermediate",
+    "tags": ["this"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are call(), apply(), and bind()?",
+    "answer": "call() invokes a function with a specified 'this' and arguments individually, apply() passes arguments as an array, and bind() returns a new function with a permanently bound 'this'.",
+    "difficulty": "Advanced",
+    "tags": ["call", "apply", "bind"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a higher-order function?",
+    "answer": "A higher-order function is a function that accepts another function as an argument, returns a function, or both.",
+    "difficulty": "Intermediate",
+    "tags": ["Functions", "Higher Order Functions"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are pure functions?",
+    "answer": "Pure functions always produce the same output for the same input and do not modify external state or cause side effects.",
+    "difficulty": "Intermediate",
+    "tags": ["Functions", "Functional Programming"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is recursion?",
+    "answer": "Recursion is a technique where a function calls itself until a base condition is met.",
+    "difficulty": "Intermediate",
+    "tags": ["Recursion"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is currying?",
+    "answer": "Currying transforms a function with multiple arguments into a sequence of functions, each accepting one argument.",
+    "difficulty": "Advanced",
+    "tags": ["Currying", "Functions"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the DOM?",
+    "answer": "The Document Object Model (DOM) is a tree-like representation of an HTML document that allows JavaScript to access and modify page content dynamically.",
+    "difficulty": "Beginner",
+    "tags": ["DOM"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "How do you select elements in the DOM?",
+    "answer": "Elements can be selected using getElementById(), getElementsByClassName(), getElementsByTagName(), querySelector(), and querySelectorAll().",
+    "difficulty": "Beginner",
+    "tags": ["DOM", "Selectors"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is an event in JavaScript?",
+    "answer": "An event is an action or occurrence such as a click, keypress, mouse movement, or form submission that JavaScript can respond to.",
+    "difficulty": "Beginner",
+    "tags": ["Events"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is event bubbling?",
+    "answer": "Event bubbling is the process in which an event starts from the target element and propagates upward through its parent elements.",
+    "difficulty": "Intermediate",
+    "tags": ["Events", "Event Bubbling"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is event delegation?",
+    "answer": "Event delegation is a technique where a single event listener is attached to a parent element to handle events from its child elements using event bubbling.",
+    "difficulty": "Intermediate",
+    "tags": ["Events", "Event Delegation"]
+  }
+]

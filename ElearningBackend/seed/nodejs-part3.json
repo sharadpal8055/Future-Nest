@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "Node.js",
+    "question": "What is the HTTP module in Node.js?",
+    "answer": "The HTTP module is a built-in Node.js module that enables developers to create HTTP servers and clients without requiring external libraries. It provides APIs to handle incoming requests and send responses.",
+    "difficulty": "Beginner",
+    "tags": ["HTTP", "Core Module"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How do you create an HTTP server in Node.js?",
+    "answer": "An HTTP server is created using http.createServer(), which accepts a request listener callback. The callback receives request and response objects used to process incoming requests and send responses.",
+    "difficulty": "Beginner",
+    "tags": ["HTTP", "Server"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is Express.js?",
+    "answer": "Express.js is a lightweight and flexible web framework built on top of Node.js that simplifies routing, middleware management, request handling, and REST API development.",
+    "difficulty": "Beginner",
+    "tags": ["Express", "Framework"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "Why is Express preferred over the native HTTP module?",
+    "answer": "Express provides routing, middleware support, request parsing, error handling, and a simpler API, significantly reducing boilerplate code compared to the native HTTP module.",
+    "difficulty": "Intermediate",
+    "tags": ["Express", "HTTP"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is middleware in Express?",
+    "answer": "Middleware is a function that has access to the request, response, and next function. It can execute logic, modify request/response objects, end the request-response cycle, or pass control to the next middleware.",
+    "difficulty": "Intermediate",
+    "tags": ["Express", "Middleware"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are the different types of middleware in Express?",
+    "answer": "Express supports application-level middleware, router-level middleware, built-in middleware, error-handling middleware, and third-party middleware such as cors, morgan, and helmet.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware", "Express"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "Explain the request-response cycle in Express.",
+    "answer": "A client sends an HTTP request to the server. The request passes through middleware functions, reaches the appropriate route handler, and finally the server sends an HTTP response back to the client.",
+    "difficulty": "Intermediate",
+    "tags": ["Express", "Request", "Response"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is a REST API?",
+    "answer": "A REST API follows Representational State Transfer principles, exposing resources through standard HTTP methods such as GET, POST, PUT, PATCH, and DELETE.",
+    "difficulty": "Beginner",
+    "tags": ["REST", "API"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between PUT and PATCH?",
+    "answer": "PUT replaces an entire resource, whereas PATCH updates only the specified fields of an existing resource.",
+    "difficulty": "Intermediate",
+    "tags": ["REST", "HTTP Methods"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How does async/await work in Node.js?",
+    "answer": "async/await is built on top of Promises. The async keyword makes a function return a Promise, while await pauses execution until the Promise resolves or rejects without blocking the event loop.",
+    "difficulty": "Intermediate",
+    "tags": ["Async", "Promises"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between callbacks, Promises, and async/await?",
+    "answer": "Callbacks execute a function after an asynchronous operation completes but can lead to callback hell. Promises improve readability with then() and catch(). async/await provides synchronous-looking code while still using Promises internally.",
+    "difficulty": "Advanced",
+    "tags": ["Callbacks", "Promises", "Async"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How do you handle errors in Express?",
+    "answer": "Errors are handled using middleware with four parameters: (err, req, res, next). This centralized approach keeps error handling consistent across the application.",
+    "difficulty": "Intermediate",
+    "tags": ["Error Handling", "Express"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are environment variables and why are they important?",
+    "answer": "Environment variables store configuration values such as API keys, database URLs, JWT secrets, and ports outside the source code. They improve security and make applications configurable across different environments.",
+    "difficulty": "Intermediate",
+    "tags": ["Environment Variables", "dotenv", "Security"]
+  }
+]

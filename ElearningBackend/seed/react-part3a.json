@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "React",
+    "question": "What is the Context API?",
+    "answer": "The Context API is React's built-in state sharing mechanism that allows data to be passed through the component tree without manually passing props at every level.",
+    "difficulty": "Intermediate",
+    "tags": ["Context API", "State Management"]
+  },
+  {
+    "subject": "React",
+    "question": "When should you use the Context API?",
+    "answer": "Context API is useful for sharing global data such as authentication, themes, language preferences, and user information across multiple components.",
+    "difficulty": "Intermediate",
+    "tags": ["Context API"]
+  },
+  {
+    "subject": "React",
+    "question": "What is prop drilling?",
+    "answer": "Prop drilling is the process of passing props through multiple intermediate components that do not need the data themselves, only to pass it to deeper child components.",
+    "difficulty": "Intermediate",
+    "tags": ["Props", "Context API"]
+  },
+  {
+    "subject": "React",
+    "question": "How does the Context API solve prop drilling?",
+    "answer": "The Context API allows components to access shared data directly from a Provider without passing props through every intermediate component.",
+    "difficulty": "Intermediate",
+    "tags": ["Context API", "Prop Drilling"]
+  },
+  {
+    "subject": "React",
+    "question": "What are React Portals?",
+    "answer": "React Portals allow rendering children into a DOM node outside the parent component's DOM hierarchy while preserving the React component tree.",
+    "difficulty": "Advanced",
+    "tags": ["Portals", "DOM"]
+  },
+  {
+    "subject": "React",
+    "question": "Where are React Portals commonly used?",
+    "answer": "Portals are commonly used for modals, tooltips, popups, dropdowns, and overlays that need to escape parent container styling such as overflow: hidden.",
+    "difficulty": "Intermediate",
+    "tags": ["Portals", "UI"]
+  },
+  {
+    "subject": "React",
+    "question": "What is React.lazy()?",
+    "answer": "React.lazy() enables code splitting by dynamically loading a component only when it is rendered, reducing the initial bundle size.",
+    "difficulty": "Intermediate",
+    "tags": ["Lazy Loading", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Suspense?",
+    "answer": "Suspense allows React to display fallback content while waiting for lazy-loaded components or asynchronous resources to finish loading.",
+    "difficulty": "Intermediate",
+    "tags": ["Suspense", "Lazy Loading"]
+  },
+  {
+    "subject": "React",
+    "question": "Why is lazy loading important?",
+    "answer": "Lazy loading reduces the initial JavaScript bundle size, improves page load performance, and downloads components only when they are needed.",
+    "difficulty": "Intermediate",
+    "tags": ["Performance", "Lazy Loading"]
+  },
+  {
+    "subject": "React",
+    "question": "What are Error Boundaries?",
+    "answer": "Error Boundaries are React components that catch JavaScript errors in their child component tree, log the errors, and display a fallback UI instead of crashing the entire application.",
+    "difficulty": "Advanced",
+    "tags": ["Error Boundaries", "Error Handling"]
+  },
+  {
+    "subject": "React",
+    "question": "Can functional components act as Error Boundaries?",
+    "answer": "No. Currently, Error Boundaries can only be implemented using class components. Functional components can use libraries like react-error-boundary for similar functionality.",
+    "difficulty": "Advanced",
+    "tags": ["Error Boundaries"]
+  },
+  {
+    "subject": "React",
+    "question": "What is React Router?",
+    "answer": "React Router is a routing library that enables navigation between different views in a React Single Page Application without reloading the page.",
+    "difficulty": "Beginner",
+    "tags": ["React Router", "Routing"]
+  },
+  {
+    "subject": "React",
+    "question": "What is BrowserRouter?",
+    "answer": "BrowserRouter is a router implementation that uses the browser's History API to keep the UI synchronized with the URL.",
+    "difficulty": "Beginner",
+    "tags": ["React Router", "BrowserRouter"]
+  }
+]

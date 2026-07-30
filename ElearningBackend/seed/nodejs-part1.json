@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "Node.js",
+    "question": "What is Node.js?",
+    "answer": "Node.js is an open-source, cross-platform JavaScript runtime built on Google's V8 JavaScript engine. It allows developers to execute JavaScript outside the browser and is commonly used to build scalable backend services, APIs, real-time applications, and command-line tools.",
+    "difficulty": "Beginner",
+    "tags": ["Basics", "Runtime", "V8"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "Why was Node.js created?",
+    "answer": "Node.js was created to enable JavaScript to run on the server, allowing developers to use a single language for both frontend and backend development while efficiently handling asynchronous I/O operations.",
+    "difficulty": "Beginner",
+    "tags": ["History", "Backend"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are the main features of Node.js?",
+    "answer": "Node.js provides an event-driven architecture, non-blocking I/O, asynchronous programming model, single-threaded event loop, high performance using the V8 engine, cross-platform support, and a rich npm ecosystem.",
+    "difficulty": "Beginner",
+    "tags": ["Features"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the V8 JavaScript Engine?",
+    "answer": "V8 is Google's high-performance JavaScript engine written in C++. It compiles JavaScript directly into machine code using Just-In-Time (JIT) compilation, making JavaScript execution very fast.",
+    "difficulty": "Intermediate",
+    "tags": ["V8", "Engine"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How is Node.js different from JavaScript running in a browser?",
+    "answer": "Browser JavaScript focuses on DOM manipulation and browser APIs, whereas Node.js provides server-side APIs such as File System, HTTP, Streams, and Process APIs. Node.js does not include the DOM or browser-specific APIs.",
+    "difficulty": "Intermediate",
+    "tags": ["Browser", "Node.js"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "Is Node.js single-threaded or multi-threaded?",
+    "answer": "Node.js executes JavaScript on a single main thread using the event loop. However, it internally uses libuv's thread pool and operating system threads to perform asynchronous tasks such as file operations, DNS lookups, and cryptographic operations.",
+    "difficulty": "Intermediate",
+    "tags": ["Thread", "Event Loop", "libuv"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the Event Loop in Node.js?",
+    "answer": "The Event Loop is the core mechanism that enables Node.js to handle multiple concurrent operations efficiently. It continuously checks for pending callbacks and executes them without blocking the main JavaScript thread.",
+    "difficulty": "Intermediate",
+    "tags": ["Event Loop", "Async"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are the phases of the Node.js Event Loop?",
+    "answer": "The Event Loop consists of Timers, Pending Callbacks, Idle/Prepare, Poll, Check, and Close Callbacks phases. Each phase processes a specific category of callbacks before moving to the next phase.",
+    "difficulty": "Advanced",
+    "tags": ["Event Loop", "Phases"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is libuv?",
+    "answer": "libuv is a C library used by Node.js that provides the event loop, asynchronous I/O operations, thread pool, timers, networking, and cross-platform system abstractions.",
+    "difficulty": "Advanced",
+    "tags": ["libuv", "Architecture"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is npm?",
+    "answer": "npm (Node Package Manager) is the default package manager for Node.js. It allows developers to install, update, manage, and publish JavaScript packages.",
+    "difficulty": "Beginner",
+    "tags": ["npm", "Packages"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is package.json?",
+    "answer": "package.json is the configuration file of a Node.js project. It stores project metadata, scripts, dependencies, devDependencies, version information, and other configuration details.",
+    "difficulty": "Beginner",
+    "tags": ["package.json", "npm"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between dependencies and devDependencies?",
+    "answer": "Dependencies are required to run the application in production, while devDependencies are needed only during development, such as testing frameworks, linters, and build tools.",
+    "difficulty": "Beginner",
+    "tags": ["npm", "Dependencies"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are CommonJS modules?",
+    "answer": "CommonJS is the traditional module system used in Node.js. It imports modules using require() and exports them using module.exports or exports.",
+    "difficulty": "Intermediate",
+    "tags": ["Modules", "CommonJS"]
+  }
+]

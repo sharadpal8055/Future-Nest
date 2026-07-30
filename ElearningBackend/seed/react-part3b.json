@@ -1,0 +1,86 @@
+[
+  {
+    "subject": "React",
+    "question": "What is the <Routes> component in React Router?",
+    "answer": "The <Routes> component is a container that matches the current URL with its child <Route> components and renders the best matching route.",
+    "difficulty": "Beginner",
+    "tags": ["React Router", "Routes"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the <Route> component?",
+    "answer": "A <Route> maps a URL path to a React component. When the current URL matches the specified path, the associated component is rendered.",
+    "difficulty": "Beginner",
+    "tags": ["React Router", "Route"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the difference between Link and NavLink?",
+    "answer": "Link is used for navigation without page reloads, while NavLink provides additional styling capabilities by automatically applying active styles when its route matches the current URL.",
+    "difficulty": "Intermediate",
+    "tags": ["React Router", "Link", "NavLink"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useNavigate Hook?",
+    "answer": "useNavigate returns a function that enables programmatic navigation between routes, making it useful after form submissions, authentication, or other application logic.",
+    "difficulty": "Intermediate",
+    "tags": ["React Router", "useNavigate"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useParams Hook?",
+    "answer": "useParams retrieves dynamic parameters from the current URL, such as an ID in '/users/:id'.",
+    "difficulty": "Intermediate",
+    "tags": ["React Router", "useParams"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useLocation Hook?",
+    "answer": "useLocation returns information about the current URL, including pathname, search query, hash, and optional navigation state.",
+    "difficulty": "Intermediate",
+    "tags": ["React Router", "useLocation"]
+  },
+  {
+    "subject": "React",
+    "question": "What is nested routing in React Router?",
+    "answer": "Nested routing allows child routes to be rendered inside parent routes using the <Outlet /> component, enabling layouts with shared navigation and content areas.",
+    "difficulty": "Intermediate",
+    "tags": ["React Router", "Nested Routes"]
+  },
+  {
+    "subject": "React",
+    "question": "What is a Protected Route?",
+    "answer": "A Protected Route restricts access to authenticated or authorized users by checking authentication status before rendering the requested component.",
+    "difficulty": "Intermediate",
+    "tags": ["Authentication", "Protected Routes"]
+  },
+  {
+    "subject": "React",
+    "question": "What is form handling in React?",
+    "answer": "Form handling involves managing user input using React state and event handlers such as onChange and onSubmit to keep the UI synchronized with application data.",
+    "difficulty": "Beginner",
+    "tags": ["Forms"]
+  },
+  {
+    "subject": "React",
+    "question": "How do you validate forms in React?",
+    "answer": "Forms can be validated manually using state and conditional logic or by using libraries such as React Hook Form, Formik, and Zod/Yup for schema validation.",
+    "difficulty": "Intermediate",
+    "tags": ["Forms", "Validation"]
+  },
+  {
+    "subject": "React",
+    "question": "What are controlled forms?",
+    "answer": "Controlled forms store input values in React state, making React the single source of truth for form data and enabling validation, formatting, and dynamic behavior.",
+    "difficulty": "Intermediate",
+    "tags": ["Forms", "Controlled Components"]
+  },
+  {
+    "subject": "React",
+    "question": "What are uncontrolled forms?",
+    "answer": "Uncontrolled forms store input values in the DOM instead of React state. Values are typically accessed using refs, making them suitable for simple forms or integration with non-React code.",
+    "difficulty": "Intermediate",
+    "tags": ["Forms", "Uncontrolled Components"]
+  }
+]

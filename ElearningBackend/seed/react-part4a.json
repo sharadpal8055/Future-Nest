@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "React",
+    "question": "What happens during the React rendering process?",
+    "answer": "When state or props change, React creates a new Virtual DOM tree, compares it with the previous one using the reconciliation algorithm, identifies differences, and updates only the necessary parts of the Real DOM.",
+    "difficulty": "Advanced",
+    "tags": ["Rendering", "Virtual DOM"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the difference between rendering and re-rendering?",
+    "answer": "Rendering is the initial creation of a component's UI. Re-rendering occurs when a component updates because of changes in state, props, or context.",
+    "difficulty": "Intermediate",
+    "tags": ["Rendering"]
+  },
+  {
+    "subject": "React",
+    "question": "What is React Fiber?",
+    "answer": "React Fiber is the reconciliation engine introduced in React 16. It enables incremental rendering, prioritization of updates, interruption of rendering, and smoother user experiences.",
+    "difficulty": "Advanced",
+    "tags": ["Fiber", "Reconciliation"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Concurrent Rendering in React?",
+    "answer": "Concurrent Rendering allows React to interrupt, pause, resume, or abandon rendering work to keep applications responsive during expensive updates.",
+    "difficulty": "Advanced",
+    "tags": ["Concurrent Rendering"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Automatic Batching?",
+    "answer": "Automatic batching groups multiple state updates into a single render cycle, reducing unnecessary re-renders and improving performance. React 18 batches updates across asynchronous boundaries as well.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Batching"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useTransition Hook?",
+    "answer": "useTransition marks state updates as non-urgent, allowing React to keep urgent UI interactions responsive while deferring expensive rendering work.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "useTransition"]
+  },
+  {
+    "subject": "React",
+    "question": "What is useDeferredValue?",
+    "answer": "useDeferredValue returns a deferred version of a value so React can prioritize urgent updates while delaying expensive UI updates that depend on that value.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "useDeferredValue"]
+  },
+  {
+    "subject": "React",
+    "question": "What is hydration in React?",
+    "answer": "Hydration is the process of attaching React's event handlers and internal logic to HTML that was already rendered on the server, making it interactive.",
+    "difficulty": "Advanced",
+    "tags": ["Hydration", "SSR"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Server-Side Rendering (SSR)?",
+    "answer": "SSR renders React components on the server before sending HTML to the browser. It improves SEO, reduces initial loading time, and enhances perceived performance.",
+    "difficulty": "Intermediate",
+    "tags": ["SSR", "Rendering"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Client-Side Rendering (CSR)?",
+    "answer": "CSR renders the application entirely in the browser after JavaScript loads. It provides rich interactivity but may have slower initial page loads compared to SSR.",
+    "difficulty": "Intermediate",
+    "tags": ["CSR", "Rendering"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Static Site Generation (SSG)?",
+    "answer": "SSG generates HTML pages at build time. These pre-rendered pages are served quickly and are ideal for content that changes infrequently.",
+    "difficulty": "Advanced",
+    "tags": ["SSG", "Rendering"]
+  },
+  {
+    "subject": "React",
+    "question": "What is Incremental Static Regeneration (ISR)?",
+    "answer": "ISR combines the speed of static pages with the ability to regenerate them after deployment, allowing fresh content without rebuilding the entire application.",
+    "difficulty": "Advanced",
+    "tags": ["ISR", "Next.js"]
+  },
+  {
+    "subject": "React",
+    "question": "What are React Server Components?",
+    "answer": "React Server Components run on the server and send rendered output to the client without shipping their JavaScript, reducing bundle size and improving performance.",
+    "difficulty": "Advanced",
+    "tags": ["Server Components", "React 19"]
+  }
+]

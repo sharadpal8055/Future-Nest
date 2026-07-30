@@ -1,0 +1,212 @@
+[
+  {
+    "subject": "MongoDB",
+    "question": "What is the Aggregation Framework in MongoDB?",
+    "answer": "The Aggregation Framework processes documents through a pipeline of stages to perform filtering, grouping, sorting, joining, transforming, and calculating data efficiently within the database.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is an aggregation pipeline?",
+    "answer": "An aggregation pipeline is a sequence of stages where each stage processes the output of the previous stage to transform or analyze data.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "Pipeline"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $match stage do?",
+    "answer": "The $match stage filters documents according to specified conditions. It works similarly to the find() method and is usually placed early in the pipeline for better performance.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "$match"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $group stage do?",
+    "answer": "The $group stage groups documents based on one or more fields and performs aggregate calculations such as sum, average, minimum, maximum, and count.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "$group"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $project stage do?",
+    "answer": "The $project stage selects, removes, renames, or computes fields in the output documents.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "$project"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $sort stage do?",
+    "answer": "The $sort stage sorts documents in ascending or descending order based on one or more fields.",
+    "difficulty": "Beginner",
+    "tags": ["Aggregation", "$sort"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $limit stage do?",
+    "answer": "The $limit stage restricts the number of documents passed to the next stage in the aggregation pipeline.",
+    "difficulty": "Beginner",
+    "tags": ["Aggregation", "$limit"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $skip stage do?",
+    "answer": "The $skip stage skips a specified number of documents before passing the remaining documents to the next pipeline stage.",
+    "difficulty": "Beginner",
+    "tags": ["Aggregation", "$skip"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $lookup stage do?",
+    "answer": "The $lookup stage performs a left outer join between collections by matching fields and embedding related documents into the result.",
+    "difficulty": "Advanced",
+    "tags": ["Aggregation", "$lookup", "Join"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $unwind stage do?",
+    "answer": "The $unwind stage deconstructs an array field so that each array element becomes a separate document.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "$unwind"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $count stage do?",
+    "answer": "The $count stage counts the number of documents passing through the pipeline and returns the result as a document.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "$count"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $addFields stage do?",
+    "answer": "The $addFields stage adds new fields or updates existing fields in each document without removing other fields.",
+    "difficulty": "Intermediate",
+    "tags": ["Aggregation", "$addFields"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is the purpose of the $facet stage?",
+    "answer": "The $facet stage executes multiple aggregation pipelines simultaneously on the same input documents and returns all results in a single output document.",
+    "difficulty": "Advanced",
+    "tags": ["Aggregation", "$facet"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is schema design in MongoDB?",
+    "answer": "Schema design is the process of organizing documents and collections to achieve efficient querying, storage, and scalability while balancing normalization and denormalization.",
+    "difficulty": "Intermediate",
+    "tags": ["Schema Design"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is embedding in MongoDB?",
+    "answer": "Embedding stores related data inside the same document. It improves read performance for one-to-one and one-to-few relationships.",
+    "difficulty": "Intermediate",
+    "tags": ["Embedding"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is referencing in MongoDB?",
+    "answer": "Referencing stores related data in separate collections and links them using ObjectIds. It is suitable for large or reusable relationships.",
+    "difficulty": "Intermediate",
+    "tags": ["Referencing"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "When should embedding be preferred over referencing?",
+    "answer": "Embedding should be preferred when related data is frequently accessed together, changes infrequently, and the embedded document size remains within MongoDB limits.",
+    "difficulty": "Advanced",
+    "tags": ["Embedding", "Schema Design"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "When should referencing be preferred?",
+    "answer": "Referencing is preferred for many-to-many relationships, frequently changing data, shared documents, or when embedded documents could become excessively large.",
+    "difficulty": "Advanced",
+    "tags": ["Referencing", "Schema Design"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is Mongoose?",
+    "answer": "Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It provides schemas, validation, middleware, population, and a higher-level API for interacting with MongoDB.",
+    "difficulty": "Beginner",
+    "tags": ["Mongoose", "ODM"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a Mongoose schema?",
+    "answer": "A Mongoose schema defines the structure, data types, validation rules, default values, indexes, and middleware for documents within a collection.",
+    "difficulty": "Beginner",
+    "tags": ["Mongoose", "Schema"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a Mongoose model?",
+    "answer": "A Mongoose model is a constructor created from a schema that provides methods for creating, querying, updating, and deleting documents.",
+    "difficulty": "Beginner",
+    "tags": ["Mongoose", "Model"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is population in Mongoose?",
+    "answer": "Population replaces referenced ObjectIds with the actual documents from another collection, simplifying the retrieval of related data.",
+    "difficulty": "Intermediate",
+    "tags": ["Populate", "Mongoose"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What are Mongoose middleware (hooks)?",
+    "answer": "Middleware are functions executed before or after specific operations such as save, validate, update, delete, and find. They are commonly used for hashing passwords, logging, and validation.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware", "Hooks", "Mongoose"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is validation in Mongoose?",
+    "answer": "Validation ensures that document fields satisfy specified rules before being stored in the database, such as required fields, minimum length, maximum values, enums, and custom validators.",
+    "difficulty": "Intermediate",
+    "tags": ["Validation", "Mongoose"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What are transactions in MongoDB?",
+    "answer": "Transactions allow multiple database operations to execute atomically. Either all operations succeed or all are rolled back, ensuring data consistency.",
+    "difficulty": "Advanced",
+    "tags": ["Transactions", "ACID"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is replication in MongoDB?",
+    "answer": "Replication copies data across multiple MongoDB servers using replica sets. It provides redundancy, fault tolerance, and automatic failover.",
+    "difficulty": "Advanced",
+    "tags": ["Replication", "Replica Set"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a replica set?",
+    "answer": "A replica set is a group of MongoDB servers consisting of one primary node and one or more secondary nodes that maintain copies of the same data.",
+    "difficulty": "Advanced",
+    "tags": ["Replica Set"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is sharding in MongoDB?",
+    "answer": "Sharding distributes data across multiple servers using a shard key, enabling horizontal scaling and improved performance for large datasets.",
+    "difficulty": "Advanced",
+    "tags": ["Sharding", "Scalability"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a shard key?",
+    "answer": "A shard key is a field or combination of fields used to determine how documents are distributed across shards. Choosing an appropriate shard key is critical for balanced data distribution.",
+    "difficulty": "Advanced",
+    "tags": ["Shard Key"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What MongoDB topics are most frequently asked in interviews?",
+    "answer": "Common interview topics include CRUD operations, indexing, aggregation pipeline, embedding vs referencing, transactions, replication, sharding, Mongoose schemas, population, schema design, performance optimization, and scalability.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "FAANG"]
+  }
+]

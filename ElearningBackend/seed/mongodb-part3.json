@@ -1,0 +1,142 @@
+[
+  {
+    "subject": "MongoDB",
+    "question": "What is a text index in MongoDB?",
+    "answer": "A text index enables full-text search on string fields. It supports searching for words and phrases using the $text operator and ranks results based on text relevance.",
+    "difficulty": "Intermediate",
+    "tags": ["Indexing", "Text Index"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a multikey index?",
+    "answer": "A multikey index is automatically created when indexing an array field. It indexes each array element individually, allowing efficient queries on array values.",
+    "difficulty": "Intermediate",
+    "tags": ["Indexing", "Multikey"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a TTL index?",
+    "answer": "A TTL (Time-To-Live) index automatically removes documents after a specified expiration time. It is commonly used for logs, sessions, OTPs, and temporary data.",
+    "difficulty": "Intermediate",
+    "tags": ["TTL", "Indexing"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a sparse index?",
+    "answer": "A sparse index only includes documents that contain the indexed field, reducing index size and improving performance when many documents lack that field.",
+    "difficulty": "Advanced",
+    "tags": ["Sparse Index"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a hashed index?",
+    "answer": "A hashed index stores hashed values of indexed fields and is commonly used for shard keys to achieve more even data distribution across shards.",
+    "difficulty": "Advanced",
+    "tags": ["Hashed Index", "Sharding"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a wildcard index?",
+    "answer": "A wildcard index indexes all fields or matching fields in a document, making it useful for collections with dynamic or unpredictable schemas.",
+    "difficulty": "Advanced",
+    "tags": ["Wildcard Index"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is the explain() method in MongoDB?",
+    "answer": "The explain() method displays how MongoDB executes a query, including whether indexes are used, execution statistics, and query planning details.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Explain"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "Why should explain() be used?",
+    "answer": "explain() helps developers identify collection scans, inefficient queries, unused indexes, and opportunities to optimize database performance.",
+    "difficulty": "Advanced",
+    "tags": ["Optimization", "Explain"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a collection scan (COLLSCAN)?",
+    "answer": "A collection scan occurs when MongoDB examines every document in a collection because no suitable index is available. It is generally slower than an indexed query.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "COLLSCAN"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is an index scan (IXSCAN)?",
+    "answer": "An index scan uses an index to locate matching documents efficiently, significantly reducing query execution time compared to a full collection scan.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "IXSCAN"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is Write Concern?",
+    "answer": "Write Concern specifies the level of acknowledgment required before MongoDB considers a write operation successful. Higher write concern improves durability but may increase latency.",
+    "difficulty": "Advanced",
+    "tags": ["Write Concern", "Replication"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is Read Concern?",
+    "answer": "Read Concern determines the consistency and isolation level of data returned by read operations, especially in replica sets and distributed deployments.",
+    "difficulty": "Advanced",
+    "tags": ["Read Concern", "Replication"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a capped collection?",
+    "answer": "A capped collection is a fixed-size collection that automatically overwrites the oldest documents when it reaches its storage limit. It is useful for logs and streaming data.",
+    "difficulty": "Intermediate",
+    "tags": ["Capped Collection"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is GridFS?",
+    "answer": "GridFS is MongoDB's specification for storing and retrieving files larger than the BSON document size limit by splitting them into smaller chunks.",
+    "difficulty": "Intermediate",
+    "tags": ["GridFS", "File Storage"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is MongoDB Atlas?",
+    "answer": "MongoDB Atlas is MongoDB's fully managed cloud database service. It provides automated backups, monitoring, scaling, security, and deployment across major cloud providers.",
+    "difficulty": "Beginner",
+    "tags": ["MongoDB Atlas", "Cloud"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is the BSON document size limit in MongoDB?",
+    "answer": "A single BSON document can have a maximum size of 16 MB. Larger files should be stored using GridFS.",
+    "difficulty": "Intermediate",
+    "tags": ["BSON", "Limits"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How can MongoDB query performance be optimized?",
+    "answer": "Performance can be improved by creating appropriate indexes, projecting only required fields, filtering early in aggregation pipelines, avoiding unnecessary collection scans, using efficient schema design, and monitoring queries with explain().",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Optimization"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What are MongoDB best practices for production applications?",
+    "answer": "Use proper indexing, validate schemas, enable authentication, follow the principle of least privilege, use replica sets for high availability, back up data regularly, monitor performance, avoid unbounded arrays, and keep MongoDB updated.",
+    "difficulty": "Advanced",
+    "tags": ["Best Practices", "Production"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What are common MongoDB interview mistakes candidates make?",
+    "answer": "Common mistakes include confusing collections with tables, misunderstanding embedding versus referencing, overusing skip() for large pagination, creating unnecessary indexes, ignoring explain(), and not understanding replication or sharding.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "Common Mistakes"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "Which MongoDB concepts are most frequently asked in product-based company interviews?",
+    "answer": "Interviewers commonly ask about CRUD operations, BSON, ObjectId, indexing strategies, aggregation pipeline, embedding versus referencing, transactions, replica sets, sharding, Mongoose, population, query optimization, explain(), and production database design.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "FAANG", "MongoDB"]
+  }
+]

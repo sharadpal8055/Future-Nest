@@ -1,0 +1,86 @@
+[
+  {
+    "subject": "React",
+    "question": "What is the useRef Hook?",
+    "answer": "useRef is a React Hook that creates a mutable reference object whose value persists across renders without causing a component to re-render when updated.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useRef"]
+  },
+  {
+    "subject": "React",
+    "question": "When should you use useRef instead of useState?",
+    "answer": "useRef should be used when storing mutable values that do not affect the UI, such as DOM references, timers, previous values, or external instances. Unlike useState, updating a ref does not trigger a re-render.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useRef", "State"]
+  },
+  {
+    "subject": "React",
+    "question": "How is useRef used to access DOM elements?",
+    "answer": "A ref created with useRef can be attached to a JSX element using the ref attribute. React assigns the DOM element to ref.current after rendering, allowing direct DOM manipulation when necessary.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "DOM", "useRef"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useMemo Hook?",
+    "answer": "useMemo memoizes the result of an expensive computation and recalculates it only when its dependencies change, helping optimize rendering performance.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useMemo", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "When should you use useMemo?",
+    "answer": "useMemo should be used for expensive calculations or derived values that are costly to recompute on every render. It should not be used for every variable as unnecessary memoization can reduce readability without improving performance.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "Performance", "useMemo"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useCallback Hook?",
+    "answer": "useCallback memoizes a function so that the same function instance is reused across renders unless one of its dependencies changes.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useCallback"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the difference between useMemo and useCallback?",
+    "answer": "useMemo memoizes the result of a computation, whereas useCallback memoizes the function itself. useMemo returns a value, while useCallback returns a function.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "useMemo", "useCallback"]
+  },
+  {
+    "subject": "React",
+    "question": "What is React.memo?",
+    "answer": "React.memo is a higher-order component that prevents unnecessary re-rendering of a functional component when its props have not changed based on a shallow comparison.",
+    "difficulty": "Intermediate",
+    "tags": ["React.memo", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useReducer Hook?",
+    "answer": "useReducer is a Hook for managing complex state logic using a reducer function and dispatched actions. It is useful when state transitions involve multiple related values.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useReducer"]
+  },
+  {
+    "subject": "React",
+    "question": "When should you use useReducer instead of useState?",
+    "answer": "useReducer is preferred when state logic is complex, involves multiple sub-values, or requires predictable state transitions similar to Redux reducers.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "useReducer", "State Management"]
+  },
+  {
+    "subject": "React",
+    "question": "What are Custom Hooks?",
+    "answer": "Custom Hooks are reusable JavaScript functions whose names start with 'use'. They encapsulate reusable stateful logic that can be shared across multiple components.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "Custom Hooks"]
+  },
+  {
+    "subject": "React",
+    "question": "What are the Rules of Hooks?",
+    "answer": "Hooks must only be called at the top level of a React function component or another custom Hook. They must not be called inside loops, conditions, nested functions, or regular JavaScript functions because React relies on the consistent order of Hook calls between renders.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "Rules of Hooks", "Best Practices"]
+  }
+]

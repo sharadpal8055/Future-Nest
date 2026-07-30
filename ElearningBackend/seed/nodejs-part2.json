@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "Node.js",
+    "question": "What are ES Modules (ESM) in Node.js?",
+    "answer": "ES Modules are the standard JavaScript module system that uses import and export statements. They are enabled by using the .mjs extension or by setting \"type\": \"module\" in package.json.",
+    "difficulty": "Intermediate",
+    "tags": ["Modules", "ESM"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between CommonJS and ES Modules?",
+    "answer": "CommonJS uses require() and module.exports and loads modules synchronously. ES Modules use import/export syntax, support static analysis, asynchronous loading, and are the official JavaScript module standard.",
+    "difficulty": "Intermediate",
+    "tags": ["Modules", "CommonJS", "ESM"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are built-in modules in Node.js?",
+    "answer": "Built-in modules are core modules provided by Node.js without requiring installation. Examples include fs, http, https, path, os, crypto, stream, events, and url.",
+    "difficulty": "Beginner",
+    "tags": ["Core Modules"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the File System (fs) module?",
+    "answer": "The fs module provides APIs to interact with the file system, allowing applications to create, read, update, delete, copy, rename, and monitor files and directories.",
+    "difficulty": "Beginner",
+    "tags": ["fs", "File System"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between synchronous and asynchronous file operations?",
+    "answer": "Synchronous operations block the execution of the program until they complete, while asynchronous operations execute in the background and invoke a callback or Promise when finished, allowing Node.js to continue processing other tasks.",
+    "difficulty": "Intermediate",
+    "tags": ["fs", "Async"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the Path module?",
+    "answer": "The path module provides utilities for working with file and directory paths in a platform-independent manner. It supports operations such as joining, resolving, parsing, and normalizing paths.",
+    "difficulty": "Beginner",
+    "tags": ["Path"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the OS module?",
+    "answer": "The os module provides information about the operating system, including CPU details, memory usage, hostname, platform, architecture, uptime, and network interfaces.",
+    "difficulty": "Beginner",
+    "tags": ["OS Module"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is a Buffer in Node.js?",
+    "answer": "A Buffer is a global object used to handle raw binary data. It is commonly used when working with files, TCP streams, images, videos, and network protocols.",
+    "difficulty": "Intermediate",
+    "tags": ["Buffer"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are Streams in Node.js?",
+    "answer": "Streams are objects that allow data to be processed incrementally instead of loading it entirely into memory. They are ideal for handling large files, network communication, and real-time data processing.",
+    "difficulty": "Intermediate",
+    "tags": ["Streams"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are the four types of Streams?",
+    "answer": "Node.js provides Readable Streams, Writable Streams, Duplex Streams (both readable and writable), and Transform Streams, which modify data while it passes through.",
+    "difficulty": "Intermediate",
+    "tags": ["Streams"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is EventEmitter?",
+    "answer": "EventEmitter is a core Node.js class that enables event-driven programming by allowing objects to emit named events and register listeners to respond when those events occur.",
+    "difficulty": "Intermediate",
+    "tags": ["Events", "EventEmitter"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the process object in Node.js?",
+    "answer": "The process object is a global object representing the currently running Node.js process. It provides information about the environment, command-line arguments, current working directory, memory usage, and process lifecycle events.",
+    "difficulty": "Intermediate",
+    "tags": ["Process", "Global"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are global objects in Node.js?",
+    "answer": "Global objects are available throughout a Node.js application without importing them. Examples include global, process, console, Buffer, setTimeout, setInterval, clearTimeout, __dirname, and __filename (CommonJS).",
+    "difficulty": "Beginner",
+    "tags": ["Global Objects"]
+  }
+]
