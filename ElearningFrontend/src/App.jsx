@@ -22,6 +22,8 @@ import Certificates from "./pages/user/Certificates";
 
 // Admin pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import InterviewQuestions from "./pages/admin/InterviewQuestions";
+
 
 // Payment
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
@@ -30,6 +32,7 @@ import { useEffect, useState } from "react";
 
 import { checkBackend } from "./services/health.service";
 import Navbar from "./components/navbar/Navbar";
+import InterviewSubjects from "./pages/admin/InterviewSubjects";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
@@ -114,7 +117,22 @@ if (!serverReady) {
               </RequireAdmin>
             }
           />
-
+<Route
+  path="/admin/interview"
+  element={
+    <RequireAdmin>
+      <InterviewSubjects />
+    </RequireAdmin>
+  }
+/>
+<Route
+  path="/admin/interview/:subjectId"
+  element={
+    <RequireAdmin>
+      <InterviewQuestions />
+    </RequireAdmin>
+  }
+/>
           {/* ===== 404 ===== */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
