@@ -6,7 +6,7 @@ import {
   BookOpen,
   GraduationCap,
   Award,
-  Compass,
+ 
   ShieldCheck,
 } from "lucide-react";
 import DashboardHeader from "../../components/dashboard/DashboardHeader";
@@ -14,6 +14,7 @@ import StatCard from "../../components/dashboard/StatCard";
 import ContinueLearning from "../../components/dashboard/ContinueLearning";
 import QuickActions from "../../components/dashboard/QuickActions";
 import RecentActivity from "../../components/dashboard/RecentActivity";
+import Library from "../library/Library";
 export default function Dashboard() {
   const { user } = useAuth();
 
@@ -189,6 +190,8 @@ setActivities(
             subtitle="Everything looks good"
             color="text-green-600"
           />
+          
+   
         </div>
         {/* Quick Actions */}
 

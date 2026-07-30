@@ -19,11 +19,15 @@ import MyCourses from "./pages/user/MyCourses";
 import CourseProgress from "./pages/user/CourseProgress";
 import CoursePlayer from "./pages/user/course-player/CoursePlayer";
 import Certificates from "./pages/user/Certificates";
-
+import Library from "./pages/library/Library";
+import InterviewSubjectsLibrary from "./pages/library/InterviewSubjects";
 // Admin pages
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import InterviewQuestions from "./pages/admin/InterviewQuestions";
+import InterviewSubjectsAdmin from "./pages/admin/InterviewSubjects";
 
+import SubjectQuestions from "./pages/library/SubjectQuestions";
+import QuestionDetails from "./pages/library/QuestionDetails";
 
 // Payment
 import PaymentSuccess from "./pages/payment/PaymentSuccess";
@@ -32,29 +36,28 @@ import { useEffect, useState } from "react";
 
 import { checkBackend } from "./services/health.service";
 import Navbar from "./components/navbar/Navbar";
-import InterviewSubjects from "./pages/admin/InterviewSubjects";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
   useEffect(() => {
     async function wakeServer() {
-        try {
-            await checkBackend();
-            setServerReady(true);
-        } catch {
-            setTimeout(wakeServer, 3000);
-        }
+      try {
+        await checkBackend();
+        setServerReady(true);
+      } catch {
+        setTimeout(wakeServer, 3000);
+      }
     }
 
     wakeServer();
-}, []);
-if (!serverReady) {
-    return <BackendWakeup/>;
-}
+  }, []);
+  if (!serverReady) {
+    return <BackendWakeup />;
+  }
   return (
     <>
       {/* <Navbar /> */}
-      <Navbar/>
+      <Navbar />
       <main className="pt-16 min-h-screen">
         <Routes>
           {/* ===== Public Routes ===== */}
@@ -83,7 +86,40 @@ if (!serverReady) {
               </RequireAuth>
             }
           />
+          <Route
+            path="/library"
+            element={
+              <RequireAuth>
+                <Library />
+              </RequireAuth>
+            }
+          />
 
+          <Route
+            path="/library/interview"
+            element={
+              <RequireAuth>
+                <InterviewSubjectsLibrary />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/library/interview/:subjectId"
+            element={
+              <RequireAuth>
+                <SubjectQuestions />
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/library/interview/question/:id"
+            element={
+              <RequireAuth>
+                <QuestionDetails />
+              </RequireAuth>
+            }
+          />
           <Route
             path="/my-courses"
             element={
@@ -93,21 +129,9 @@ if (!serverReady) {
             }
           />
 
-          {/* <Route
-          path="/progress/:enrollmentId"
-          element={
-            <RequireAuth>
-              <CourseProgress />
-            </RequireAuth>
-          }
-        /> */}
-
           <Route path="/my-learning/:enrollmentId" element={<CoursePlayer />} />
 
-<Route
-  path="/certificates"
-  element={<Certificates />}
-/>
+          <Route path="/certificates" element={<Certificates />} />
           {/* ===== Admin Routes ===== */}
           <Route
             path="/admin"
@@ -117,22 +141,22 @@ if (!serverReady) {
               </RequireAdmin>
             }
           />
-<Route
-  path="/admin/interview"
-  element={
-    <RequireAdmin>
-      <InterviewSubjects />
-    </RequireAdmin>
-  }
-/>
-<Route
-  path="/admin/interview/:subjectId"
-  element={
-    <RequireAdmin>
-      <InterviewQuestions />
-    </RequireAdmin>
-  }
-/>
+          <Route
+            path="/admin/interview"
+            element={
+              <RequireAdmin>
+                <InterviewSubjectsAdmin />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="/admin/interview/:subjectId"
+            element={
+              <RequireAdmin>
+                <InterviewQuestions />
+              </RequireAdmin>
+            }
+          />
           {/* ===== 404 ===== */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
