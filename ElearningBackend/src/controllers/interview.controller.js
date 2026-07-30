@@ -7,12 +7,36 @@ import InterviewQuestion from "../models/InterviewQuestion.js";
 ===================================================== */
 
 // GET /interview/subjects
+// GET /interview/subjects
 export const getSubjects = async (req, res) => {
   try {
-    const subjects = await InterviewSubject.find().sort({
-      order: 1,
-      name: 1,
-    });
+    const subjects = await InterviewSubject.aggregate([
+      {
+        $lookup: {
+          from: "interviewquestions",
+          localField: "_id",
+          foreignField: "subject",
+          as: "questions",
+        },
+      },
+      {
+        $project: {
+          name: 1,
+          slug: 1,
+          icon: 1,
+          order: 1,
+          questionCount: {
+            $size: "$questions",
+          },
+        },
+      },
+      {
+        $sort: {
+          order: 1,
+          name: 1,
+        },
+      },
+    ]);
 
     res.json({
       success: true,
@@ -144,7 +168,31 @@ export const getQuestions = async (req, res) => {
     });
   }
 };
+// GET /interview/question/:id
+export const getQuestion = async (req, res) => {
+  try {
+    const question = await InterviewQuestion.findById(req.params.id)
+      .populate("subject", "name slug")
+      .lean();
 
+    if (!question) {
+      return res.status(404).json({
+        success: false,
+        message: "Question not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      data: question,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
 // POST /admin/interview/question
 export const createQuestion = async (req, res) => {
   try {
