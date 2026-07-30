@@ -1,0 +1,58 @@
+[
+  {
+    "subject": "Node.js",
+    "question": "How can you scale a Node.js application?",
+    "answer": "A Node.js application can be scaled vertically by increasing server resources or horizontally by running multiple instances behind a load balancer. Techniques include clustering, worker threads, caching with Redis, message queues, database optimization, and microservices.",
+    "difficulty": "Advanced",
+    "tags": ["Scalability", "Architecture"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is a load balancer and why is it used?",
+    "answer": "A load balancer distributes incoming client requests across multiple server instances to improve performance, increase availability, and prevent any single server from becoming overloaded.",
+    "difficulty": "Advanced",
+    "tags": ["Load Balancer", "Scalability"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the role of Nginx in a Node.js application?",
+    "answer": "Nginx is commonly used as a reverse proxy in front of Node.js applications. It handles SSL termination, serves static files, performs load balancing, compression, caching, and forwards requests to Node.js servers.",
+    "difficulty": "Advanced",
+    "tags": ["Nginx", "Reverse Proxy", "Deployment"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How can you secure a Node.js application?",
+    "answer": "Security best practices include validating user input, using Helmet, enabling HTTPS, hashing passwords with bcrypt, storing secrets in environment variables, preventing XSS and CSRF attacks, implementing rate limiting, sanitizing database queries, and keeping dependencies updated.",
+    "difficulty": "Advanced",
+    "tags": ["Security", "Best Practices"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is rate limiting?",
+    "answer": "Rate limiting restricts the number of requests a client can make within a specified time period. It helps protect applications from brute-force attacks, API abuse, and denial-of-service attempts.",
+    "difficulty": "Intermediate",
+    "tags": ["Security", "Rate Limiting"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How can SQL Injection and NoSQL Injection be prevented?",
+    "answer": "Use parameterized queries or prepared statements for SQL databases, validate and sanitize user input, avoid directly constructing queries from user input, use ORM/ODM libraries like Prisma, Sequelize, or Mongoose, and enforce schema validation.",
+    "difficulty": "Advanced",
+    "tags": ["SQL Injection", "NoSQL Injection", "Security"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What should a production-ready Node.js deployment include?",
+    "answer": "A production deployment should include environment variables, HTTPS, logging, monitoring, centralized error handling, PM2 or Docker for process management, reverse proxy (Nginx), database backups, caching, rate limiting, health checks, CI/CD pipelines, and automated testing.",
+    "difficulty": "Advanced",
+    "tags": ["Deployment", "Production", "DevOps"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What Node.js topics are most frequently asked in product-based company interviews?",
+    "answer": "Frequently asked topics include the Event Loop, libuv, asynchronous programming, callbacks, Promises, async/await, streams, buffers, EventEmitter, Express middleware, JWT authentication, clustering, worker threads, performance optimization, security, and scalable backend architecture.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "Node.js", "FAANG"]
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "JavaScript",
+    "question": "What is Promise.race()?",
+    "answer": "Promise.race() returns a promise that settles as soon as the first promise in the iterable settles, whether fulfilled or rejected.",
+    "difficulty": "Advanced",
+    "tags": ["Promise", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is Promise.any()?",
+    "answer": "Promise.any() returns the first fulfilled promise and ignores rejected promises unless all promises reject, in which case it throws an AggregateError.",
+    "difficulty": "Advanced",
+    "tags": ["Promise", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is Promise.allSettled()?",
+    "answer": "Promise.allSettled() waits for all promises to settle and returns an array containing the status and result of each promise regardless of success or failure.",
+    "difficulty": "Intermediate",
+    "tags": ["Promise", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the Microtask Queue?",
+    "answer": "The Microtask Queue stores callbacks from resolved Promises and queueMicrotask(). It has higher priority than the Callback Queue.",
+    "difficulty": "Advanced",
+    "tags": ["Event Loop", "Microtasks"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the Callback Queue?",
+    "answer": "The Callback Queue stores callbacks from asynchronous browser APIs such as setTimeout, setInterval, and DOM events. These callbacks execute after all microtasks are completed.",
+    "difficulty": "Advanced",
+    "tags": ["Event Loop", "Callback Queue"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the execution order between Call Stack, Microtask Queue, and Callback Queue?",
+    "answer": "JavaScript first executes synchronous code on the Call Stack, then processes all Microtasks, and finally executes tasks from the Callback Queue.",
+    "difficulty": "Advanced",
+    "tags": ["Event Loop", "Execution Order"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are Web APIs?",
+    "answer": "Web APIs are browser-provided interfaces such as setTimeout, fetch, DOM APIs, and localStorage that enable JavaScript to perform tasks outside the JavaScript engine.",
+    "difficulty": "Intermediate",
+    "tags": ["Web APIs"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is strict mode in JavaScript?",
+    "answer": "Strict mode enables a stricter parsing and error handling model by eliminating silent errors, preventing accidental globals, and enforcing safer coding practices.",
+    "difficulty": "Intermediate",
+    "tags": ["Strict Mode"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "How do you enable strict mode?",
+    "answer": "Strict mode is enabled by adding the string literal 'use strict'; at the beginning of a script or function.",
+    "difficulty": "Beginner",
+    "tags": ["Strict Mode"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is Object.freeze()?",
+    "answer": "Object.freeze() prevents adding, deleting, or modifying an object's properties, making the object immutable at the first level.",
+    "difficulty": "Intermediate",
+    "tags": ["Objects", "Object.freeze"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is Object.seal()?",
+    "answer": "Object.seal() prevents adding or deleting properties but allows modification of existing property values.",
+    "difficulty": "Intermediate",
+    "tags": ["Objects", "Object.seal"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between Object.freeze() and Object.seal()?",
+    "answer": "Object.freeze() prevents all modifications, whereas Object.seal() allows updating existing property values but disallows adding or removing properties.",
+    "difficulty": "Intermediate",
+    "tags": ["Objects", "Freeze", "Seal"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a shallow copy?",
+    "answer": "A shallow copy copies only the top-level properties. Nested objects continue to share references with the original object.",
+    "difficulty": "Intermediate",
+    "tags": ["Objects", "Copy"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a deep copy?",
+    "answer": "A deep copy recursively duplicates all nested objects, ensuring no shared references exist with the original object.",
+    "difficulty": "Intermediate",
+    "tags": ["Objects", "Deep Copy"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "How can you create a deep copy of an object?",
+    "answer": "Modern JavaScript provides structuredClone(). Alternatives include JSON.parse(JSON.stringify(obj)) for simple objects or utility libraries such as Lodash's cloneDeep().",
+    "difficulty": "Advanced",
+    "tags": ["Deep Copy", "structuredClone"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is Object.assign() used for?",
+    "answer": "Object.assign() copies enumerable properties from one or more source objects into a target object, producing a shallow copy.",
+    "difficulty": "Intermediate",
+    "tags": ["Object.assign"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is memoization?",
+    "answer": "Memoization is an optimization technique that caches function results so repeated calls with the same arguments return cached values instead of recomputing.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Memoization"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "Why are closures useful in real-world applications?",
+    "answer": "Closures are commonly used for data privacy, function factories, memoization, event handlers, callbacks, and maintaining state without exposing variables globally.",
+    "difficulty": "Advanced",
+    "tags": ["Closures"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is currying and where is it used?",
+    "answer": "Currying converts a function with multiple arguments into a sequence of single-argument functions. It improves function reuse, composition, and partial application.",
+    "difficulty": "Advanced",
+    "tags": ["Currying", "Functional Programming"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a polyfill?",
+    "answer": "A polyfill is code that implements modern JavaScript features in environments where those features are not natively supported.",
+    "difficulty": "Advanced",
+    "tags": ["Polyfill", "Browser Compatibility"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is monkey patching?",
+    "answer": "Monkey patching is the practice of modifying or extending existing objects or prototypes at runtime. It should be used cautiously as it may introduce unexpected behavior.",
+    "difficulty": "Advanced",
+    "tags": ["Prototype", "Monkey Patching"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is optional chaining (?.)?",
+    "answer": "Optional chaining safely accesses nested object properties without throwing an error if an intermediate property is null or undefined.",
+    "difficulty": "Intermediate",
+    "tags": ["ES2020", "Optional Chaining"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the nullish coalescing operator (??)?",
+    "answer": "The nullish coalescing operator returns the right-hand operand only when the left-hand operand is null or undefined, unlike || which also treats other falsy values as false.",
+    "difficulty": "Intermediate",
+    "tags": ["ES2020", "Operators"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are the most common JavaScript performance optimization techniques?",
+    "answer": "Common techniques include debouncing, throttling, memoization, minimizing DOM manipulation, lazy loading, code splitting, caching, avoiding unnecessary re-renders, and optimizing loops and algorithms.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Optimization"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What JavaScript topics are most frequently asked in product-based company interviews?",
+    "answer": "Frequently asked topics include closures, prototypes, this keyword, event loop, promises, async/await, execution context, hoisting, lexical scope, event delegation, memory management, object copying, modules, and browser storage.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "JavaScript", "FAANG"]
+  }
+]

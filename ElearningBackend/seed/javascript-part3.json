@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "JavaScript",
+    "question": "What is the prototype in JavaScript?",
+    "answer": "Every JavaScript object has an internal prototype that it inherits properties and methods from. Prototypes enable inheritance without using classes.",
+    "difficulty": "Intermediate",
+    "tags": ["Prototype", "Inheritance"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the prototype chain?",
+    "answer": "The prototype chain is the sequence of objects JavaScript follows when looking for a property or method. If not found on the object, it checks the object's prototype until it reaches null.",
+    "difficulty": "Advanced",
+    "tags": ["Prototype Chain", "Inheritance"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are ES6 classes?",
+    "answer": "ES6 classes provide syntactic sugar over JavaScript's prototype-based inheritance, making object-oriented programming more readable.",
+    "difficulty": "Intermediate",
+    "tags": ["Classes", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "How is inheritance implemented in JavaScript?",
+    "answer": "Inheritance is implemented using prototypes. ES6 classes use the extends keyword internally based on prototype inheritance.",
+    "difficulty": "Intermediate",
+    "tags": ["Inheritance", "Classes"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is encapsulation in JavaScript?",
+    "answer": "Encapsulation is the practice of restricting direct access to object data and exposing it through methods. ES2022 private fields (#) help achieve encapsulation.",
+    "difficulty": "Intermediate",
+    "tags": ["OOP", "Encapsulation"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are JavaScript modules?",
+    "answer": "Modules allow code to be split into reusable files using export and import statements.",
+    "difficulty": "Intermediate",
+    "tags": ["Modules", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between CommonJS and ES Modules?",
+    "answer": "CommonJS uses require() and module.exports and is primarily used in Node.js, while ES Modules use import/export syntax and are the standard for modern JavaScript.",
+    "difficulty": "Advanced",
+    "tags": ["Modules", "CommonJS", "ESM"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is localStorage?",
+    "answer": "localStorage stores key-value pairs in the browser with no expiration until explicitly removed.",
+    "difficulty": "Beginner",
+    "tags": ["localStorage", "Browser Storage"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is sessionStorage?",
+    "answer": "sessionStorage stores data for a single browser tab session and clears it when the tab is closed.",
+    "difficulty": "Beginner",
+    "tags": ["sessionStorage", "Browser Storage"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between localStorage and sessionStorage?",
+    "answer": "localStorage persists until manually cleared, while sessionStorage exists only for the current browser session.",
+    "difficulty": "Beginner",
+    "tags": ["Storage"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are cookies?",
+    "answer": "Cookies are small pieces of data stored by browsers and sent with every HTTP request. They are commonly used for authentication and session management.",
+    "difficulty": "Intermediate",
+    "tags": ["Cookies", "HTTP"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is JSON?",
+    "answer": "JSON (JavaScript Object Notation) is a lightweight data interchange format commonly used for APIs.",
+    "difficulty": "Beginner",
+    "tags": ["JSON"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between JSON.parse() and JSON.stringify()?",
+    "answer": "JSON.parse() converts a JSON string into a JavaScript object, while JSON.stringify() converts a JavaScript object into a JSON string.",
+    "difficulty": "Beginner",
+    "tags": ["JSON"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "How do you handle errors in JavaScript?",
+    "answer": "Errors are handled using try, catch, finally, and throw statements.",
+    "difficulty": "Intermediate",
+    "tags": ["Error Handling"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the purpose of the finally block?",
+    "answer": "The finally block executes regardless of whether an exception occurs, making it useful for cleanup operations.",
+    "difficulty": "Intermediate",
+    "tags": ["Error Handling"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is debouncing?",
+    "answer": "Debouncing delays function execution until a specified time has passed since the last invocation, reducing unnecessary function calls.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Debouncing"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is throttling?",
+    "answer": "Throttling limits a function to execute at most once during a specified interval, improving application performance.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Throttling"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is garbage collection?",
+    "answer": "Garbage collection is JavaScript's automatic process of reclaiming memory occupied by objects that are no longer reachable.",
+    "difficulty": "Intermediate",
+    "tags": ["Memory", "Garbage Collection"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a memory leak?",
+    "answer": "A memory leak occurs when unused memory remains allocated because references to unused objects are still maintained.",
+    "difficulty": "Advanced",
+    "tags": ["Memory", "Performance"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are iterators?",
+    "answer": "Iterators are objects that define a sequence and provide a next() method returning value and done properties.",
+    "difficulty": "Advanced",
+    "tags": ["Iterators", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are generators?",
+    "answer": "Generators are special functions declared with function* that can pause execution using yield and resume later.",
+    "difficulty": "Advanced",
+    "tags": ["Generators", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is Symbol in JavaScript?",
+    "answer": "Symbol is a primitive data type used to create unique identifiers that avoid property name collisions.",
+    "difficulty": "Advanced",
+    "tags": ["Symbol", "ES6"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a Map?",
+    "answer": "Map is a collection of key-value pairs where keys can be of any data type and insertion order is preserved.",
+    "difficulty": "Intermediate",
+    "tags": ["Map", "Collections"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a Set?",
+    "answer": "Set is a collection of unique values with no duplicate elements.",
+    "difficulty": "Intermediate",
+    "tags": ["Set", "Collections"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between Map and WeakMap?",
+    "answer": "Map allows keys of any type and is iterable, whereas WeakMap only allows object keys, is not iterable, and its entries can be garbage collected when no references remain.",
+    "difficulty": "Advanced",
+    "tags": ["Map", "WeakMap", "Collections"]
+  }
+]

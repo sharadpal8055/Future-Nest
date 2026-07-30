@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "Express.js",
+    "question": "What is Express Router?",
+    "answer": "Express Router is a mini Express application that allows developers to group related routes and middleware into separate modules, improving code organization and maintainability.",
+    "difficulty": "Intermediate",
+    "tags": ["Router", "Routing"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "Why should routes be separated into different files?",
+    "answer": "Separating routes improves project organization, scalability, readability, and maintainability by grouping related endpoints together.",
+    "difficulty": "Beginner",
+    "tags": ["Project Structure", "Router"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How do you create a modular router in Express?",
+    "answer": "A modular router is created using express.Router(). Routes are defined on the router instance and exported to be mounted in the main application using app.use().",
+    "difficulty": "Intermediate",
+    "tags": ["Router", "Architecture"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is error-handling middleware?",
+    "answer": "Error-handling middleware is a special middleware function with four parameters (err, req, res, next). It catches errors thrown during request processing and returns consistent error responses.",
+    "difficulty": "Intermediate",
+    "tags": ["Error Handling", "Middleware"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "Why is centralized error handling recommended?",
+    "answer": "Centralized error handling avoids duplicate try-catch logic, ensures consistent API responses, simplifies debugging, and makes applications easier to maintain.",
+    "difficulty": "Intermediate",
+    "tags": ["Error Handling", "Best Practices"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How do you serve static files in Express?",
+    "answer": "Static files are served using express.static(). This middleware makes files such as images, CSS, JavaScript, and PDFs directly accessible through HTTP URLs.",
+    "difficulty": "Beginner",
+    "tags": ["Static Files"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are template engines in Express?",
+    "answer": "Template engines generate dynamic HTML pages on the server. Popular engines include EJS, Pug, and Handlebars.",
+    "difficulty": "Beginner",
+    "tags": ["Template Engine", "SSR"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is a RESTful API?",
+    "answer": "A RESTful API follows REST principles by exposing resources through meaningful URLs and standard HTTP methods such as GET, POST, PUT, PATCH, and DELETE.",
+    "difficulty": "Beginner",
+    "tags": ["REST API"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is CRUD in REST APIs?",
+    "answer": "CRUD stands for Create, Read, Update, and Delete. These operations are commonly mapped to POST, GET, PUT/PATCH, and DELETE HTTP methods respectively.",
+    "difficulty": "Beginner",
+    "tags": ["CRUD", "REST"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is request validation?",
+    "answer": "Request validation verifies that incoming client data matches the expected format before processing it. Libraries such as Zod, Joi, and express-validator are commonly used.",
+    "difficulty": "Intermediate",
+    "tags": ["Validation", "Security"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "Why should API input always be validated?",
+    "answer": "Input validation prevents invalid data, reduces bugs, improves security, and protects applications against malicious or malformed requests.",
+    "difficulty": "Intermediate",
+    "tags": ["Validation", "Security"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is authentication?",
+    "answer": "Authentication is the process of verifying a user's identity before allowing access to protected resources.",
+    "difficulty": "Beginner",
+    "tags": ["Authentication"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is authorization?",
+    "answer": "Authorization determines what authenticated users are allowed to access or perform within an application.",
+    "difficulty": "Beginner",
+    "tags": ["Authorization"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is the difference between authentication and authorization?",
+    "answer": "Authentication verifies who the user is, whereas authorization determines what resources or actions the authenticated user can access.",
+    "difficulty": "Intermediate",
+    "tags": ["Authentication", "Authorization"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How is JWT commonly used in Express applications?",
+    "answer": "After successful login, the server generates a signed JWT. The client sends the token with future requests, and middleware verifies it before granting access to protected routes.",
+    "difficulty": "Intermediate",
+    "tags": ["JWT", "Authentication"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is Multer?",
+    "answer": "Multer is Express middleware used to handle multipart/form-data requests, primarily for uploading files such as images, PDFs, and videos.",
+    "difficulty": "Intermediate",
+    "tags": ["Multer", "File Upload"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How does CORS work in Express?",
+    "answer": "CORS middleware configures which origins, HTTP methods, and headers are allowed to access the backend from browsers hosted on different domains.",
+    "difficulty": "Intermediate",
+    "tags": ["CORS", "Security"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is Helmet middleware?",
+    "answer": "Helmet is middleware that improves security by setting HTTP response headers to protect against common web vulnerabilities.",
+    "difficulty": "Intermediate",
+    "tags": ["Helmet", "Security"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is rate limiting in Express?",
+    "answer": "Rate limiting restricts the number of requests a client can make within a given time period, protecting APIs from abuse and brute-force attacks.",
+    "difficulty": "Intermediate",
+    "tags": ["Rate Limiting", "Security"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is the MVC architecture in Express applications?",
+    "answer": "MVC (Model-View-Controller) separates application logic into Models for data, Views for presentation, and Controllers for business logic, improving maintainability and scalability.",
+    "difficulty": "Intermediate",
+    "tags": ["MVC", "Architecture"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are Express best practices?",
+    "answer": "Use modular routing, centralized error handling, input validation, environment variables, async error handling, logging, Helmet, CORS, rate limiting, proper folder structure, and consistent API responses.",
+    "difficulty": "Advanced",
+    "tags": ["Best Practices", "Architecture"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How do you improve the performance of an Express application?",
+    "answer": "Performance can be improved using compression, caching, database indexing, connection pooling, asynchronous operations, load balancing, clustering, CDN for static assets, and avoiding blocking code.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Optimization"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How do you deploy an Express application to production?",
+    "answer": "Deploy behind a reverse proxy such as Nginx, use HTTPS, manage processes with PM2 or Docker, configure environment variables, enable logging and monitoring, and implement CI/CD pipelines.",
+    "difficulty": "Advanced",
+    "tags": ["Deployment", "Production"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What Express.js topics are frequently asked in interviews?",
+    "answer": "Common topics include routing, middleware, request-response lifecycle, Express Router, REST APIs, JWT authentication, MVC architecture, error handling, CORS, file uploads, validation, security, and deployment.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "FAANG"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How would you structure a production-ready Express project?",
+    "answer": "A production-ready project typically includes separate folders for routes, controllers, models, services, middleware, validations, utilities, configuration, and tests. Environment variables, centralized error handling, logging, and consistent API response formats are also recommended.",
+    "difficulty": "Advanced",
+    "tags": ["Architecture", "Project Structure", "Production"]
+  }
+]

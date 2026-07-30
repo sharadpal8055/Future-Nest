@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "React",
+    "question": "What is React?",
+    "answer": "React is an open-source JavaScript library developed by Meta for building user interfaces using reusable, component-based architecture. It efficiently updates the UI using a Virtual DOM.",
+    "difficulty": "Beginner",
+    "tags": ["React", "Basics"]
+  },
+  {
+    "subject": "React",
+    "question": "Why is React called a library instead of a framework?",
+    "answer": "React focuses only on the view layer (UI). Unlike frameworks, it does not enforce routing, state management, or project structure, allowing developers to choose their own tools.",
+    "difficulty": "Beginner",
+    "tags": ["React", "Basics"]
+  },
+  {
+    "subject": "React",
+    "question": "What are the main features of React?",
+    "answer": "React provides component-based architecture, Virtual DOM, JSX, one-way data binding, reusable components, declarative UI, hooks, and efficient rendering.",
+    "difficulty": "Beginner",
+    "tags": ["Features"]
+  },
+  {
+    "subject": "React",
+    "question": "What is JSX?",
+    "answer": "JSX (JavaScript XML) is a syntax extension that allows developers to write HTML-like code inside JavaScript. It is transpiled into React.createElement() calls.",
+    "difficulty": "Beginner",
+    "tags": ["JSX"]
+  },
+  {
+    "subject": "React",
+    "question": "Why do we use JSX?",
+    "answer": "JSX makes UI code more readable, easier to maintain, and allows JavaScript expressions to be embedded directly within markup.",
+    "difficulty": "Beginner",
+    "tags": ["JSX"]
+  },
+  {
+    "subject": "React",
+    "question": "Can React work without JSX?",
+    "answer": "Yes. JSX is optional. React elements can be created using React.createElement(), although JSX is preferred because it is more readable.",
+    "difficulty": "Intermediate",
+    "tags": ["JSX"]
+  },
+  {
+    "subject": "React",
+    "question": "What is a React component?",
+    "answer": "A React component is an independent, reusable piece of UI that accepts inputs (props) and returns React elements describing what should appear on the screen.",
+    "difficulty": "Beginner",
+    "tags": ["Components"]
+  },
+  {
+    "subject": "React",
+    "question": "What are the different types of React components?",
+    "answer": "React has Functional Components and Class Components. Functional Components are recommended because they support Hooks and are simpler to write.",
+    "difficulty": "Beginner",
+    "tags": ["Components"]
+  },
+  {
+    "subject": "React",
+    "question": "What are props in React?",
+    "answer": "Props (properties) are read-only inputs passed from a parent component to a child component to customize its behavior or display.",
+    "difficulty": "Beginner",
+    "tags": ["Props"]
+  },
+  {
+    "subject": "React",
+    "question": "Why are props immutable?",
+    "answer": "Props are immutable to ensure one-way data flow, making applications predictable and easier to debug.",
+    "difficulty": "Intermediate",
+    "tags": ["Props"]
+  },
+  {
+    "subject": "React",
+    "question": "What is state in React?",
+    "answer": "State is a built-in object that stores data that can change over time. Updating state causes React to re-render the component.",
+    "difficulty": "Beginner",
+    "tags": ["State"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the difference between props and state?",
+    "answer": "Props are passed from parent components and are read-only, whereas state is managed within a component and can change over time.",
+    "difficulty": "Beginner",
+    "tags": ["Props", "State"]
+  },
+  {
+    "subject": "React",
+    "question": "What is one-way data binding?",
+    "answer": "React follows one-way data binding where data flows from parent to child components, making the application easier to understand and maintain.",
+    "difficulty": "Intermediate",
+    "tags": ["Data Flow"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the Virtual DOM?",
+    "answer": "The Virtual DOM is a lightweight copy of the Real DOM. React compares the previous and updated Virtual DOM using a diffing algorithm and updates only the changed parts of the Real DOM.",
+    "difficulty": "Intermediate",
+    "tags": ["Virtual DOM"]
+  },
+  {
+    "subject": "React",
+    "question": "Why is the Virtual DOM faster than the Real DOM?",
+    "answer": "Updating the Real DOM is expensive. React minimizes direct DOM manipulation by first updating the Virtual DOM and then applying only necessary changes to the Real DOM.",
+    "difficulty": "Intermediate",
+    "tags": ["Virtual DOM", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What is reconciliation in React?",
+    "answer": "Reconciliation is React's process of comparing the previous Virtual DOM with the new Virtual DOM to determine the minimal set of updates required for the Real DOM.",
+    "difficulty": "Advanced",
+    "tags": ["Reconciliation"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the diffing algorithm?",
+    "answer": "The diffing algorithm compares two Virtual DOM trees efficiently and updates only the nodes that have changed instead of re-rendering the entire DOM.",
+    "difficulty": "Advanced",
+    "tags": ["Diffing", "Virtual DOM"]
+  },
+  {
+    "subject": "React",
+    "question": "What are keys in React?",
+    "answer": "Keys are unique identifiers used by React to efficiently track list items during reconciliation. Stable, unique keys help prevent unnecessary re-renders and state mismatches.",
+    "difficulty": "Intermediate",
+    "tags": ["Keys", "Lists"]
+  },
+  {
+    "subject": "React",
+    "question": "Why should index not be used as a key?",
+    "answer": "Using the array index as a key can lead to incorrect component reuse and state issues when list items are inserted, deleted, or reordered.",
+    "difficulty": "Intermediate",
+    "tags": ["Keys"]
+  },
+  {
+    "subject": "React",
+    "question": "How do you render lists in React?",
+    "answer": "Lists are rendered by mapping over an array and returning React elements with a unique key for each item.",
+    "difficulty": "Beginner",
+    "tags": ["Lists"]
+  },
+  {
+    "subject": "React",
+    "question": "What is conditional rendering in React?",
+    "answer": "Conditional rendering displays different UI based on conditions using if statements, the ternary operator, logical &&, or switch statements.",
+    "difficulty": "Beginner",
+    "tags": ["Rendering"]
+  },
+  {
+    "subject": "React",
+    "question": "How are events handled in React?",
+    "answer": "React handles events using camelCase event names such as onClick and onChange. Event handlers receive a SyntheticEvent object.",
+    "difficulty": "Beginner",
+    "tags": ["Events"]
+  },
+  {
+    "subject": "React",
+    "question": "What is SyntheticEvent?",
+    "answer": "SyntheticEvent is React's cross-browser wrapper around the native browser event. It provides a consistent API across different browsers.",
+    "difficulty": "Intermediate",
+    "tags": ["Events", "SyntheticEvent"]
+  },
+  {
+    "subject": "React",
+    "question": "What are fragments in React?",
+    "answer": "Fragments allow multiple elements to be grouped together without adding an extra DOM node. They are written as <></> or <React.Fragment>.",
+    "difficulty": "Beginner",
+    "tags": ["Fragments"]
+  },
+  {
+    "subject": "React",
+    "question": "What are controlled and uncontrolled components?",
+    "answer": "Controlled components manage form data using React state, while uncontrolled components rely on the DOM and refs to access form values.",
+    "difficulty": "Intermediate",
+    "tags": ["Forms", "Controlled Components"]
+  }
+]

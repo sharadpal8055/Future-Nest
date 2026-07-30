@@ -1,0 +1,86 @@
+[
+  {
+    "subject": "React",
+    "question": "What is code splitting in React?",
+    "answer": "Code splitting is a technique that divides the application bundle into smaller chunks that are loaded only when required. It improves initial page load time and overall application performance.",
+    "difficulty": "Intermediate",
+    "tags": ["Performance", "Code Splitting"]
+  },
+  {
+    "subject": "React",
+    "question": "How do you implement code splitting in React?",
+    "answer": "Code splitting is implemented using React.lazy() with Suspense or dynamic imports. Bundlers such as Vite and Webpack automatically create separate chunks for lazy-loaded modules.",
+    "difficulty": "Intermediate",
+    "tags": ["Lazy Loading", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What are dynamic imports?",
+    "answer": "Dynamic imports use the import() function to load JavaScript modules on demand instead of including them in the initial application bundle.",
+    "difficulty": "Intermediate",
+    "tags": ["Dynamic Import", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "How can you optimize the performance of a React application?",
+    "answer": "Performance can be improved using React.memo, useMemo, useCallback, lazy loading, code splitting, virtualization, efficient state management, debouncing, throttling, and minimizing unnecessary re-renders.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Optimization"]
+  },
+  {
+    "subject": "React",
+    "question": "What is React DevTools?",
+    "answer": "React DevTools is a browser extension that allows developers to inspect the component tree, view props and state, profile rendering performance, and debug React applications.",
+    "difficulty": "Beginner",
+    "tags": ["DevTools", "Debugging"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the React Profiler?",
+    "answer": "The React Profiler is a tool in React DevTools that measures rendering performance and identifies components that render frequently or take excessive time to render.",
+    "difficulty": "Intermediate",
+    "tags": ["Profiler", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What are common causes of memory leaks in React?",
+    "answer": "Common causes include uncleaned event listeners, active timers, unresolved promises, open WebSocket connections, and subscriptions that are not cleaned up when components unmount.",
+    "difficulty": "Advanced",
+    "tags": ["Memory", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What are some React best practices?",
+    "answer": "Best practices include creating reusable components, using meaningful component names, avoiding unnecessary state, keeping components small, cleaning up side effects, using stable keys, optimizing rendering, and organizing project structure consistently.",
+    "difficulty": "Intermediate",
+    "tags": ["Best Practices"]
+  },
+  {
+    "subject": "React",
+    "question": "What are common React anti-patterns?",
+    "answer": "Common anti-patterns include directly mutating state, using array indexes as keys unnecessarily, storing derived state, excessive prop drilling, performing side effects during rendering, and overusing Context for frequently changing state.",
+    "difficulty": "Advanced",
+    "tags": ["Anti-patterns", "Best Practices"]
+  },
+  {
+    "subject": "React",
+    "question": "How would you optimize a large list with thousands of items?",
+    "answer": "Large lists should be optimized using virtualization libraries such as react-window or react-virtualized so that only visible items are rendered instead of the entire list.",
+    "difficulty": "Advanced",
+    "tags": ["Performance", "Virtualization"]
+  },
+  {
+    "subject": "React",
+    "question": "What are the most common React interview questions asked by product-based companies?",
+    "answer": "Common topics include Virtual DOM, reconciliation, Hooks, Context API, React Router, performance optimization, rendering lifecycle, React.memo, useMemo, useCallback, lazy loading, Suspense, SSR, hydration, state management, and component architecture.",
+    "difficulty": "Advanced",
+    "tags": ["Interview", "FAANG", "React"]
+  },
+  {
+    "subject": "React",
+    "question": "How would you explain React's rendering process in an interview?",
+    "answer": "When state or props change, React creates a new Virtual DOM tree, compares it with the previous tree using reconciliation, identifies differences through the diffing algorithm, and updates only the affected nodes in the Real DOM. This minimizes expensive DOM operations and improves performance.",
+    "difficulty": "Advanced",
+    "tags": ["Rendering", "Interview", "Virtual DOM"]
+  }
+]

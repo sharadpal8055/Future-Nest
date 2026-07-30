@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "React",
+    "question": "What is the useState Hook?",
+    "answer": "useState is a React Hook that allows functional components to manage state. It returns the current state value and a setter function to update it.",
+    "difficulty": "Beginner",
+    "tags": ["Hooks", "useState"]
+  },
+  {
+    "subject": "React",
+    "question": "How do you update state using useState?",
+    "answer": "State is updated by calling the setter function returned by useState. Updating state schedules a re-render with the new value.",
+    "difficulty": "Beginner",
+    "tags": ["Hooks", "useState"]
+  },
+  {
+    "subject": "React",
+    "question": "Why should you use functional updates in useState?",
+    "answer": "Functional updates receive the previous state as an argument, ensuring correct updates when multiple state updates are queued or depend on the previous value.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useState"]
+  },
+  {
+    "subject": "React",
+    "question": "What is lazy initialization in useState?",
+    "answer": "Lazy initialization allows passing a function to useState so that the initial value is computed only during the first render, improving performance for expensive calculations.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "Performance"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the useEffect Hook?",
+    "answer": "useEffect is a React Hook used to perform side effects such as API calls, subscriptions, timers, or DOM updates after a component renders.",
+    "difficulty": "Beginner",
+    "tags": ["Hooks", "useEffect"]
+  },
+  {
+    "subject": "React",
+    "question": "When does useEffect execute?",
+    "answer": "By default, useEffect runs after every completed render. Its execution can be controlled using the dependency array.",
+    "difficulty": "Beginner",
+    "tags": ["Hooks", "useEffect"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the dependency array in useEffect?",
+    "answer": "The dependency array specifies which values React should watch. The effect re-runs only when one or more dependencies change.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useEffect"]
+  },
+  {
+    "subject": "React",
+    "question": "What happens if the dependency array is empty?",
+    "answer": "An empty dependency array causes the effect to run only once after the initial render, making it similar to componentDidMount in class components.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useEffect"]
+  },
+  {
+    "subject": "React",
+    "question": "What happens if you omit the dependency array?",
+    "answer": "If no dependency array is provided, the effect runs after every render, which may cause performance issues or infinite loops if state is updated inside the effect.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "useEffect"]
+  },
+  {
+    "subject": "React",
+    "question": "What is the cleanup function in useEffect?",
+    "answer": "The cleanup function is returned from useEffect and runs before the effect executes again or when the component unmounts. It is commonly used to remove event listeners, cancel timers, or unsubscribe from services.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "Cleanup"]
+  },
+  {
+    "subject": "React",
+    "question": "Why is the cleanup function important?",
+    "answer": "Cleanup prevents memory leaks by releasing resources such as timers, subscriptions, WebSocket connections, or event listeners when they are no longer needed.",
+    "difficulty": "Intermediate",
+    "tags": ["Hooks", "Memory Management"]
+  },
+  {
+    "subject": "React",
+    "question": "Can a component have multiple useEffect Hooks?",
+    "answer": "Yes. React allows multiple useEffect Hooks in a component, making it easier to separate unrelated side effects into independent blocks.",
+    "difficulty": "Beginner",
+    "tags": ["Hooks", "Best Practices"]
+  },
+  {
+    "subject": "React",
+    "question": "What causes an infinite loop in useEffect?",
+    "answer": "An infinite loop occurs when an effect updates state and that updated state is included in the dependency array, causing the effect to run repeatedly unless the logic is controlled properly.",
+    "difficulty": "Advanced",
+    "tags": ["Hooks", "useEffect", "Common Mistakes"]
+  }
+]

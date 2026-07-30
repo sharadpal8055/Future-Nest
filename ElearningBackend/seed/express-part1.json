@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "Express.js",
+    "question": "What is Express.js?",
+    "answer": "Express.js is a minimal, fast, and flexible web framework built on top of Node.js. It simplifies building web applications and REST APIs by providing routing, middleware, request handling, and utility methods.",
+    "difficulty": "Beginner",
+    "tags": ["Basics", "Framework"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "Why is Express.js used?",
+    "answer": "Express.js reduces boilerplate code required with the native HTTP module. It provides routing, middleware, request parsing, error handling, and extensibility, making backend development faster and more maintainable.",
+    "difficulty": "Beginner",
+    "tags": ["Framework", "Advantages"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are the main features of Express.js?",
+    "answer": "Express.js provides routing, middleware support, request and response handling, REST API development, template engine integration, static file serving, error handling, and compatibility with numerous third-party packages.",
+    "difficulty": "Beginner",
+    "tags": ["Features"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How do you create an Express application?",
+    "answer": "An Express application is created by importing Express, calling express() to create an app instance, defining routes and middleware, and starting the server using app.listen().",
+    "difficulty": "Beginner",
+    "tags": ["Setup", "App"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is app.listen()?",
+    "answer": "app.listen() starts the Express server and makes it listen for incoming client requests on a specified port.",
+    "difficulty": "Beginner",
+    "tags": ["Server"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is routing in Express?",
+    "answer": "Routing is the process of mapping incoming HTTP requests to specific handler functions based on the request URL and HTTP method.",
+    "difficulty": "Beginner",
+    "tags": ["Routing"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "Which HTTP methods are commonly used in Express?",
+    "answer": "The most common methods are GET, POST, PUT, PATCH, DELETE, OPTIONS, and HEAD.",
+    "difficulty": "Beginner",
+    "tags": ["HTTP Methods"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is the request object (req)?",
+    "answer": "The request object contains information about the incoming HTTP request including headers, query parameters, route parameters, body, cookies, and user information.",
+    "difficulty": "Beginner",
+    "tags": ["Request", "req"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is the response object (res)?",
+    "answer": "The response object is used to send data back to the client. It provides methods such as res.send(), res.json(), res.status(), res.redirect(), and res.download().",
+    "difficulty": "Beginner",
+    "tags": ["Response", "res"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is res.send()?",
+    "answer": "res.send() sends a response of various types including strings, objects, arrays, and HTML. Express automatically sets the appropriate Content-Type header.",
+    "difficulty": "Beginner",
+    "tags": ["Response"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is res.json()?",
+    "answer": "res.json() sends a JSON response to the client. It automatically serializes JavaScript objects into JSON format and sets the Content-Type to application/json.",
+    "difficulty": "Beginner",
+    "tags": ["JSON", "Response"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is res.status()?",
+    "answer": "res.status() sets the HTTP status code for the response before sending data to the client.",
+    "difficulty": "Beginner",
+    "tags": ["Status Code"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How do you send a 404 response in Express?",
+    "answer": "A 404 response can be sent using res.status(404).send() or res.status(404).json() when no matching resource is found.",
+    "difficulty": "Beginner",
+    "tags": ["404", "Response"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are route parameters?",
+    "answer": "Route parameters are dynamic values embedded in the URL. They are defined using a colon, such as /users/:id, and accessed using req.params.",
+    "difficulty": "Beginner",
+    "tags": ["Route Params"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are query parameters?",
+    "answer": "Query parameters are key-value pairs appended to the URL after a question mark. They are commonly used for filtering, searching, sorting, and pagination and are accessed through req.query.",
+    "difficulty": "Beginner",
+    "tags": ["Query Params"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is the difference between req.params and req.query?",
+    "answer": "req.params contains values extracted from dynamic route segments, whereas req.query contains values from the URL query string.",
+    "difficulty": "Intermediate",
+    "tags": ["req.params", "req.query"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is req.body?",
+    "answer": "req.body contains data sent by the client in the request body. It becomes available after using middleware such as express.json() or express.urlencoded().",
+    "difficulty": "Beginner",
+    "tags": ["Request Body"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What does express.json() do?",
+    "answer": "express.json() is built-in middleware that parses incoming JSON request bodies and stores the parsed data in req.body.",
+    "difficulty": "Beginner",
+    "tags": ["Middleware", "JSON"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What does express.urlencoded() do?",
+    "answer": "express.urlencoded() parses URL-encoded form data submitted through HTML forms and makes it available in req.body.",
+    "difficulty": "Beginner",
+    "tags": ["Forms", "Middleware"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is middleware in Express?",
+    "answer": "Middleware is a function that executes during the request-response cycle. It can modify requests, perform authentication, validate input, log requests, handle errors, or terminate the request by sending a response.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "How does middleware execution work?",
+    "answer": "Middleware functions execute sequentially in the order they are registered. Each middleware either ends the response or calls next() to transfer control to the next middleware.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware", "next"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What is the purpose of next()?",
+    "answer": "The next() function passes control to the next middleware or route handler in the Express middleware chain.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware", "next"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What happens if next() is not called?",
+    "answer": "If a middleware neither sends a response nor calls next(), the request remains pending and the client eventually times out.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware", "Debugging"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are application-level middleware?",
+    "answer": "Application-level middleware are registered using app.use() or app.METHOD() and apply to the entire application or specific route paths.",
+    "difficulty": "Intermediate",
+    "tags": ["Middleware"]
+  },
+  {
+    "subject": "Express.js",
+    "question": "What are router-level middleware?",
+    "answer": "Router-level middleware are attached to an Express Router instance and only execute for routes managed by that router.",
+    "difficulty": "Intermediate",
+    "tags": ["Router", "Middleware"]
+  }
+]

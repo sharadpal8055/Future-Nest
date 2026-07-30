@@ -1,0 +1,16 @@
+[
+  { "name": "JavaScript", "slug": "javascript", "order": 1 },
+  { "name": "React", "slug": "react", "order": 2 },
+  { "name": "Node.js", "slug": "nodejs", "order": 3 },
+  { "name": "Express.js", "slug": "expressjs", "order": 4 },
+  { "name": "MongoDB", "slug": "mongodb", "order": 5 },
+  { "name": "SQL", "slug": "sql", "order": 6 },
+  { "name": "DBMS", "slug": "dbms", "order": 7 },
+  { "name": "Operating System", "slug": "operating-system", "order": 8 },
+  { "name": "Computer Networks", "slug": "computer-networks", "order": 9 },
+  { "name": "OOP", "slug": "oop", "order": 10 },
+  { "name": "HTML", "slug": "html", "order": 11 },
+  { "name": "CSS", "slug": "css", "order": 12 },
+  { "name": "Git", "slug": "git", "order": 13 },
+  { "name": "HR", "slug": "hr", "order": 14 }
+]

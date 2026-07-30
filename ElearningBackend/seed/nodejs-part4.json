@@ -1,0 +1,93 @@
+[
+  {
+    "subject": "Node.js",
+    "question": "What is CORS?",
+    "answer": "CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls whether a web application can access resources from a different origin. In Node.js, it is commonly enabled using the cors middleware.",
+    "difficulty": "Intermediate",
+    "tags": ["CORS", "Security"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "Why is the cors package used in Express?",
+    "answer": "The cors package allows developers to configure Cross-Origin Resource Sharing policies, enabling trusted frontend applications hosted on different domains to communicate with the backend.",
+    "difficulty": "Intermediate",
+    "tags": ["Express", "CORS"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is Helmet?",
+    "answer": "Helmet is an Express middleware that secures applications by setting various HTTP security headers, helping protect against attacks such as XSS, clickjacking, and MIME sniffing.",
+    "difficulty": "Intermediate",
+    "tags": ["Helmet", "Security"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is Morgan?",
+    "answer": "Morgan is an HTTP request logger middleware for Express. It logs incoming requests, response status codes, response times, and other useful debugging information.",
+    "difficulty": "Beginner",
+    "tags": ["Morgan", "Logging"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is JWT?",
+    "answer": "JWT (JSON Web Token) is a compact, URL-safe token used for securely transmitting user identity information between client and server after successful authentication.",
+    "difficulty": "Intermediate",
+    "tags": ["JWT", "Authentication"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "How does JWT authentication work?",
+    "answer": "After successful login, the server creates a signed JWT containing user information and sends it to the client. The client includes the token in future requests, and the server verifies it before granting access.",
+    "difficulty": "Intermediate",
+    "tags": ["JWT", "Authentication"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between JWT and Sessions?",
+    "answer": "JWT is stateless because authentication data is stored in the token itself, while sessions are stateful because user session data is stored on the server and identified using a session ID.",
+    "difficulty": "Advanced",
+    "tags": ["JWT", "Sessions", "Authentication"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are cookies?",
+    "answer": "Cookies are small pieces of data stored by the browser and automatically sent with HTTP requests. They are commonly used to store authentication tokens, session IDs, and user preferences.",
+    "difficulty": "Beginner",
+    "tags": ["Cookies", "HTTP"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is cookie-parser?",
+    "answer": "cookie-parser is Express middleware that parses cookies attached to incoming requests and makes them available through req.cookies.",
+    "difficulty": "Intermediate",
+    "tags": ["Cookies", "Middleware"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is clustering in Node.js?",
+    "answer": "Clustering allows Node.js to create multiple worker processes that share the same server port, enabling applications to utilize multiple CPU cores for improved performance and scalability.",
+    "difficulty": "Advanced",
+    "tags": ["Cluster", "Performance"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What are Worker Threads?",
+    "answer": "Worker Threads enable JavaScript code to run in parallel threads. They are designed for CPU-intensive tasks without blocking the main event loop.",
+    "difficulty": "Advanced",
+    "tags": ["Worker Threads", "Performance"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is the difference between Worker Threads and Child Processes?",
+    "answer": "Worker Threads share memory with the parent process and are ideal for CPU-intensive work, whereas Child Processes run independently with separate memory spaces and are commonly used to execute external programs.",
+    "difficulty": "Advanced",
+    "tags": ["Worker Threads", "Child Process"]
+  },
+  {
+    "subject": "Node.js",
+    "question": "What is PM2?",
+    "answer": "PM2 is a production process manager for Node.js applications. It provides automatic restarts, clustering, load balancing, monitoring, logging, and zero-downtime deployments.",
+    "difficulty": "Intermediate",
+    "tags": ["PM2", "Deployment", "Production"]
+  }
+]

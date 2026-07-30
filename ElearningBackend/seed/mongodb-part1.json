@@ -1,0 +1,212 @@
+[
+  {
+    "subject": "MongoDB",
+    "question": "What is MongoDB?",
+    "answer": "MongoDB is an open-source, NoSQL document-oriented database that stores data as flexible JSON-like BSON documents instead of rows and columns. It is designed for high scalability, high availability, and fast application development.",
+    "difficulty": "Beginner",
+    "tags": ["Basics", "NoSQL"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "Why is MongoDB called a NoSQL database?",
+    "answer": "MongoDB is called a NoSQL database because it does not use traditional relational tables. Instead, it stores data in flexible documents, allowing schema flexibility and horizontal scalability.",
+    "difficulty": "Beginner",
+    "tags": ["NoSQL"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What are the main features of MongoDB?",
+    "answer": "MongoDB provides schema flexibility, document-based storage, horizontal scaling through sharding, replication for high availability, rich indexing, aggregation pipelines, and high-performance CRUD operations.",
+    "difficulty": "Beginner",
+    "tags": ["Features"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a document in MongoDB?",
+    "answer": "A document is the basic unit of data in MongoDB. It is a BSON object consisting of key-value pairs and is similar to a JSON object.",
+    "difficulty": "Beginner",
+    "tags": ["Document"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a collection in MongoDB?",
+    "answer": "A collection is a group of related MongoDB documents. It is similar to a table in relational databases but does not enforce a fixed schema.",
+    "difficulty": "Beginner",
+    "tags": ["Collection"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is BSON?",
+    "answer": "BSON (Binary JSON) is the binary-encoded format MongoDB uses to store documents. It extends JSON by supporting additional data types such as Date, ObjectId, Decimal128, and Binary.",
+    "difficulty": "Intermediate",
+    "tags": ["BSON"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is the difference between JSON and BSON?",
+    "answer": "JSON is a lightweight text format for data interchange, while BSON is a binary serialization format optimized for storage and traversal. BSON supports more data types and is used internally by MongoDB.",
+    "difficulty": "Intermediate",
+    "tags": ["JSON", "BSON"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is ObjectId?",
+    "answer": "ObjectId is MongoDB's default unique identifier for documents. It is a 12-byte value containing a timestamp, machine identifier, process identifier, and counter.",
+    "difficulty": "Intermediate",
+    "tags": ["ObjectId"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "Why does MongoDB use ObjectId instead of auto-increment IDs?",
+    "answer": "ObjectIds are globally unique, can be generated without database coordination, improve scalability in distributed systems, and reduce contention compared to auto-increment IDs.",
+    "difficulty": "Intermediate",
+    "tags": ["ObjectId", "Scalability"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How do you insert a document in MongoDB?",
+    "answer": "Documents are inserted using insertOne() for a single document or insertMany() for multiple documents.",
+    "difficulty": "Beginner",
+    "tags": ["CRUD", "Insert"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How do you retrieve documents from MongoDB?",
+    "answer": "Documents are retrieved using findOne() to fetch a single document or find() to fetch multiple documents matching a query.",
+    "difficulty": "Beginner",
+    "tags": ["CRUD", "Find"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How do you update documents in MongoDB?",
+    "answer": "Documents are updated using updateOne(), updateMany(), or replaceOne(). Update operators such as $set, $inc, and $unset modify specific fields.",
+    "difficulty": "Beginner",
+    "tags": ["CRUD", "Update"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How do you delete documents in MongoDB?",
+    "answer": "Documents are deleted using deleteOne() to remove a single document or deleteMany() to remove multiple matching documents.",
+    "difficulty": "Beginner",
+    "tags": ["CRUD", "Delete"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is the difference between find() and findOne()?",
+    "answer": "find() returns a cursor for all matching documents, whereas findOne() returns only the first matching document.",
+    "difficulty": "Beginner",
+    "tags": ["Find"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What are MongoDB query operators?",
+    "answer": "Query operators are special operators used to filter documents. Examples include $eq, $gt, $gte, $lt, $lte, $ne, $in, $nin, $and, $or, and $not.",
+    "difficulty": "Intermediate",
+    "tags": ["Query Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $eq operator do?",
+    "answer": "The $eq operator matches documents where a field is equal to a specified value.",
+    "difficulty": "Beginner",
+    "tags": ["Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $gt operator do?",
+    "answer": "The $gt operator matches documents where the field value is greater than the specified value.",
+    "difficulty": "Beginner",
+    "tags": ["Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $lt operator do?",
+    "answer": "The $lt operator matches documents where the field value is less than the specified value.",
+    "difficulty": "Beginner",
+    "tags": ["Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $in operator do?",
+    "answer": "The $in operator matches documents where the field value equals any value in a specified array.",
+    "difficulty": "Intermediate",
+    "tags": ["Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $and operator do?",
+    "answer": "The $and operator combines multiple query conditions and returns documents that satisfy all of them.",
+    "difficulty": "Intermediate",
+    "tags": ["Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What does the $or operator do?",
+    "answer": "The $or operator returns documents that satisfy at least one of the specified query conditions.",
+    "difficulty": "Intermediate",
+    "tags": ["Operators"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How do you sort query results?",
+    "answer": "Results are sorted using the sort() method with 1 for ascending order and -1 for descending order.",
+    "difficulty": "Beginner",
+    "tags": ["Sorting"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How do you limit query results?",
+    "answer": "The limit() method restricts the number of documents returned by a query.",
+    "difficulty": "Beginner",
+    "tags": ["Limit"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is skip() used for?",
+    "answer": "skip() skips a specified number of documents before returning the remaining results. It is commonly used for pagination.",
+    "difficulty": "Beginner",
+    "tags": ["Pagination"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "How is pagination implemented in MongoDB?",
+    "answer": "Pagination is commonly implemented using skip() and limit(). For large datasets, cursor-based pagination using indexed fields such as _id is more efficient.",
+    "difficulty": "Intermediate",
+    "tags": ["Pagination", "Performance"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is an index in MongoDB?",
+    "answer": "An index is a data structure that improves query performance by allowing MongoDB to locate documents efficiently without scanning the entire collection.",
+    "difficulty": "Intermediate",
+    "tags": ["Indexing"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "Why are indexes important?",
+    "answer": "Indexes significantly speed up read operations, sorting, and filtering, but they increase storage usage and slightly slow write operations because indexes must also be updated.",
+    "difficulty": "Intermediate",
+    "tags": ["Indexing", "Performance"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is the default index created in MongoDB?",
+    "answer": "MongoDB automatically creates a unique index on the _id field for every collection.",
+    "difficulty": "Beginner",
+    "tags": ["Index"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a compound index?",
+    "answer": "A compound index is an index built on multiple fields. It improves queries that filter or sort using more than one field.",
+    "difficulty": "Intermediate",
+    "tags": ["Compound Index"]
+  },
+  {
+    "subject": "MongoDB",
+    "question": "What is a unique index?",
+    "answer": "A unique index ensures that indexed field values remain unique across all documents in a collection.",
+    "difficulty": "Intermediate",
+    "tags": ["Unique Index"]
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "subject": "JavaScript",
+    "question": "What is JavaScript?",
+    "answer": "JavaScript is a high-level, interpreted, prototype-based programming language used to create dynamic and interactive web applications. It runs in browsers as well as on servers using environments like Node.js.",
+    "difficulty": "Beginner",
+    "tags": ["Basics", "Introduction"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are the features of JavaScript?",
+    "answer": "JavaScript is lightweight, interpreted, dynamically typed, object-oriented, prototype-based, event-driven, asynchronous, cross-platform, and supports functional programming.",
+    "difficulty": "Beginner",
+    "tags": ["Basics", "Features"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between JavaScript and Java?",
+    "answer": "JavaScript is a scripting language primarily used for web development and runs in browsers or Node.js, while Java is a compiled, class-based programming language used for enterprise, Android, and desktop applications.",
+    "difficulty": "Beginner",
+    "tags": ["JavaScript", "Java"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are primitive data types in JavaScript?",
+    "answer": "JavaScript has seven primitive data types: String, Number, BigInt, Boolean, Undefined, Null, and Symbol.",
+    "difficulty": "Beginner",
+    "tags": ["Data Types"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between null and undefined?",
+    "answer": "Undefined means a variable has been declared but not assigned a value, whereas null is an intentional assignment representing no value.",
+    "difficulty": "Beginner",
+    "tags": ["null", "undefined"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between var, let, and const?",
+    "answer": "var is function-scoped and can be redeclared. let is block-scoped and can be reassigned but not redeclared in the same scope. const is block-scoped and cannot be reassigned after initialization.",
+    "difficulty": "Beginner",
+    "tags": ["Variables", "Scope"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is hoisting?",
+    "answer": "Hoisting is JavaScript's behavior of moving declarations to the top of their scope during compilation. Function declarations are fully hoisted, while variables declared with var are hoisted with undefined. let and const remain in the Temporal Dead Zone until initialized.",
+    "difficulty": "Intermediate",
+    "tags": ["Hoisting", "Execution Context"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the Temporal Dead Zone?",
+    "answer": "The Temporal Dead Zone is the period between entering a block and initializing a let or const variable. Accessing the variable during this time throws a ReferenceError.",
+    "difficulty": "Intermediate",
+    "tags": ["TDZ", "let", "const"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is scope in JavaScript?",
+    "answer": "Scope determines where variables are accessible. JavaScript has global scope, function scope, and block scope.",
+    "difficulty": "Beginner",
+    "tags": ["Scope"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is lexical scope?",
+    "answer": "Lexical scope means a function can access variables from its own scope and its parent scopes based on where it was defined, not where it is called.",
+    "difficulty": "Intermediate",
+    "tags": ["Lexical Scope", "Closures"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are closures?",
+    "answer": "A closure is created when an inner function remembers and accesses variables from its outer function even after the outer function has finished execution.",
+    "difficulty": "Intermediate",
+    "tags": ["Closures", "Functions"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is an execution context?",
+    "answer": "Execution context is the environment in which JavaScript code executes. It contains variable declarations, the scope chain, and the value of 'this'.",
+    "difficulty": "Intermediate",
+    "tags": ["Execution Context"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the call stack?",
+    "answer": "The call stack is a LIFO data structure used by JavaScript to keep track of function calls. Functions are pushed onto the stack when called and popped when they return.",
+    "difficulty": "Intermediate",
+    "tags": ["Call Stack"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the event loop?",
+    "answer": "The event loop continuously checks whether the call stack is empty. If it is, it moves pending callbacks from the callback queue or microtask queue to the call stack for execution.",
+    "difficulty": "Intermediate",
+    "tags": ["Event Loop", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between synchronous and asynchronous programming?",
+    "answer": "Synchronous code executes one statement at a time, blocking the next operation until the current one finishes. Asynchronous code allows other operations to continue while waiting for long-running tasks.",
+    "difficulty": "Beginner",
+    "tags": ["Async", "Sync"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a callback function?",
+    "answer": "A callback is a function passed as an argument to another function and executed after a specific task completes.",
+    "difficulty": "Beginner",
+    "tags": ["Callbacks"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is callback hell?",
+    "answer": "Callback hell refers to deeply nested callbacks that make code difficult to read, debug, and maintain. Promises and async/await help solve this problem.",
+    "difficulty": "Intermediate",
+    "tags": ["Callbacks", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is a Promise?",
+    "answer": "A Promise is an object representing the eventual completion or failure of an asynchronous operation. It has three states: Pending, Fulfilled, and Rejected.",
+    "difficulty": "Intermediate",
+    "tags": ["Promises", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is async/await?",
+    "answer": "async/await is syntax built on top of Promises that allows asynchronous code to be written in a synchronous-looking manner, improving readability.",
+    "difficulty": "Intermediate",
+    "tags": ["Async", "Await"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between Promise.all() and Promise.allSettled()?",
+    "answer": "Promise.all() rejects immediately if any promise fails, while Promise.allSettled() waits for all promises to complete and returns the result of each regardless of success or failure.",
+    "difficulty": "Advanced",
+    "tags": ["Promises", "Async"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the difference between == and ===?",
+    "answer": "== performs type coercion before comparison, while === checks both value and type without type conversion.",
+    "difficulty": "Beginner",
+    "tags": ["Operators", "Comparison"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is type coercion?",
+    "answer": "Type coercion is JavaScript's automatic conversion of values from one data type to another during operations or comparisons.",
+    "difficulty": "Intermediate",
+    "tags": ["Type Coercion"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What are truthy and falsy values?",
+    "answer": "Falsy values are false, 0, -0, 0n, '', null, undefined, and NaN. Every other value in JavaScript is truthy.",
+    "difficulty": "Beginner",
+    "tags": ["Boolean", "Truthy", "Falsy"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is NaN?",
+    "answer": "NaN stands for 'Not a Number'. It represents an invalid numeric result, such as parsing a non-numeric string into a number.",
+    "difficulty": "Beginner",
+    "tags": ["NaN", "Numbers"]
+  },
+  {
+    "subject": "JavaScript",
+    "question": "What is the typeof operator?",
+    "answer": "The typeof operator returns the data type of a value, such as 'string', 'number', 'boolean', 'object', 'function', or 'undefined'.",
+    "difficulty": "Beginner",
+    "tags": ["typeof", "Operators"]
+  }
+]
