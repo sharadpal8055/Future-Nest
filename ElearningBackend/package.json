@@ -15,6 +15,7 @@
     "seed:interview": "node seed/seedInterviewQuestions.js"
   },
   "dependencies": {
+    "axios": "^1.19.0",
     "bcryptjs": "^3.0.3",
     "cloudinary": "^2.10.0",
     "cookie-parser": "^1.4.7",

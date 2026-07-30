@@ -1,5 +1,5 @@
 import express from "express";
-
+import adminMiddleware from "../middleware/admin.middleware.js";
 import {
   // Student
   getSubjects,
@@ -34,16 +34,46 @@ router.get("/question/:id", getQuestion);
                         ADMIN ROUTES
 ============================================================ */
 
-router.post("/admin/subject", authMiddleware, createSubject);
+router.post(
+  "/admin/subject",
+  authMiddleware,
+  adminMiddleware,
+  createSubject
+);
 
-router.put("/admin/subject/:id", authMiddleware, updateSubject);
+router.put(
+  "/admin/subject/:id",
+  authMiddleware,
+  adminMiddleware,
+  updateSubject
+);
 
-router.delete("/admin/subject/:id", authMiddleware, deleteSubject);
+router.delete(
+  "/admin/subject/:id",
+  authMiddleware,
+  adminMiddleware,
+  deleteSubject
+);
 
-router.post("/admin/question", authMiddleware, createQuestion);
+router.post(
+  "/admin/question",
+  authMiddleware,
+  adminMiddleware,
+  createQuestion
+);
 
-router.put("/admin/question/:id", authMiddleware, updateQuestion);
+router.put(
+  "/admin/question/:id",
+  authMiddleware,
+  adminMiddleware,
+  updateQuestion
+);
 
-router.delete("/admin/question/:id", authMiddleware, deleteQuestion);
+router.delete(
+  "/admin/question/:id",
+  authMiddleware,
+  adminMiddleware,
+  deleteQuestion
+);
 
 export default router;

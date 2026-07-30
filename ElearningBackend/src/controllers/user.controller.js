@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import bcrypt from "bcryptjs";
 import cloudinary from "../config/cloudinary.js";
-import { Readable } from "stream";
+import uploadToCloudinary from "../utils/uploadToCloudinary.js";
 
 export const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find()
@@ -162,22 +162,9 @@ export const uploadAvatar = asyncHandler(async (req, res) => {
     await cloudinary.uploader.destroy(user.avatar.publicId);
   }
 
-  const uploadStream = () =>
-    new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        {
-          folder: "future-nest/avatars",
-        },
-        (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
-        }
-      );
-
-      Readable.from(req.file.buffer).pipe(stream);
-    });
-
-  const result = await uploadStream();
+  const result = await uploadToCloudinary(req.file.buffer, {
+    folder: "future-nest/avatars",
+  });
 
   user.avatar = {
     url: result.secure_url,
