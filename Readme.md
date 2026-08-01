@@ -1,16 +1,27 @@
-#  E-Learning Platform
+# 🎓 E-Learning Platform
 
-A full-stack MERN e-learning platform that enables users to browse courses, enroll in free or premium content, track learning progress, and securely manage authentication. Built with React, Node.js, Express, MongoDB, and Stripe, the project follows modern web development practices with a scalable architecture.
+A feature-rich **Full Stack MERN Learning Management System (LMS)** that enables students to learn through structured courses, practice interview questions, access study notes, track learning progress, and securely purchase premium content.
 
-🔗 **Live Application:** https://future-nest-jet.vercel.app
+Built using the **MERN Stack (MongoDB, Express.js, React, Node.js)** with **Stripe**, **Cloudinary**, and modern web technologies following scalable software architecture and best development practices.
 
-🔗 **Backend API:** https://elearningbackend-dhi6.onrender.com
+🌐 **Live Demo:** https://future-nest-jet.vercel.app
+
+🚀 **Backend API:** https://elearningbackend-dhi6.onrender.com
 
 ---
-<!-- 
-# 📸 Preview
 
-> Add screenshots or GIFs of the application here. -->
+# 🚀 Project Highlights
+
+- 🔐 Secure JWT Authentication
+- 🎓 Course Enrollment & Progress Tracking
+- 💳 Stripe Payment Integration
+- 📚 Digital Library
+- 📄 PDF Notes Viewer
+- 💼 Interview Preparation Module
+- ☁️ Cloudinary Image & PDF Storage
+- 👨‍💼 Admin Dashboard
+- 📈 Learning Analytics
+- 📱 Fully Responsive Design
 
 ---
 
@@ -23,60 +34,128 @@ A full-stack MERN e-learning platform that enables users to browse courses, enro
 - Persistent Login Sessions
 - Protected Routes
 - Role-Based Access Control (Admin/User)
+- Secure Logout
+- Profile Management
+- Avatar Upload (Cloudinary)
+- Password Update
+- Delete Account
 
 ---
 
 ## 📚 Course Management
 
 - Browse Available Courses
-- View Course Details
-- Create, Update & Delete Courses (Admin)
-- Slug-Based Course Routing
+- Course Detail Page
+- Rich Course Information
+- Free & Premium Courses
+- Create Courses (Admin)
+- Edit Courses (Admin)
+- Delete Courses (Admin)
+- Publish / Draft Support
+- Slug-Based Routing
 
 ---
 
-## 🎓 Enrollment & Learning
+## 🎓 Learning Experience
 
 - Free Course Enrollment
-- Paid Course Enrollment
-- Lesson-by-Lesson Progress Tracking
+- Premium Course Enrollment
+- Interactive Course Player
+- Lesson-by-Lesson Navigation
+- Learning Progress Tracking
+- Continue Learning
 - My Courses Dashboard
 - Course Completion Status
+- Certificates Section
+
+---
+
+## 📖 Digital Library
+
+- Study Notes Repository
+- Built-in PDF Viewer
+- Responsive PDF Reader
+- Download Notes
+- Search Notes
+- Subject Filtering
+- Notes Upload (Admin)
+- Edit Notes (Admin)
+- Delete Notes (Admin)
+- Cloudinary PDF Storage
+
+---
+
+## 💼 Interview Preparation
+
+- Subject-wise Interview Questions
+- Detailed Questions & Answers
+- Difficulty Levels
+- Tags for Easy Filtering
+- Subject Management (Admin)
+- Question CRUD (Admin)
+
+---
+
+## 👨‍💼 Admin Dashboard
+
+- Course Management
+- Student Management
+- Enrollment Management
+- Notes Management
+- Interview Subject Management
+- Interview Question Management
+- Dashboard Statistics
 
 ---
 
 ## 💳 Payments
 
-- Stripe Checkout Integration
+- Stripe Checkout
 - Secure Payment Verification
-- Premium Course Access Control
+- Premium Course Access
+- Payment Success Page
 
 ---
 
 ## 📱 Responsive UI
 
-- Modern User Interface
-- Mobile-Friendly Design
+- Fully Responsive Design
+- Mobile Friendly
+- Modern Dashboard
+- Interactive PDF Viewer
 - Loading States
 - Toast Notifications
-- Smooth Navigation
+- Clean Navigation
+- Beautiful Admin Panel
+
+---
+
+## ☁️ Cloud Storage
+
+- Image Uploads
+- PDF Uploads
+- Secure Cloudinary Storage
+- Automatic File Management
 
 ---
 
 ## 🛡 Backend Features
 
 - RESTful API Architecture
-- MVC Pattern
-- Input Validation with Zod
+- MVC Architecture
+- JWT Authentication
+- Zod Validation
 - Centralized Error Handling
-- Secure Cookie Handling
+- Multer File Upload
+- Cloudinary Integration
+- Cookie-Based Authentication
 - Modular Folder Structure
 
 ---
 
 # 🛠 Tech Stack
 
-### Frontend
+## Frontend
 
 - React
 - Vite
@@ -85,27 +164,44 @@ A full-stack MERN e-learning platform that enables users to browse courses, enro
 - Axios
 - Context API
 - React Hot Toast
+- React PDF
+- Lucide React
 
-### Backend
+---
+
+## Backend
 
 - Node.js
 - Express.js
 - MongoDB Atlas
 - Mongoose
 - JWT Authentication
-- Zod Validation
-- Stripe API
-- Jest
+- Zod
+- Stripe
+- Cloudinary
+- Multer
+- Cookie Parser
+- CORS
 
 ---
 
 # 📂 Project Structure
 
-```
+```text
 E-Learning-Platform/
 │
 ├── frontend/
 │   ├── src/
+│   │   ├── api/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── utils/
+│   │
 │   ├── public/
 │   ├── package.json
 │   └── vite.config.js
@@ -118,10 +214,11 @@ E-Learning-Platform/
 │   │   ├── models/
 │   │   ├── routes/
 │   │   ├── validators/
-│   │   └── utils/
+│   │   ├── utils/
+│   │   └── server.js
 │   │
-│   ├── server.js
-│   └── package.json
+│   ├── package.json
+│   └── .env
 │
 └── README.md
 ```
@@ -135,50 +232,64 @@ E-Learning-Platform/
 ```env
 PORT=5000
 
+NODE_ENV=production
+
 MONGO_URI=your_mongodb_uri
 
-JWT_SECRET=your_secret
+JWT_SECRET=your_jwt_secret
 
 JWT_EXPIRES_IN=7d
 
-STRIPE_SECRET_KEY=your_stripe_secret
+FRONTEND_URL=http://localhost:5173
 
-FRONTEND_URL=https://elearningfrontend-alpha.vercel.app
+STRIPE_SECRET_KEY=your_stripe_secret_key
 
-NODE_ENV=production
+STRIPE_WEBHOOK_SECRET=your_webhook_secret
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+
+CLOUDINARY_API_KEY=your_api_key
+
+CLOUDINARY_API_SECRET=your_api_secret
 ```
+
+---
 
 ## Frontend (.env)
 
 ```env
-VITE_API_URL=https://elearningbackend-dhi6.onrender.com
+VITE_API_URL=http://localhost:5000/api
 ```
 
 ---
 
 # 🚀 Getting Started
 
-### Clone Repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/e-learning-platform.git
+git clone https://github.com/sharadpal8055/E-Learning-Platform.git
 
-cd e-learning-platform
+cd E-Learning-Platform
 ```
 
-### Install Dependencies
+---
 
-Frontend
+## Install Dependencies
+
+### Frontend
 
 ```bash
 cd frontend
+
 npm install
 ```
 
-Backend
+### Backend
 
 ```bash
-cd ../backend
+cd backend
+
 npm install
 ```
 
@@ -186,30 +297,34 @@ npm install
 
 # ▶️ Run Locally
 
-### Start Backend
+## Start Backend
 
 ```bash
 cd backend
+
 npm run dev
 ```
 
-### Start Frontend
+Runs at:
+
+```text
+http://localhost:5000
+```
+
+---
+
+## Start Frontend
 
 ```bash
 cd frontend
+
 npm run dev
 ```
 
-Frontend runs on:
+Runs at:
 
-```
+```text
 http://localhost:5173
-```
-
-Backend runs on:
-
-```
-http://localhost:5000
 ```
 
 ---
@@ -221,31 +336,97 @@ http://localhost:5000
 | Frontend | Vercel |
 | Backend | Render |
 | Database | MongoDB Atlas |
+| File Storage | Cloudinary |
 | Payments | Stripe |
 
 ---
 
-# 🚀 Future Improvements
+# 📌 Core Modules
 
-- Course Reviews & Ratings
-- Video Streaming Support
+- Authentication
+- User Dashboard
+- Course Management
+- Course Player
+- Learning Progress
+- Digital Library
+- PDF Notes Viewer
+- Interview Preparation
+- Admin Dashboard
+- Payments
+- Profile Management
+
+---
+
+# 🚀 Future Enhancements
+
+### 🤖 AI Features
+
+- AI Personalized Learning Roadmap Generator
+- AI Course Recommendation System
+- AI Skill Gap Analysis
+- AI Learning Assistant (Chatbot)
+- AI Quiz Generator
+- AI Mock Interview Generator
+- AI Study Planner
+- AI Smart Notes Recommendation
+
+### 📚 Learning Features
+
+- Video Streaming
+- Adaptive Learning Paths
+- Coding Playground
+- Assignments
+- Practice Tests
+- Live Classes
+- Discussion Forums
+- Learning Streaks
+
+### 👨‍🏫 Instructor Features
+
 - Instructor Dashboard
-- Quiz & Assignment Module
-- Certificates of Completion
+- Course Analytics
+- Revenue Dashboard
+- Student Performance Reports
+
+### 🎯 Student Features
+
+- Course Wishlist
+- Course Reviews & Ratings
+- Learning Calendar
 - Email Notifications
-- Wishlist & Favorites
-- Search & Filters
+- Push Notifications
+- Certificate Generation
+- Achievement Badges
+- Leaderboards
+
+### 🌍 Platform Features
+
+- Progressive Web App (PWA)
+- Mobile Application
+- Dark Mode
+- Multi-language Support
+- Advanced Search
+- Recommendation Engine
+- Social Login
+- Real-time Notifications
 
 ---
 
 # 👨‍💻 Author
 
-**Sharad Pal**
+## Sharad Pal
 
-B.Tech Computer Science & Engineering
+**B.Tech Computer Science & Engineering**
 
-Full-Stack MERN Developer
+**Full Stack MERN Developer**
 
-GitHub: https://github.com/sharadpal8055
+### Connect with me
 
-LinkedIn: https://linkedin.com/in/sharadpal8055
+- GitHub: https://github.com/sharadpal8055
+- LinkedIn: https://linkedin.com/in/sharadpal8055
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐ on GitHub.
