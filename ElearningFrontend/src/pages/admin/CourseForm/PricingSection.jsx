@@ -1,6 +1,13 @@
-import { ImageOff } from "lucide-react";
+import {
+  Image,
+  IndianRupee,
+  BadgeCheck,
+} from "lucide-react";
 
-export default function PricingSection({ form, setForm }) {
+export default function PricingSection({
+  form,
+  setForm,
+}) {
   const updateField = (field, value) => {
     setForm((prev) => ({
       ...prev,
@@ -10,99 +17,245 @@ export default function PricingSection({ form, setForm }) {
 
   const thumbnail =
     form.thumbnailUrl?.trim() ||
-    "https://placehold.co/600x340/e5e7eb/6b7280?text=Course+Thumbnail";
+    "https://placehold.co/600x340/e2e8f0/64748b?text=Course+Thumbnail";
+
+  const isFree =
+    Number(form.price || 0) === 0;
 
   return (
-    <section className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-      <div className="mb-5">
-        <h3 className="text-lg font-semibold text-gray-800">
-          Pricing & Thumbnail
-        </h3>
+    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
 
-        <p className="mt-1 text-sm text-gray-500">
-          Set the course pricing and preview the course thumbnail.
+      {/* Header */}
+
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold">
+          Pricing & Thumbnail
+        </h2>
+
+        <p className="mt-1 text-sm text-slate-500">
+          Configure pricing and preview how the
+          course card will appear.
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        {/* Left Side */}
-        <div className="space-y-5">
+      <div className="grid gap-8 lg:grid-cols-2">
+
+        {/* LEFT */}
+
+        <div className="space-y-6">
+
           {/* Price */}
+
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">
-              Price
+
+            <label className="mb-2 flex items-center gap-2 text-sm font-semibold">
+              <IndianRupee
+                size={18}
+                className="text-green-600"
+              />
+              Course Price
             </label>
 
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                $
+
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                ₹
               </span>
 
               <input
                 type="number"
                 min="0"
-                placeholder="0"
                 value={form.price}
                 onChange={(e) =>
-                  updateField("price", e.target.value)
+                  updateField(
+                    "price",
+                    e.target.value
+                  )
                 }
-                className="w-full rounded-lg border border-gray-300 py-2 pl-8 pr-4 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+                placeholder="0"
+                className="
+                  w-full
+                  rounded-xl
+                  border
+                  border-slate-300
+                  py-3
+                  pl-10
+                  pr-4
+                  outline-none
+                  transition
+                  focus:border-indigo-500
+                  focus:ring-4
+                  focus:ring-indigo-100
+                "
               />
+
             </div>
 
-            <p className="mt-1 text-xs text-gray-400">
-              Enter 0 to make this course free.
+            <p className="mt-2 text-sm text-slate-500">
+              Enter
+              <span className="font-semibold">
+                {" "}0{" "}
+              </span>
+              to make this course free.
             </p>
+
+          </div>
+
+          {/* Status */}
+
+          <div
+            className={`rounded-xl border p-5 ${
+              isFree
+                ? "border-green-200 bg-green-50"
+                : "border-indigo-200 bg-indigo-50"
+            }`}
+          >
+
+            <div className="flex items-center gap-3">
+
+              <BadgeCheck
+                className={
+                  isFree
+                    ? "text-green-600"
+                    : "text-indigo-600"
+                }
+              />
+
+              <div>
+
+                <div className="font-semibold">
+
+                  {isFree
+                    ? "Free Course"
+                    : "Premium Course"}
+
+                </div>
+
+                <div className="text-sm text-slate-500">
+
+                  {isFree
+                    ? "Students can enroll without payment."
+                    : `Students pay ₹${form.price} before enrollment.`}
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
           {/* Thumbnail URL */}
+
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">
+
+            <label className="mb-2 flex items-center gap-2 text-sm font-semibold">
+
+              <Image
+                size={18}
+                className="text-indigo-600"
+              />
+
               Thumbnail URL
+
             </label>
 
             <input
               type="url"
-              placeholder="https://example.com/course-thumbnail.jpg"
+              placeholder="https://example.com/course.jpg"
               value={form.thumbnailUrl}
               onChange={(e) =>
-                updateField("thumbnailUrl", e.target.value)
+                updateField(
+                  "thumbnailUrl",
+                  e.target.value
+                )
               }
-              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+              className="
+                w-full
+                rounded-xl
+                border
+                border-slate-300
+                px-4
+                py-3
+                outline-none
+                transition
+                focus:border-indigo-500
+                focus:ring-4
+                focus:ring-indigo-100
+              "
             />
 
-            <p className="mt-1 text-xs text-gray-400">
-              Paste a publicly accessible image URL.
-            </p>
           </div>
+
         </div>
 
-        {/* Right Side */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Thumbnail Preview
-          </label>
+        {/* RIGHT */}
 
-          <div className="overflow-hidden rounded-xl border border-gray-300 bg-white shadow-sm">
+        <div>
+
+          <h3 className="mb-4 text-sm font-semibold text-slate-600">
+            Live Preview
+          </h3>
+
+          <div className="overflow-hidden rounded-2xl border bg-white shadow-lg">
+
             <img
               src={thumbnail}
-              alt="Course Thumbnail"
+              alt="Thumbnail"
               className="h-56 w-full object-cover"
               onError={(e) => {
                 e.currentTarget.src =
-                  "https://placehold.co/600x340/e5e7eb/6b7280?text=Invalid+Image";
+                  "https://placehold.co/600x340/e2e8f0/64748b?text=Invalid+Image";
               }}
             />
 
-            <div className="border-t bg-gray-50 p-4">
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <ImageOff size={16} />
-                Live thumbnail preview
+            <div className="space-y-3 p-5">
+
+              <div>
+
+                <h3 className="line-clamp-2 text-lg font-bold">
+                  {form.title ||
+                    "Course Title"}
+                </h3>
+
+                <p className="mt-2 line-clamp-3 text-sm text-slate-500">
+                  {form.subtitle ||
+                    form.description ||
+                    "Course description..."}
+                </p>
+
               </div>
+
+              <div className="flex items-center justify-between">
+
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-sm">
+
+                  {form.category || "Category"}
+
+                </span>
+
+                <span
+                  className={`text-xl font-bold ${
+                    isFree
+                      ? "text-green-600"
+                      : "text-indigo-600"
+                  }`}
+                >
+                  {isFree
+                    ? "FREE"
+                    : `₹${form.price}`}
+                </span>
+
+              </div>
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   );
 }

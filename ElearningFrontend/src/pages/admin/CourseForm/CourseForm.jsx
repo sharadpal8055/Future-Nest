@@ -45,7 +45,7 @@ export default function CourseForm({
     }
   }, [selected]);
 
-  const submit = async (e) => {
+  async function submit(e) {
     e.preventDefault();
 
     const payload = {
@@ -65,7 +65,7 @@ export default function CourseForm({
     if (!selected) {
       setForm(emptyForm);
     }
-  };
+  }
 
   const disabled =
     loading ||
@@ -77,54 +77,129 @@ export default function CourseForm({
   return (
     <form
       onSubmit={submit}
-      className="space-y-6 rounded-2xl bg-white p-6 shadow-lg"
+      className="space-y-8"
     >
-      <div className="border-b pb-4">
-        <h2 className="text-2xl font-bold text-gray-800">
-          {selected ? "Edit Course" : "Create Course"}
-        </h2>
+      {/* Header */}
 
-        <p className="mt-1 text-sm text-gray-500">
-          Fill the course information below.
-        </p>
+      <div className="rounded-3xl border bg-white p-6 shadow-sm">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-800">
+              {selected
+                ? "Edit Course"
+                : "Create New Course"}
+            </h1>
+
+            <p className="mt-2 text-slate-500">
+              Fill in the course details below.
+              Students will see this information
+              before enrolling.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <div className="rounded-xl bg-indigo-50 px-5 py-3">
+              <div className="text-xs uppercase tracking-wide text-slate-500">
+                Lessons
+              </div>
+
+              <div className="text-2xl font-bold">
+                {form.lessons.length}
+              </div>
+            </div>
+
+            <div className="rounded-xl bg-green-50 px-5 py-3">
+              <div className="text-xs uppercase tracking-wide text-slate-500">
+                Outcomes
+              </div>
+
+              <div className="text-2xl font-bold">
+                {form.learningOutcomes.length}
+              </div>
+            </div>
+
+            <div className="rounded-xl bg-yellow-50 px-5 py-3">
+              <div className="text-xs uppercase tracking-wide text-slate-500">
+                Requirements
+              </div>
+
+              <div className="text-2xl font-bold">
+                {form.requirements.length}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <BasicInfoSection form={form} setForm={setForm} />
+      {/* Sections */}
 
-      <DetailsSection form={form} setForm={setForm} />
+      <div className="space-y-8">
+        <BasicInfoSection
+          form={form}
+          setForm={setForm}
+        />
 
-      <PricingSection form={form} setForm={setForm} />
+        <DetailsSection
+          form={form}
+          setForm={setForm}
+        />
 
-      <RequirementsSection form={form} setForm={setForm} />
+        <PricingSection
+          form={form}
+          setForm={setForm}
+        />
 
-      <OutcomesSection form={form} setForm={setForm} />
+        <RequirementsSection
+          form={form}
+          setForm={setForm}
+        />
 
-      <LessonsSection form={form} setForm={setForm} />
+        <OutcomesSection
+          form={form}
+          setForm={setForm}
+        />
 
-      <PublishSection form={form} setForm={setForm} />
+        <LessonsSection
+          form={form}
+          setForm={setForm}
+        />
 
-      <div className="flex gap-3 pt-3">
-        <button
-          type="submit"
-          disabled={disabled}
-          className={`rounded-lg px-5 py-2 font-medium text-white transition ${
-            disabled
-              ? "cursor-not-allowed bg-gray-400"
-              : "bg-indigo-600 hover:bg-indigo-700"
-          }`}
-        >
-          {loading ? "Saving..." : selected ? "Update Course" : "Create Course"}
-        </button>
+        <PublishSection
+          form={form}
+          setForm={setForm}
+        />
+      </div>
 
-        {selected && (
+      {/* Sticky Footer */}
+
+      <div className="sticky bottom-0 rounded-2xl border bg-white/95 p-5 shadow-xl backdrop-blur">
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-end">
+          {selected && (
+            <button
+              type="button"
+              onClick={onCancel}
+              className="rounded-xl border px-6 py-3 font-medium transition hover:bg-slate-100"
+            >
+              Cancel
+            </button>
+          )}
+
           <button
-            type="button"
-            onClick={onCancel}
-            className="rounded-lg bg-gray-200 px-5 py-2 hover:bg-gray-300"
+            type="submit"
+            disabled={disabled}
+            className={`rounded-xl px-8 py-3 font-semibold text-white transition ${
+              disabled
+                ? "cursor-not-allowed bg-slate-400"
+                : "bg-indigo-600 hover:bg-indigo-700"
+            }`}
           >
-            Cancel
+            {loading
+              ? "Saving..."
+              : selected
+              ? "Update Course"
+              : "Create Course"}
           </button>
-        )}
+        </div>
       </div>
     </form>
   );

@@ -1,3 +1,12 @@
+import {
+  User,
+  Layers,
+  Clock3,
+  GraduationCap,
+  Globe,
+  BookOpen,
+} from "lucide-react";
+
 export default function DetailsSection({ form, setForm }) {
   const updateField = (field, value) => {
     setForm((prev) => ({
@@ -6,118 +15,237 @@ export default function DetailsSection({ form, setForm }) {
     }));
   };
 
-  return (
-    <section className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-      <div className="mb-5">
-        <h3 className="text-lg font-semibold text-gray-800">Course Details</h3>
+  const Input = ({
+    icon,
+    label,
+    children,
+    required = false,
+  }) => (
+    <div className="space-y-2">
+      <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+        {icon}
+        {label}
+        {required && (
+          <span className="text-red-500">*</span>
+        )}
+      </label>
 
-        <p className="mt-1 text-sm text-gray-500">
-          Configure instructor and course information.
+      {children}
+    </div>
+  );
+
+  return (
+    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+      {/* Header */}
+
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-slate-800">
+          Course Details
+        </h2>
+
+        <p className="mt-1 text-sm text-slate-500">
+          Configure instructor information and course metadata.
         </p>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-2">
-        {/* Faculty */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Instructor <span className="text-red-500">*</span>
-          </label>
+      <div className="grid gap-8 xl:grid-cols-[2fr_1fr]">
 
-          <input
-            type="text"
-            placeholder="John Doe"
-            value={form.faculty}
-            onChange={(e) => updateField("faculty", e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+        {/* Left */}
+
+        <div className="grid gap-6 md:grid-cols-2">
+
+          <Input
+            label="Instructor"
+            icon={<User size={18} />}
             required
-          />
-        </div>
+          >
+            <input
+              value={form.faculty}
+              onChange={(e) =>
+                updateField(
+                  "faculty",
+                  e.target.value
+                )
+              }
+              placeholder="John Doe"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+            />
+          </Input>
 
-        {/* Category */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Category <span className="text-red-500">*</span>
-          </label>
-
-          <input
-            type="text"
-            placeholder="Web Development"
-            value={form.category}
-            onChange={(e) => updateField("category", e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          <Input
+            label="Category"
+            icon={<Layers size={18} />}
             required
-          />
-        </div>
-
-        {/* Difficulty */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Difficulty
-          </label>
-
-          <select
-            value={form.difficulty}
-            onChange={(e) => updateField("difficulty", e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
           >
-            <option value="beginner">🟢 Beginner</option>
-            <option value="intermediate">🟡 Intermediate</option>
-            <option value="advanced">🔴 Advanced</option>
-          </select>
-        </div>
+            <input
+              value={form.category}
+              onChange={(e) =>
+                updateField(
+                  "category",
+                  e.target.value
+                )
+              }
+              placeholder="Web Development"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+            />
+          </Input>
 
-        {/* Language */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Language
-          </label>
-
-          <select
-            value={form.language}
-            onChange={(e) => updateField("language", e.target.value)}
-            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          <Input
+            label="Difficulty"
+            icon={
+              <GraduationCap size={18} />
+            }
           >
-            <option>English</option>
-            <option>Hindi</option>
-            <option>Spanish</option>
-            <option>French</option>
-            <option>German</option>
-            <option>Japanese</option>
-          </select>
+            <select
+              value={form.difficulty}
+              onChange={(e) =>
+                updateField(
+                  "difficulty",
+                  e.target.value
+                )
+              }
+              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+            >
+              <option value="beginner">
+                Beginner
+              </option>
+
+              <option value="intermediate">
+                Intermediate
+              </option>
+
+              <option value="advanced">
+                Advanced
+              </option>
+            </select>
+          </Input>
+
+          <Input
+            label="Language"
+            icon={<Globe size={18} />}
+          >
+            <select
+              value={form.language}
+              onChange={(e) =>
+                updateField(
+                  "language",
+                  e.target.value
+                )
+              }
+              className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+            >
+              <option>English</option>
+              <option>Hindi</option>
+              <option>Spanish</option>
+              <option>French</option>
+              <option>German</option>
+              <option>Japanese</option>
+            </select>
+          </Input>
+
+          <Input
+            label="Duration"
+            icon={<Clock3 size={18} />}
+          >
+            <input
+              value={form.duration}
+              onChange={(e) =>
+                updateField(
+                  "duration",
+                  e.target.value
+                )
+              }
+              placeholder="12 Hours"
+              className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
+            />
+          </Input>
+
+          <Input
+            label="Lessons"
+            icon={<BookOpen size={18} />}
+          >
+            <div className="flex h-[50px] items-center rounded-xl border bg-slate-100 px-4 font-semibold text-slate-700">
+              {form.lessons.length} Lesson
+              {form.lessons.length !== 1 && "s"}
+            </div>
+          </Input>
+
         </div>
 
-        {/* Duration */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Duration
-          </label>
+        {/* Right Summary */}
 
-          <input
-            type="text"
-            placeholder="12 Hours"
-            value={form.duration}
-            onChange={(e) => updateField("duration", e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-          />
+        <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-6 text-white shadow-lg">
 
-          <p className="mt-1 text-xs text-gray-400">
-            Example: 12 Hours, 6 Weeks, 45 Lessons
-          </p>
-        </div>
+          <h3 className="text-lg font-semibold">
+            Course Summary
+          </h3>
 
-        {/* Lessons Count */}
-        <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
-            Lessons
-          </label>
+          <div className="mt-6 space-y-5">
 
-          <div className="flex h-[42px] items-center rounded-lg border border-gray-300 bg-gray-100 px-4 text-gray-700">
-            {form.lessons.length} Lesson
-            {form.lessons.length !== 1 ? "s" : ""}
+            <div>
+              <div className="text-xs uppercase text-indigo-200">
+                Instructor
+              </div>
+
+              <div className="mt-1 font-medium">
+                {form.faculty || "Not specified"}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs uppercase text-indigo-200">
+                Category
+              </div>
+
+              <div className="mt-1 font-medium">
+                {form.category || "-"}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs uppercase text-indigo-200">
+                Difficulty
+              </div>
+
+              <div className="mt-1 capitalize font-medium">
+                {form.difficulty}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs uppercase text-indigo-200">
+                Language
+              </div>
+
+              <div className="mt-1">
+                {form.language}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs uppercase text-indigo-200">
+                Duration
+              </div>
+
+              <div className="mt-1">
+                {form.duration || "-"}
+              </div>
+            </div>
+
+            <div>
+              <div className="text-xs uppercase text-indigo-200">
+                Lessons
+              </div>
+
+              <div className="mt-1">
+                {form.lessons.length}
+              </div>
+            </div>
+
           </div>
-
-          <p className="mt-1 text-xs text-gray-400">Automatically updated.</p>
         </div>
+
       </div>
     </section>
   );

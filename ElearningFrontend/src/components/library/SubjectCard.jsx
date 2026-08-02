@@ -1,34 +1,66 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 
-function SubjectCard({ subject }) {
+export default function SubjectCard({ subject }) {
   return (
     <Link
       to={`/library/interview/${subject._id}`}
-      className="group rounded-2xl border bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+      className="
+        group
+        block
+        overflow-hidden
+        rounded-2xl
+        border
+        border-slate-200
+        bg-white
+        shadow-sm
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:shadow-xl
+      "
     >
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900">
+      {/* Header */}
+
+      <div className="flex items-center gap-4 border-b p-5">
+
+        <div className="rounded-xl bg-indigo-100 p-3">
+
+          <BookOpen
+            size={24}
+            className="text-indigo-600"
+          />
+
+        </div>
+
+        <div className="flex-1">
+
+          <h2 className="text-lg font-semibold text-slate-900">
             {subject.name}
           </h2>
 
-          <p className="mt-2 text-sm text-gray-500">
-            {subject.questionCount || 0} Questions
+          <p className="mt-1 text-sm text-slate-500">
+            {subject.questionCount || 0} Interview Questions
           </p>
+
         </div>
 
-        <ArrowRight
-          size={22}
-          className="text-blue-600 transition group-hover:translate-x-1"
-        />
       </div>
 
-      <div className="mt-5 h-2 overflow-hidden rounded-full bg-gray-200">
-        <div className="h-full w-full bg-blue-600"></div>
+      {/* Footer */}
+
+      <div className="flex items-center justify-between p-5">
+
+        <span className="font-medium text-indigo-600">
+          Start Practice
+        </span>
+
+        <ArrowRight
+          size={20}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
+
       </div>
     </Link>
   );
 }
-
-export default SubjectCard;

@@ -2,11 +2,14 @@ import { useState } from "react";
 import {
   Plus,
   Trash2,
-  PlayCircle,
-  FileText,
   Pencil,
   Save,
   X,
+  PlayCircle,
+  FileText,
+  Video,
+  GripVertical,
+  ChevronRight,
 } from "lucide-react";
 
 const emptyLesson = {
@@ -17,9 +20,10 @@ const emptyLesson = {
 
 export default function LessonsSection({ form, setForm }) {
   const [lesson, setLesson] = useState(emptyLesson);
+
   const [editingIndex, setEditingIndex] = useState(null);
 
-  const resetLesson = () => {
+  const reset = () => {
     setLesson(emptyLesson);
     setEditingIndex(null);
   };
@@ -52,11 +56,12 @@ export default function LessonsSection({ form, setForm }) {
       }));
     }
 
-    resetLesson();
+    reset();
   };
 
   const editLesson = (index) => {
     setLesson(form.lessons[index]);
+
     setEditingIndex(index);
   };
 
@@ -72,95 +77,118 @@ export default function LessonsSection({ form, setForm }) {
     }));
 
     if (editingIndex === index) {
-      resetLesson();
+      reset();
     }
   };
 
   return (
-    <section className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-      <div className="mb-6">
-        <h3 className="text-lg font-semibold">
-          Course Lessons
-        </h3>
+    <section className="rounded-2xl border bg-white p-6 shadow-sm">
 
-        <p className="mt-1 text-sm text-gray-500">
-          Build your curriculum by adding lessons.
-        </p>
+      {/* Header */}
+
+      <div className="mb-8 flex items-center justify-between">
+
+        <div>
+
+          <h2 className="text-xl font-bold">
+            Curriculum Builder
+          </h2>
+
+          <p className="mt-1 text-sm text-slate-500">
+            Organize lessons for your course.
+          </p>
+
+        </div>
+
+        <div className="rounded-xl bg-indigo-50 px-4 py-3">
+
+          <div className="text-xs uppercase text-slate-500">
+            Total Lessons
+          </div>
+
+          <div className="text-2xl font-bold text-indigo-600">
+            {form.lessons.length}
+          </div>
+
+        </div>
+
       </div>
 
-      {/* Lesson Form */}
+      {/* Lesson Editor */}
 
-      <div className="space-y-4 rounded-xl border bg-white p-5">
+      <div className="rounded-2xl border bg-slate-50 p-6">
 
-        <input
-          type="text"
-          placeholder="Lesson Title"
-          value={lesson.title}
-          onChange={(e) =>
-            setLesson({
-              ...lesson,
-              title: e.target.value,
-            })
-          }
-          className="w-full rounded-lg border px-4 py-2"
-        />
+        <div className="grid gap-5">
 
-        <textarea
-          rows={5}
-          placeholder="Lesson Content"
-          value={lesson.contentHtml}
-          onChange={(e) =>
-            setLesson({
-              ...lesson,
-              contentHtml: e.target.value,
-            })
-          }
-          className="w-full rounded-lg border px-4 py-2"
-        />
+          <input
+            placeholder="Lesson title"
+            value={lesson.title}
+            onChange={(e) =>
+              setLesson({
+                ...lesson,
+                title: e.target.value,
+              })
+            }
+            className="rounded-xl border px-4 py-3 outline-none focus:border-indigo-500"
+          />
 
-        <input
-          type="url"
-          placeholder="Video URL"
-          value={lesson.videoUrl}
-          onChange={(e) =>
-            setLesson({
-              ...lesson,
-              videoUrl: e.target.value,
-            })
-          }
-          className="w-full rounded-lg border px-4 py-2"
-        />
+          <textarea
+            rows={5}
+            placeholder="Lesson content..."
+            value={lesson.contentHtml}
+            onChange={(e) =>
+              setLesson({
+                ...lesson,
+                contentHtml: e.target.value,
+              })
+            }
+            className="rounded-xl border px-4 py-3 outline-none focus:border-indigo-500"
+          />
 
-        <div className="flex gap-3">
+          <input
+            placeholder="Video URL"
+            value={lesson.videoUrl}
+            onChange={(e) =>
+              setLesson({
+                ...lesson,
+                videoUrl: e.target.value,
+              })
+            }
+            className="rounded-xl border px-4 py-3 outline-none focus:border-indigo-500"
+          />
 
-          <button
-            type="button"
-            onClick={saveLesson}
-            className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700"
-          >
-            {editingIndex === null ? (
-              <>
-                <Plus size={18} />
-                Add Lesson
-              </>
-            ) : (
-              <>
-                <Save size={18} />
-                Update Lesson
-              </>
-            )}
-          </button>
+          <div className="flex flex-wrap gap-3">
 
-          {editingIndex !== null && (
             <button
               type="button"
-              onClick={resetLesson}
-              className="flex items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 hover:bg-gray-300"
+              onClick={saveLesson}
+              className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 font-medium text-white hover:bg-indigo-700"
             >
-              <X size={18} />
-              Cancel
+              {editingIndex === null ? (
+                <>
+                  <Plus size={18} />
+                  Add Lesson
+                </>
+              ) : (
+                <>
+                  <Save size={18} />
+                  Update Lesson
+                </>
+              )}
             </button>
-          )}
+
+            {editingIndex !== null && (
+              <button
+                type="button"
+                onClick={reset}
+                className="flex items-center gap-2 rounded-xl border px-5 py-3 hover:bg-slate-100"
+              >
+                <X size={18} />
+                Cancel
+              </button>
+            )}
+
+          </div>
 
         </div>
 
@@ -168,60 +196,96 @@ export default function LessonsSection({ form, setForm }) {
 
       {/* Lesson List */}
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-8 space-y-5">
 
         {form.lessons.length === 0 ? (
-          <div className="rounded-lg border border-dashed bg-white p-8 text-center text-gray-500">
-            No lessons added yet.
+
+          <div className="rounded-2xl border border-dashed py-14 text-center">
+
+            <PlayCircle
+              size={55}
+              className="mx-auto text-slate-300"
+            />
+
+            <h3 className="mt-5 text-xl font-semibold">
+              No Lessons Yet
+            </h3>
+
+            <p className="mt-2 text-slate-500">
+              Start building your curriculum.
+            </p>
+
           </div>
+
         ) : (
+
           form.lessons.map((item, index) => (
+
             <div
               key={index}
-              className="rounded-xl border bg-white p-5 shadow-sm"
+              className="rounded-2xl border bg-white shadow-sm transition hover:shadow-md"
             >
-              <div className="flex justify-between">
 
-                <div>
+              <div className="flex flex-col gap-5 p-5 lg:flex-row lg:items-center lg:justify-between">
 
-                  <div className="flex items-center gap-2 font-semibold">
+                <div className="flex gap-4">
 
-                    <PlayCircle
-                      size={20}
-                      className="text-indigo-600"
-                    />
+                  <div className="pt-1">
 
-                    Lesson {item.order}
+                    <GripVertical className="text-slate-400" />
 
                   </div>
 
-                  <div className="mt-2 text-lg">
-                    {item.title}
+                  <div>
+
+                    <div className="flex items-center gap-3">
+
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 font-bold text-indigo-700">
+                        {item.order}
+                      </div>
+
+                      <div>
+
+                        <h3 className="text-lg font-semibold">
+                          {item.title}
+                        </h3>
+
+                        <div className="mt-1 flex flex-wrap gap-4 text-sm text-slate-500">
+
+                          <span className="flex items-center gap-1">
+                            <FileText size={15} />
+                            {item.contentHtml.length} chars
+                          </span>
+
+                          {item.videoUrl && (
+                            <span className="flex items-center gap-1 text-green-600">
+                              <Video size={15} />
+                              Video Added
+                            </span>
+                          )}
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    {item.contentHtml && (
+                      <p className="mt-4 line-clamp-2 text-sm text-slate-500">
+                        {item.contentHtml}
+                      </p>
+                    )}
+
                   </div>
-
-                  {item.contentHtml && (
-                    <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
-                      <FileText size={16} />
-                      {item.contentHtml.slice(0, 100)}
-                      {item.contentHtml.length > 100 &&
-                        "..."}
-                    </div>
-                  )}
-
-                  {item.videoUrl && (
-                    <div className="mt-2 text-sm text-blue-600">
-                      🎥 Video Attached
-                    </div>
-                  )}
 
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-3">
 
                   <button
                     type="button"
                     onClick={() => editLesson(index)}
-                    className="rounded-lg p-2 hover:bg-gray-100"
+                    className="rounded-xl border p-3 hover:bg-slate-100"
                   >
                     <Pencil size={18} />
                   </button>
@@ -229,19 +293,30 @@ export default function LessonsSection({ form, setForm }) {
                   <button
                     type="button"
                     onClick={() => removeLesson(index)}
-                    className="rounded-lg p-2 text-red-500 hover:bg-red-50"
+                    className="rounded-xl border border-red-200 p-3 text-red-600 hover:bg-red-50"
                   >
                     <Trash2 size={18} />
+                  </button>
+
+                  <button
+                    type="button"
+                    className="rounded-xl border p-3 hover:bg-slate-100"
+                  >
+                    <ChevronRight size={18} />
                   </button>
 
                 </div>
 
               </div>
+
             </div>
+
           ))
+
         )}
 
       </div>
+
     </section>
   );
 }
