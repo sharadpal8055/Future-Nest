@@ -45,8 +45,8 @@ export const adminLinks = [
     name: "Admin",
     path: "/admin",
   },
-  {
-    name: "Library",
-    path: "/library",
-  },
+  // {
+  //   name: "Library",
+  //   path: "/library",
+  // },
 ];

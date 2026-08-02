@@ -1,62 +1,70 @@
 import { ArrowRight, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 
-function LibraryCard({ item }) {
+export default function LibraryCard({ item }) {
   const Icon = item.icon;
 
   if (item.available) {
     return (
       <Link
         to={item.path}
-        className="group rounded-2xl border bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+        className="group overflow-hidden rounded-3xl border bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-indigo-200 hover:shadow-xl"
       >
         <div
-          className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl text-white ${item.color}`}
+          className={`flex h-16 w-16 items-center justify-center rounded-2xl ${item.color} text-white`}
         >
-          <Icon size={28} />
+          <Icon size={30} />
         </div>
 
-        <h3 className="text-xl font-semibold text-gray-900">
+        <h2 className="mt-6 text-2xl font-bold">
           {item.title}
-        </h3>
+        </h2>
 
-        <p className="mt-2 text-sm text-gray-500">
+        <p className="mt-3 text-slate-500">
           {item.description}
         </p>
 
-        <div className="mt-6 flex items-center font-medium text-blue-600">
-          Open
+        <div className="mt-8 flex items-center justify-between">
+
+          <span className="font-medium text-indigo-600">
+            Explore
+          </span>
+
           <ArrowRight
-            size={18}
-            className="ml-2 transition group-hover:translate-x-1"
+            className="transition group-hover:translate-x-1"
+            size={20}
           />
+
         </div>
       </Link>
     );
   }
 
   return (
-    <div className="cursor-not-allowed rounded-2xl border bg-gray-50 p-6 opacity-80">
+    <div className="rounded-3xl border bg-slate-50 p-7 opacity-80">
+
       <div
-        className={`mb-5 flex h-14 w-14 items-center justify-center rounded-xl text-white ${item.color}`}
+        className={`flex h-16 w-16 items-center justify-center rounded-2xl ${item.color} text-white`}
       >
-        <Icon size={28} />
+        <Icon size={30} />
       </div>
 
-      <h3 className="text-xl font-semibold">
+      <h2 className="mt-6 text-2xl font-bold">
         {item.title}
-      </h3>
+      </h2>
 
-      <p className="mt-2 text-sm text-gray-500">
+      <p className="mt-3 text-slate-500">
         {item.description}
       </p>
 
-      <div className="mt-6 inline-flex items-center rounded-full bg-gray-200 px-3 py-1 text-sm text-gray-700">
-        <Lock size={14} className="mr-2" />
+      <div className="mt-8 inline-flex items-center gap-2 rounded-full bg-slate-200 px-4 py-2 text-sm font-medium">
+
+        <Lock size={16} />
+
         Coming Soon
+
       </div>
+
     </div>
   );
 }
-
-export default LibraryCard;

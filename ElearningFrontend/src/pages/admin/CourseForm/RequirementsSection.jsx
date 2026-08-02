@@ -1,7 +1,15 @@
 import { useState } from "react";
-import { Plus, Trash2 } from "lucide-react";
+import {
+  Plus,
+  Trash2,
+  CheckCircle2,
+  Sparkles,
+} from "lucide-react";
 
-export default function RequirementsSection({ form, setForm }) {
+export default function RequirementsSection({
+  form,
+  setForm,
+}) {
   const [requirement, setRequirement] = useState("");
 
   const addRequirement = () => {
@@ -16,7 +24,10 @@ export default function RequirementsSection({ form, setForm }) {
 
     setForm((prev) => ({
       ...prev,
-      requirements: [...prev.requirements, value],
+      requirements: [
+        ...prev.requirements,
+        value,
+      ],
     }));
 
     setRequirement("");
@@ -25,76 +36,98 @@ export default function RequirementsSection({ form, setForm }) {
   const removeRequirement = (index) => {
     setForm((prev) => ({
       ...prev,
-      requirements: prev.requirements.filter((_, i) => i !== index),
+      requirements:
+        prev.requirements.filter(
+          (_, i) => i !== index
+        ),
     }));
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      addRequirement();
-    }
-  };
-
   return (
-    <section className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-      <div className="mb-5">
-        <h3 className="text-lg font-semibold text-gray-800">
-          Course Requirements
-        </h3>
+    <section className="rounded-2xl border bg-white p-6 shadow-sm">
 
-        <p className="mt-1 text-sm text-gray-500">
-          Add the skills or knowledge students should have before starting this
-          course.
-        </p>
+      <div className="mb-6 flex items-center gap-3">
+
+        <div className="rounded-xl bg-indigo-100 p-3">
+          <Sparkles className="text-indigo-600" />
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold">
+            Course Requirements
+          </h2>
+
+          <p className="text-sm text-slate-500">
+            Skills students should already know.
+          </p>
+        </div>
+
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row">
+
         <input
-          type="text"
-          placeholder="Example: Basic JavaScript knowledge"
           value={requirement}
-          onChange={(e) => setRequirement(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="flex-1 rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          onChange={(e) =>
+            setRequirement(e.target.value)
+          }
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              addRequirement();
+            }
+          }}
+          placeholder="Example: Basic JavaScript"
+          className="flex-1 rounded-xl border px-4 py-3 outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100"
         />
 
         <button
           type="button"
           onClick={addRequirement}
-          className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700"
+          className="rounded-xl bg-indigo-600 px-6 py-3 text-white hover:bg-indigo-700"
         >
           <Plus size={18} />
-          Add
         </button>
+
       </div>
 
-      {form.requirements.length === 0 ? (
-        <div className="mt-6 rounded-lg border border-dashed border-gray-300 bg-white p-6 text-center text-sm text-gray-500">
-          No requirements added yet.
-        </div>
-      ) : (
-        <div className="mt-6 space-y-3">
-          {form.requirements.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-sm"
-            >
-              <span className="text-sm text-gray-700">
-                {index + 1}. {item}
-              </span>
+      <div className="mt-6 flex flex-wrap gap-3">
 
-              <button
-                type="button"
-                onClick={() => removeRequirement(index)}
-                className="rounded-md p-2 text-red-500 transition hover:bg-red-50"
-              >
-                <Trash2 size={18} />
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
+        {form.requirements.length === 0 && (
+          <div className="w-full rounded-xl border border-dashed py-10 text-center text-slate-500">
+            No requirements added.
+          </div>
+        )}
+
+        {form.requirements.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-3 rounded-full bg-indigo-50 px-4 py-2"
+          >
+            <CheckCircle2
+              size={16}
+              className="text-indigo-600"
+            />
+
+            <span>{item}</span>
+
+            <button
+              type="button"
+              onClick={() =>
+                removeRequirement(index)
+              }
+            >
+              <Trash2
+                size={16}
+                className="text-red-500"
+              />
+            </button>
+
+          </div>
+        ))}
+
+      </div>
+
     </section>
   );
 }
