@@ -2,6 +2,7 @@ import Course from "../models/Course.js";
 import slugify from "slugify";
 import asyncHandler from "../utils/asyncHandler.js";
 import mongoose from "mongoose";
+import uploadToCloudinary from "../utils/uploadToCloudinary.js";
 
 /* ===========================
    Get All Courses
@@ -140,6 +141,35 @@ export const createCourse = asyncHandler(async (req, res) => {
   });
 });
 
+/* ===========================
+   Upload Course Thumbnail
+=========================== */
+export const uploadCourseThumbnail = asyncHandler(
+  async (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "Please upload Course Thumbnail",
+      });
+    }
+
+    const result = await uploadToCloudinary(
+      req.file.buffer,
+      {
+        folder: "future-nest/course-thumbnails",
+      }
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Thumbnail uploaded successfully",
+      data: {
+        url: result.secure_url,
+        publicId: result.public_id,
+      },
+    });
+  }
+);
 /* ===========================
    Update Course
 =========================== */

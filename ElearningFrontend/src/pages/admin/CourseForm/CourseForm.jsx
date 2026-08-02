@@ -19,6 +19,7 @@ const emptyForm = {
   duration: "",
   price: "",
   thumbnailUrl: "",
+  thumbnailPublicId: "",
   requirements: [],
   learningOutcomes: [],
   published: false,
@@ -33,33 +34,50 @@ export default function CourseForm({
 }) {
   const [form, setForm] = useState(emptyForm);
 
-  useEffect(() => {
-    if (selected) {
-      setForm({
-        ...emptyForm,
-        ...selected,
-        price: selected.price ?? "",
-      });
-    } else {
-      setForm(emptyForm);
-    }
-  }, [selected]);
+useEffect(() => {
+  if (selected) {
+    setForm({
+      ...emptyForm,
+      ...selected,
+      price: selected.price ?? "",
+      thumbnailUrl: selected.thumbnailUrl || "",
+      thumbnailPublicId:
+        selected.thumbnailPublicId || "",
+    });
+  } else {
+    setForm(emptyForm);
+  }
+}, [selected]);
 
   async function submit(e) {
     e.preventDefault();
 
-    const payload = {
-      ...form,
-      title: form.title.trim(),
-      subtitle: form.subtitle.trim(),
-      description: form.description.trim(),
-      faculty: form.faculty.trim(),
-      category: form.category.trim(),
-      duration: form.duration.trim(),
-      thumbnailUrl: form.thumbnailUrl.trim(),
-      price: form.price === "" ? 0 : Number(form.price),
-    };
+   const payload = {
+  ...form,
 
+  title: form.title.trim(),
+
+  subtitle: form.subtitle.trim(),
+
+  description: form.description.trim(),
+
+  faculty: form.faculty.trim(),
+
+  category: form.category.trim(),
+
+  duration: form.duration.trim(),
+
+  thumbnailUrl:
+    form.thumbnailUrl.trim(),
+
+  thumbnailPublicId:
+    form.thumbnailPublicId,
+
+  price:
+    form.price === ""
+      ? 0
+      : Number(form.price),
+};
     await onSave(payload);
 
     if (!selected) {
@@ -75,25 +93,19 @@ export default function CourseForm({
     !form.category.trim();
 
   return (
-    <form
-      onSubmit={submit}
-      className="space-y-8"
-    >
+    <form onSubmit={submit} className="space-y-8">
       {/* Header */}
 
       <div className="rounded-3xl border bg-white p-6 shadow-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h1 className="text-3xl font-bold text-slate-800">
-              {selected
-                ? "Edit Course"
-                : "Create New Course"}
+              {selected ? "Edit Course" : "Create New Course"}
             </h1>
 
             <p className="mt-2 text-slate-500">
-              Fill in the course details below.
-              Students will see this information
-              before enrolling.
+              Fill in the course details below. Students will see this
+              information before enrolling.
             </p>
           </div>
 
@@ -103,9 +115,7 @@ export default function CourseForm({
                 Lessons
               </div>
 
-              <div className="text-2xl font-bold">
-                {form.lessons.length}
-              </div>
+              <div className="text-2xl font-bold">{form.lessons.length}</div>
             </div>
 
             <div className="rounded-xl bg-green-50 px-5 py-3">
@@ -134,40 +144,19 @@ export default function CourseForm({
       {/* Sections */}
 
       <div className="space-y-8">
-        <BasicInfoSection
-          form={form}
-          setForm={setForm}
-        />
+        <BasicInfoSection form={form} setForm={setForm} />
 
-        <DetailsSection
-          form={form}
-          setForm={setForm}
-        />
+        <DetailsSection form={form} setForm={setForm} />
 
-        <PricingSection
-          form={form}
-          setForm={setForm}
-        />
+        <PricingSection form={form} setForm={setForm} />
 
-        <RequirementsSection
-          form={form}
-          setForm={setForm}
-        />
+        <RequirementsSection form={form} setForm={setForm} />
 
-        <OutcomesSection
-          form={form}
-          setForm={setForm}
-        />
+        <OutcomesSection form={form} setForm={setForm} />
 
-        <LessonsSection
-          form={form}
-          setForm={setForm}
-        />
+        <LessonsSection form={form} setForm={setForm} />
 
-        <PublishSection
-          form={form}
-          setForm={setForm}
-        />
+        <PublishSection form={form} setForm={setForm} />
       </div>
 
       {/* Sticky Footer */}
@@ -196,8 +185,8 @@ export default function CourseForm({
             {loading
               ? "Saving..."
               : selected
-              ? "Update Course"
-              : "Create Course"}
+                ? "Update Course"
+                : "Create Course"}
           </button>
         </div>
       </div>
