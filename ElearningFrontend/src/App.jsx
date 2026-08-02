@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import RequireAuth from "./routes/RequireAuth";
 import RequireAdmin from "./routes/RequireAdmin";
 //components
+import ScrollToTop from "./components/ScrollToTop";
 // import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "../src/components/profile/Profile";
@@ -58,6 +59,7 @@ function App() {
   }
   return (
     <>
+     <ScrollToTop />
       {/* <Navbar /> */}
       <Navbar />
       <main className="pt-16 min-h-screen">
