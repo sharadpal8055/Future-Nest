@@ -1,101 +1,199 @@
 import { Link } from "react-router-dom";
-import { BookOpen, PlayCircle } from "lucide-react";
+import {
+  BookOpen,
+  PlayCircle,
+  Clock3,
+  GraduationCap,
+  User,
+} from "lucide-react";
 
 export default function ContinueLearning({ enrollment }) {
   if (!enrollment) {
     return (
-      <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-        <h2 className="text-lg font-semibold text-slate-900">
-          Continue Learning
-        </h2>
+      <div className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
 
-        <div className="mt-8 flex flex-col items-center justify-center">
-          <BookOpen
-            size={52}
-            className="text-slate-300"
-          />
+        <div className="flex flex-col items-center text-center">
 
-          <h3 className="mt-4 text-lg font-medium text-slate-700">
-            No active course
-          </h3>
+          <div className="flex h-24 w-24 items-center justify-center rounded-full bg-indigo-50">
 
-          <p className="mt-2 text-sm text-slate-500">
-            Enroll in a course to begin your learning journey.
-          </p>
-
-          <Link
-            to="/courses"
-            className="mt-6 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700"
-          >
-            Browse Courses
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-
-      <div className="flex flex-col gap-6 lg:flex-row">
-
-        <img
-          src={enrollment.courseId.thumbnailUrl}
-          alt={enrollment.courseId.title}
-          className="h-44 w-full rounded-xl object-cover lg:w-72"
-        />
-
-        <div className="flex flex-1 flex-col">
-
-          <span className="text-sm font-medium text-indigo-600">
-            Continue Learning
-          </span>
-
-          <h2 className="mt-1 text-2xl font-semibold text-slate-900">
-            {enrollment.courseId.title}
-          </h2>
-
-          <p className="mt-2 text-sm text-slate-500">
-            {enrollment.completedLessons} of{" "}
-            {enrollment.totalLessons} lessons completed
-          </p>
-
-          <div className="mt-5 h-2 overflow-hidden rounded-full bg-slate-200">
-
-            <div
-              className="h-full rounded-full bg-indigo-600 transition-all"
-              style={{
-                width: `${enrollment.progressPercent}%`,
-              }}
+            <BookOpen
+              size={44}
+              className="text-indigo-600"
             />
 
           </div>
 
-          <div className="mt-2 flex justify-between text-sm text-slate-500">
+          <h2 className="mt-6 text-2xl font-bold text-slate-900">
+            Continue Learning
+          </h2>
 
-            <span>
-              {enrollment.progressPercent}% Completed
-            </span>
-
-            <span>
-              {enrollment.completedLessons}/
-              {enrollment.totalLessons}
-            </span>
-
-          </div>
+          <p className="mt-3 max-w-md text-slate-500">
+            You haven't enrolled in any course yet.
+            Start learning today and build your skills.
+          </p>
 
           <Link
-            to={`/my-learning/${enrollment._id}`}
-            className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-white transition hover:bg-indigo-700"
+            to="/courses"
+            className="mt-8 rounded-xl bg-indigo-600 px-6 py-3 font-medium text-white transition hover:bg-indigo-700"
           >
-            <PlayCircle size={18} />
-            Resume Learning
+            Browse Courses
           </Link>
 
         </div>
 
       </div>
+    );
+  }
 
-    </div>
+  const course = enrollment.courseId;
+
+  return (
+    <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+
+      <div className="grid lg:grid-cols-[340px_1fr]">
+
+        {/* Thumbnail */}
+
+        <div className="relative">
+
+          {course.thumbnailUrl ? (
+            <img
+              src={course.thumbnailUrl}
+              alt={course.title}
+              className="h-full min-h-[260px] w-full object-cover"
+            />
+          ) : (
+            <div className="flex h-full min-h-[260px] items-center justify-center bg-gradient-to-br from-indigo-600 to-violet-600 text-7xl font-bold text-white">
+              {course.title.charAt(0)}
+            </div>
+          )}
+
+          <div className="absolute left-5 top-5 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-indigo-700 backdrop-blur">
+            Continue Learning
+          </div>
+
+        </div>
+
+        {/* Right */}
+
+        <div className="flex flex-col p-8">
+
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+            {course.title}
+          </h2>
+
+          {course.subtitle && (
+            <p className="mt-3 text-slate-500">
+              {course.subtitle}
+            </p>
+          )}
+
+          {/* Metadata */}
+
+          <div className="mt-6 flex flex-wrap gap-4 text-sm text-slate-600">
+
+            {course.faculty && (
+              <div className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+                <User size={16} />
+                {course.faculty}
+              </div>
+            )}
+
+            <div className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+              <BookOpen size={16} />
+              {enrollment.totalLessons} Lessons
+            </div>
+
+            {course.duration && (
+              <div className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+                <Clock3 size={16} />
+                {course.duration}
+              </div>
+            )}
+
+            {course.difficulty && (
+              <div className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2">
+                <GraduationCap size={16} />
+                {course.difficulty}
+              </div>
+            )}
+
+          </div>
+
+          {/* Progress */}
+
+          <div className="mt-8">
+
+            <div className="mb-3 flex items-center justify-between">
+
+              <div>
+
+                <h3 className="font-semibold text-slate-800">
+                  Your Progress
+                </h3>
+
+                <p className="text-sm text-slate-500">
+                  {enrollment.completedLessons} of{" "}
+                  {enrollment.totalLessons} lessons completed
+                </p>
+
+              </div>
+
+              <div className="text-right">
+
+                <div className="text-3xl font-bold text-indigo-600">
+                  {enrollment.progressPercent}%
+                </div>
+
+                <div className="text-xs uppercase tracking-wider text-slate-400">
+                  Completed
+                </div>
+
+              </div>
+
+            </div>
+
+            <div className="h-3 overflow-hidden rounded-full bg-slate-200">
+
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 transition-all duration-700"
+                style={{
+                  width: `${enrollment.progressPercent}%`,
+                }}
+              />
+
+            </div>
+
+          </div>
+
+          {/* Footer */}
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+
+            <div className="rounded-xl bg-indigo-50 px-5 py-3">
+
+              <p className="text-sm font-medium text-indigo-700">
+                Keep going! You're making great progress.
+              </p>
+
+            </div>
+
+            <Link
+              to={`/my-learning/${enrollment._id}`}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-7 py-3 font-semibold text-white transition hover:bg-indigo-700"
+            >
+              <PlayCircle size={18} />
+
+              Resume Course
+
+            </Link>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
   );
 }

@@ -2,13 +2,7 @@ import { useAuth } from "../../auth/useAuth";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../api/axios";
-import {
-  BookOpen,
-  GraduationCap,
-  Award,
- 
-  ShieldCheck,
-} from "lucide-react";
+import { BookOpen, GraduationCap, Award, ShieldCheck } from "lucide-react";
 import DashboardHeader from "../../components/dashboard/DashboardHeader";
 import StatCard from "../../components/dashboard/StatCard";
 import ContinueLearning from "../../components/dashboard/ContinueLearning";
@@ -22,82 +16,103 @@ export default function Dashboard() {
     enrolled: 0,
     certificates: 0,
   });
-const [continueLearning, setContinueLearning] = useState(null);
+  const [continueLearning, setContinueLearning] = useState(null);
 
-const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     loadDashboard();
   }, []);
 
- async function loadDashboard() {
-  try {
-    const [enrollmentsRes, certificatesRes] = await Promise.all([
-      api.get("/enrollments/me"),
-      api.get("/certificates/me"),
-    ]);
+  async function loadDashboard() {
+    try {
+      setLoading(true);
+      const [enrollmentsRes, certificatesRes] = await Promise.all([
+        api.get("/enrollments/me"),
+        api.get("/certificates/me"),
+      ]);
 
-    const enrollments = enrollmentsRes.data.data;
-    const certificates = certificatesRes.data.data;
+      const enrollments = enrollmentsRes.data.data;
+      const certificates = certificatesRes.data.data;
 
-    setStats({
-      enrolled: enrollments.length,
-      certificates: certificates.length,
-    });
+      setStats({
+        enrolled: enrollments.length,
+        certificates: certificates.length,
+      });
 
-    if (enrollments.length > 0) {
-      const activeEnrollment = [...enrollments]
-  .filter(e => e.progressPercent < 100)
-  .sort(
-    (a, b) =>
-      new Date(b.updatedAt) - new Date(a.updatedAt)
-  )[0];
+      if (enrollments.length > 0) {
+        const activeEnrollment = [...enrollments]
+          .filter((e) => e.progressPercent < 100)
+          .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0];
 
-setContinueLearning(activeEnrollment || enrollments[0]);
+        setContinueLearning(activeEnrollment || enrollments[0]);
+      }
+
+      const recent = [];
+
+      certificates.forEach((certificate) => {
+        recent.push({
+          type: "certificate",
+          title: `Earned certificate for ${certificate.course.title}`,
+          date: certificate.completionDate,
+        });
+      });
+
+      enrollments.forEach((enrollment) => {
+        recent.push({
+          type: "course",
+          title: `Enrolled in ${enrollment.courseId.title}`,
+          time: new Date(enrollment.createdAt).toLocaleDateString(),
+        });
+      });
+      recent.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      setActivities(
+        recent.slice(0, 5).map((item) => ({
+          ...item,
+          time: new Date(item.date).toLocaleDateString(),
+        })),
+      );
+    } catch (err) {
+      console.error(err);
+
+      setStats({
+        enrolled: 0,
+        certificates: 0,
+      });
+
+      setContinueLearning(null);
+      setActivities([]);
+    } finally {
+      setLoading(false);
     }
-
-    const recent = [];
-
-    certificates.forEach((certificate) => {
-      recent.push({
-        type: "certificate",
-        title: `Earned certificate for ${certificate.course.title}`,
-        time: new Date(
-          certificate.completionDate
-        ).toLocaleDateString(),
-      });
-    });
-
-    enrollments.forEach((enrollment) => {
-      recent.push({
-        type: "course",
-        title: `Enrolled in ${enrollment.courseId.title}`,
-        time: new Date(
-          enrollment.createdAt
-        ).toLocaleDateString(),
-      });
-    });
-recent.sort(
-  (a,b)=>new Date(b.time)-new Date(a.time)
-);
-
-setActivities(
-  recent.slice(0,5).map(item=>({
-    ...item,
-    time:new Date(item.time).toLocaleDateString()
-  }))
-);
-  } catch (err) {
-    console.error(err);
-
-    setStats({
-      enrolled: 0,
-      certificates: 0,
-    });
-
-    setContinueLearning(null);
-    setActivities([]);
   }
-}
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-6">
+        <div className="mx-auto max-w-7xl space-y-6">
+          <div className="h-60 animate-pulse rounded-3xl bg-slate-200" />
+
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="h-40 animate-pulse rounded-3xl bg-white"
+              />
+            ))}
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="lg:col-span-2 h-[340px] animate-pulse rounded-3xl bg-white" />
+
+            <div className="h-[340px] animate-pulse rounded-3xl bg-white" />
+          </div>
+
+          <div className="h-[250px] animate-pulse rounded-3xl bg-white" />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-gray-100 py-8 px-4">
       <div className="mx-auto max-w-7xl space-y-8">
@@ -123,7 +138,11 @@ setActivities(
             </Link>
           </div>
         </div> */}
-        <DashboardHeader user={user} />
+        <DashboardHeader
+          user={user}
+          enrolled={stats.enrolled}
+          certificates={stats.certificates}
+        />
         {/* Stats */}
 
         {/* <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -190,8 +209,6 @@ setActivities(
             subtitle="Everything looks good"
             color="text-green-600"
           />
-          
-   
         </div>
         {/* Quick Actions */}
 
@@ -234,22 +251,15 @@ setActivities(
             )}
           </div>
         </div> */}
-<div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <ContinueLearning enrollment={continueLearning} />
+          </div>
 
-  <div className="lg:col-span-2">
-    <ContinueLearning
-      enrollment={continueLearning}
-    />
-  </div>
+          <RecentActivity activities={activities} />
+        </div>
 
-  <RecentActivity
-    activities={activities}
-  />
-
-</div>
-
-<QuickActions user={user} />
-
+        <QuickActions user={user} />
       </div>
     </div>
   );
@@ -258,5 +268,3 @@ setActivities(
 /* ================================================= */
 
 /* ================================================= */
-
-
