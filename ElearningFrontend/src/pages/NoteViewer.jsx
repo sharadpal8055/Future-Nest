@@ -31,10 +31,10 @@ export default function NoteViewer() {
 
   const [page, setPage] = useState(1);
 
-  const [scale, setScale] = useState(1.2);
+  const [scale, setScale] = useState(1);
 
   const [loading, setLoading] = useState(true);
-const [pageWidth, setPageWidth] = useState(800);
+  const [pageWidth, setPageWidth] = useState(800);
   async function load() {
     try {
       setLoading(true);
@@ -72,23 +72,29 @@ const [pageWidth, setPageWidth] = useState(800);
 
     return () => window.removeEventListener("keydown", handleKey);
   }, [pages]);
-useEffect(() => {
-  function updateWidth() {
-    if (window.innerWidth < 640) {
-      setPageWidth(window.innerWidth - 24);
-    } else if (window.innerWidth < 1024) {
-      setPageWidth(window.innerWidth - 80);
-    } else {
-      setPageWidth(900);
+  useEffect(() => {
+    function updateWidth() {
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        setPageWidth(width - 24);
+      } else if (width < 768) {
+        setPageWidth(width - 40);
+      } else if (width < 1024) {
+        setPageWidth(width - 80);
+      } else if (width < 1400) {
+        setPageWidth(850);
+      } else {
+        setPageWidth(950);
+      }
     }
-  }
 
-  updateWidth();
+    updateWidth();
 
-  window.addEventListener("resize", updateWidth);
+    window.addEventListener("resize", updateWidth);
 
-  return () => window.removeEventListener("resize", updateWidth);
-}, []);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -103,8 +109,8 @@ useEffect(() => {
     <div className="min-h-screen bg-slate-100">
       {/* Toolbar */}
 
-      <div className="sticky top-16 z-20 border-b bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="sticky top-16 z-30 border-b bg-white/95 backdrop-blur shadow-sm">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-3 py-3 sm:px-5 lg:flex-row lg:items-center lg:justify-between">
           {/* Left */}
 
           <div className="flex items-center gap-4">
@@ -116,7 +122,9 @@ useEffect(() => {
             </button>
 
             <div>
-              <h1 className="max-w-md truncate text-lg font-bold lg:text-xl">{note.title}</h1>
+              <h1 className="max-w-[220px] truncate text-base font-bold sm:max-w-md sm:text-lg lg:text-xl">
+                {note.title}
+              </h1>
 
               <p className="text-sm text-slate-500">
                 {note.subject}
@@ -132,7 +140,9 @@ useEffect(() => {
             {/* Zoom Out */}
 
             <button
-              onClick={() => setScale((s) => Math.max(0.6, s - 0.2))}
+              onClick={() =>
+                setScale((s) => Math.max(0.8, Number((s - 0.2).toFixed(1))))
+              }
               className="rounded-lg border p-2 hover:bg-slate-100"
             >
               <ZoomOut size={18} />
@@ -145,7 +155,9 @@ useEffect(() => {
             {/* Zoom In */}
 
             <button
-              onClick={() => setScale((s) => Math.min(3, s + 0.2))}
+              onClick={() =>
+                setScale((s) => Math.min(2.5, Number((s + 0.2).toFixed(1))))
+              }
               className="rounded-lg border p-2 hover:bg-slate-100"
             >
               <ZoomIn size={18} />
@@ -191,7 +203,7 @@ useEffect(() => {
 
       {/* PDF */}
 
-     <div className="flex justify-center overflow-auto bg-slate-200 p-3 md:p-8">
+      <div className="flex justify-center overflow-x-auto overflow-y-auto bg-slate-200 p-2 sm:p-4 lg:p-8">
         <Document
           file={note.pdf.url}
           loading={
@@ -209,11 +221,12 @@ useEffect(() => {
           }}
         >
           <Page
-  pageNumber={page}
-  width={pageWidth * scale}
-  renderTextLayer
-  renderAnnotationLayer
-/>
+            pageNumber={page}
+            width={pageWidth}
+            scale={scale}
+            renderTextLayer
+            renderAnnotationLayer
+          />
         </Document>
       </div>
     </div>
