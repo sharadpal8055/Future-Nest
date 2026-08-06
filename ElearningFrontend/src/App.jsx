@@ -39,6 +39,8 @@ import { checkBackend } from "./services/health.service";
 import Navbar from "./components/navbar/Navbar";
 import NoteViewer from "./pages/NoteViewer";
 import Notes from "./pages/library/Notes";
+import FunCorner from "./components/Fun/FunCorner";
+import MovieRecommender from "./components/Fun/MovieRecommender";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
@@ -139,6 +141,14 @@ function App() {
           <Route path="/my-learning/:enrollmentId" element={<CoursePlayer />} />
 
           <Route path="/certificates" element={<Certificates />} />
+
+<Route path="/fun" element={<FunCorner/>} />
+
+<Route
+  path="/fun/movie"
+  element={<MovieRecommender/>}
+/>
+
           {/* ===== Admin Routes ===== */}
           <Route
             path="/admin"

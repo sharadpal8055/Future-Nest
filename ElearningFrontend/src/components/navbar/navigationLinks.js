@@ -27,6 +27,10 @@ export const userLinks = [
     name: "Library",
     path: "/library",
   },
+  {
+    name: "Fun Corner",
+    path: "/fun",
+  },
   // {
   //   name: "Certificates",
   //   path: "/certificates",
