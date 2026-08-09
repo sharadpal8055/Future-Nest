@@ -61,7 +61,6 @@ export default function ToolCard({
             className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-indigo-600"
           >
             Open Tool
-
             <ArrowRight
               size={18}
               className="transition-transform duration-300 group-hover:translate-x-1"
@@ -70,7 +69,6 @@ export default function ToolCard({
         ) : (
           <div className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-500">
             <Lock size={16} />
-
             Coming Soon
           </div>
         )}

@@ -7,7 +7,7 @@ import {
   BarChart3,
 } from "lucide-react";
 
-import ToolCard from "../../components/fun/ToolCard";
+import ToolCard from "./ToolCard";
 
 export default function FunCorner() {
   return (
