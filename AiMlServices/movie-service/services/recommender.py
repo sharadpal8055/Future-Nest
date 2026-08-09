@@ -1,25 +1,45 @@
 import pickle
 from pathlib import Path
 
-# Base directory
+
+# ============================================================
+# MODEL PATHS
+# ============================================================
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
 
-# Load ML files only once when server starts
-movie = pickle.load(open(BASE_DIR / "models" / "movie.pkl", "rb"))
-similarity = pickle.load(open(BASE_DIR / "models" / "similarity.pkl", "rb"))
 
+# ============================================================
+# LOAD MODELS
+# ============================================================
+
+with open(MODEL_DIR / "movie.pkl", "rb") as f:
+    movie = pickle.load(f)
+
+with open(MODEL_DIR / "similarity.pkl", "rb") as f:
+    similarity = pickle.load(f)
+
+
+# ============================================================
+# GET ALL MOVIES
+# ============================================================
 
 def get_all_movies():
     """
     Return list of all movie titles.
-    Used for autocomplete/search.
+    Used for search/autocomplete.
     """
     return movie["title"].tolist()
 
 
+# ============================================================
+# RECOMMEND MOVIES
+# ============================================================
+
 def recommend(movie_name: str):
     """
-    Returns top 5 recommended movie names.
+    Return top 5 movies similar to the selected movie.
     """
 
     if movie_name not in movie["title"].values:
@@ -39,7 +59,7 @@ def recommend(movie_name: str):
 
     for item in movies_list:
         recommendations.append({
-            "title": movie.iloc[item[0]].title
+            "title": movie.iloc[item[0]]["title"]
         })
 
     return recommendations
