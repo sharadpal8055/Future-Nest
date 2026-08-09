@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 import ActionCard from "./ActionCard";
-
+import { Clapperboard } from "lucide-react";
 export default function QuickActions({ user }) {
   return (
     <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -74,7 +74,12 @@ export default function QuickActions({ user }) {
           color="from-emerald-500 to-green-600"
           to="/library"
         />
-
+<ActionCard
+  icon={<Clapperboard size={20} />}
+  title="Fun Corner"
+  description="AI tools & entertainment"
+  to="/fun"
+/>
         {user?.role === "admin" && (
           <ActionCard
             icon={<ShieldCheck size={22} />}
