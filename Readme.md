@@ -7,6 +7,8 @@ Built using the **MERN Stack (MongoDB, Express.js, React, Node.js)** with **Stri
 🌐 **Live Demo:** https://future-nest-jet.vercel.app
 
 🚀 **Backend API:** https://elearningbackend-dhi6.onrender.com
+**Movie Recommendation API:**  
+https://futurenest-movie-api.onrender.com
 
 ---
 
@@ -85,6 +87,36 @@ Built using the **MERN Stack (MongoDB, Express.js, React, Node.js)** with **Stri
 
 ---
 
+# 🎯 Fun Corner
+
+FutureNest includes a dedicated **Fun Corner** where students can explore interactive and AI-powered utilities outside the core learning modules.
+
+### Current Fun Corner Feature
+
+🎬 **Movie Recommendation System**
+
+Students can select a movie and receive similar movie recommendations using a Machine Learning recommendation model.
+
+### Workflow
+
+````text
+Student
+   ↓
+Fun Corner
+   ↓
+Movie Recommendation
+   ↓
+Select Favourite Movie
+   ↓
+FastAPI Movie API
+   ↓
+ML Recommendation Engine
+   ↓
+similarity.pkl
+   ↓
+Top 5 Similar Movies
+   ↓
+React UI
 ## 💼 Interview Preparation
 
 - Subject-wise Interview Questions
@@ -221,7 +253,7 @@ E-Learning-Platform/
 │   └── .env
 │
 └── README.md
-```
+````
 
 ---
 
@@ -331,13 +363,13 @@ http://localhost:5173
 
 # 🌐 Deployment
 
-| Service | Platform |
-|----------|----------|
-| Frontend | Vercel |
-| Backend | Render |
-| Database | MongoDB Atlas |
-| File Storage | Cloudinary |
-| Payments | Stripe |
+| Service      | Platform      |
+| ------------ | ------------- |
+| Frontend     | Vercel        |
+| Backend      | Render        |
+| Database     | MongoDB Atlas |
+| File Storage | Cloudinary    |
+| Payments     | Stripe        |
 
 ---
 
