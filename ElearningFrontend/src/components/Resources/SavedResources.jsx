@@ -37,15 +37,14 @@ function SavedResources() {
       setLoading(true);
       setError("");
 
-      const resources = await getResources();
+      const data = await getResources();
 
-      setResources(resources || []);
+      setResources(data || []);
     } catch (error) {
       console.error("Failed to load resources:", error);
 
       setError(
-        error.response?.data?.message ||
-          "Failed to load saved resources."
+        error.response?.data?.message || "Failed to load saved resources.",
       );
     } finally {
       setLoading(false);
@@ -96,7 +95,6 @@ function SavedResources() {
 
       setResources((prev) => [resource, ...prev]);
 
-      // Reset form
       setFormData({
         title: "",
         url: "",
@@ -106,10 +104,7 @@ function SavedResources() {
     } catch (error) {
       console.error("Failed to create resource:", error);
 
-      setError(
-        error.response?.data?.message ||
-          "Failed to save resource."
-      );
+      setError(error.response?.data?.message || "Failed to save resource.");
     } finally {
       setSubmitting(false);
     }
@@ -121,7 +116,7 @@ function SavedResources() {
 
   async function handleDelete(id) {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this resource?"
+      "Are you sure you want to delete this resource?",
     );
 
     if (!confirmed) return;
@@ -131,16 +126,11 @@ function SavedResources() {
 
       await deleteResource(id);
 
-      setResources((prev) =>
-        prev.filter((resource) => resource._id !== id)
-      );
+      setResources((prev) => prev.filter((resource) => resource._id !== id));
     } catch (error) {
       console.error("Failed to delete resource:", error);
 
-      setError(
-        error.response?.data?.message ||
-          "Failed to delete resource."
-      );
+      setError(error.response?.data?.message || "Failed to delete resource.");
     }
   }
 
@@ -149,26 +139,24 @@ function SavedResources() {
   // ==========================================
 
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <section className="w-full rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5 md:p-6">
+      {/* ======================================
+          Header
+      ====================================== */}
 
-      {/* Header */}
-
-      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
+      <div className="mb-5 flex flex-col gap-4 sm:mb-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <Bookmark
-              size={22}
-              className="text-indigo-600"
-            />
+            <Bookmark size={21} className="shrink-0 text-indigo-600" />
 
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
               Saved Resources
             </h2>
           </div>
 
-          <p className="mt-1 text-sm text-gray-500">
-            Save useful websites, documentation, tutorials and
-            other resources for later.
+          <p className="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+            Save useful websites, documentation, tutorials and other resources
+            for later.
           </p>
         </div>
 
@@ -178,7 +166,7 @@ function SavedResources() {
             setShowForm((prev) => !prev);
             setError("");
           }}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700"
+          className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 active:scale-[0.98] sm:w-auto"
         >
           {showForm ? (
             <>
@@ -194,26 +182,29 @@ function SavedResources() {
         </button>
       </div>
 
-      {/* Error */}
+      {/* ======================================
+          Error
+      ====================================== */}
 
       {error && (
-        <div className="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+        <div className="mb-5 rounded-lg border border-red-200 bg-red-50 px-3 py-3 text-sm leading-5 text-red-600 sm:px-4">
           {error}
         </div>
       )}
 
-      {/* Add Resource Form */}
+      {/* ======================================
+          Add Resource Form
+      ====================================== */}
 
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="mb-6 rounded-xl border border-gray-200 bg-gray-50 p-5"
+          className="mb-6 rounded-xl border border-gray-200 bg-gray-50 p-4 sm:p-5"
         >
           <div className="grid gap-4">
-
             {/* Title */}
 
-            <div>
+            <div className="min-w-0">
               <label
                 htmlFor="resource-title"
                 className="mb-1.5 block text-sm font-medium text-gray-700"
@@ -229,13 +220,14 @@ function SavedResources() {
                 onChange={handleChange}
                 placeholder="e.g. React Documentation"
                 disabled={submitting}
-                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                autoComplete="off"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 disabled:cursor-not-allowed disabled:bg-gray-100 sm:px-4"
               />
             </div>
 
             {/* URL */}
 
-            <div>
+            <div className="min-w-0">
               <label
                 htmlFor="resource-url"
                 className="mb-1.5 block text-sm font-medium text-gray-700"
@@ -251,24 +243,35 @@ function SavedResources() {
                 onChange={handleChange}
                 placeholder="https://example.com"
                 disabled={submitting}
-                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                autoComplete="url"
+                inputMode="url"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-sm outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 disabled:cursor-not-allowed disabled:bg-gray-100 sm:px-4"
               />
             </div>
 
             {/* Submit */}
 
-            <div className="flex justify-end">
+            <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowForm(false);
+                  setError("");
+                }}
+                disabled={submitting}
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Cancel
+              </button>
+
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitting ? (
                   <>
-                    <Loader2
-                      size={17}
-                      className="animate-spin"
-                    />
+                    <Loader2 size={17} className="animate-spin" />
                     Saving...
                   </>
                 ) : (
@@ -283,81 +286,90 @@ function SavedResources() {
         </form>
       )}
 
-      {/* Loading */}
+      {/* ======================================
+          Loading
+      ====================================== */}
 
       {loading ? (
         <div className="flex min-h-[180px] items-center justify-center">
-          <Loader2
-            size={28}
-            className="animate-spin text-indigo-600"
-          />
+          <Loader2 size={28} className="animate-spin text-indigo-600" />
         </div>
       ) : resources.length === 0 ? (
+        /* ====================================
+           Empty State
+        ==================================== */
 
-        /* Empty State */
-
-        <div className="flex min-h-[220px] flex-col items-center justify-center rounded-xl border border-dashed border-gray-300 bg-gray-50 px-6 text-center">
-
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100">
-            <LinkIcon
-              size={22}
-              className="text-indigo-600"
-            />
+        <div className="flex min-h-[220px] flex-col items-center justify-center rounded-xl border border-dashed border-gray-300 bg-gray-50 px-4 py-8 text-center sm:px-6">
+          <div className="mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-indigo-100">
+            <LinkIcon size={22} className="text-indigo-600" />
           </div>
 
           <h3 className="text-base font-semibold text-gray-900">
             No saved resources
           </h3>
 
-          <p className="mt-1 max-w-md text-sm text-gray-500">
-            Save useful websites, tutorials, documentation,
-            articles or tools that you want to access later.
+          <p className="mt-1 max-w-md text-sm leading-5 text-gray-500">
+            Save useful websites, tutorials, documentation, articles or tools
+            that you want to access later.
           </p>
 
           <button
             type="button"
-            onClick={() => setShowForm(true)}
-            className="mt-4 text-sm font-medium text-indigo-600 hover:text-indigo-700"
+            onClick={() => {
+              setShowForm(true);
+              setError("");
+            }}
+            className="mt-4 rounded-lg px-3 py-2 text-sm font-medium text-indigo-600 transition hover:bg-indigo-50 hover:text-indigo-700"
           >
             + Save your first resource
           </button>
         </div>
       ) : (
-
-        /* Resource List */
+        /* ====================================
+           Resource List
+        ==================================== */
 
         <div className="grid gap-3">
           {resources.map((resource) => (
             <div
               key={resource._id}
-              className="group flex items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition hover:border-indigo-200 hover:shadow-sm"
+              className="group flex w-full min-w-0 flex-col gap-3 rounded-xl border border-gray-200 bg-white p-3.5 transition hover:border-indigo-200 hover:shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:p-4"
             >
-              {/* Resource Info */}
+              {/* ==================================
+                  Resource Info
+              ================================== */}
 
-              <div className="flex min-w-0 items-center gap-3">
+              <div className="flex min-w-0 flex-1 items-start gap-3">
+                {/* Icon */}
 
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-50">
-                  <LinkIcon
-                    size={19}
-                    className="text-indigo-600"
-                  />
+                  <LinkIcon size={19} className="text-indigo-600" />
                 </div>
 
-                <div className="min-w-0">
-                  <h3 className="truncate font-medium text-gray-900">
+                {/* Text */}
+
+                <div className="min-w-0 flex-1">
+                  <h3
+                    className="break-words text-sm font-medium text-gray-900 sm:text-base"
+                    title={resource.title}
+                  >
                     {resource.title}
                   </h3>
 
-                  <p className="mt-0.5 truncate text-xs text-gray-500">
+                  <p
+                    className="mt-0.5 break-all text-xs leading-5 text-gray-500"
+                    title={resource.url}
+                  >
                     {resource.url}
                   </p>
                 </div>
               </div>
 
-              {/* Actions */}
+              {/* ==================================
+                  Actions
+              ================================== */}
 
-              <div className="flex shrink-0 items-center gap-1">
-
+              <div className="flex w-full shrink-0 items-center gap-2 border-t border-gray-100 pt-2 sm:w-auto sm:border-0 sm:pt-0">
                 {/* Open */}
 
                 <a
@@ -365,24 +377,27 @@ function SavedResources() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Open resource"
-                  className="rounded-lg p-2 text-gray-500 transition hover:bg-indigo-50 hover:text-indigo-600"
+                  aria-label={`Open ${resource.title}`}
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium text-gray-600 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 sm:flex-none sm:border-0 sm:p-2"
                 >
-                  <ExternalLink size={18} />
+                  <ExternalLink size={17} />
+
+                  <span className="sm:hidden">Open</span>
                 </a>
 
                 {/* Delete */}
 
                 <button
                   type="button"
-                  onClick={() =>
-                    handleDelete(resource._id)
-                  }
+                  onClick={() => handleDelete(resource._id)}
                   title="Delete resource"
-                  className="rounded-lg p-2 text-gray-400 transition hover:bg-red-50 hover:text-red-600"
+                  aria-label={`Delete ${resource.title}`}
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm font-medium text-gray-500 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600 sm:flex-none sm:border-0 sm:p-2"
                 >
-                  <Trash2 size={18} />
-                </button>
+                  <Trash2 size={17} />
 
+                  <span className="sm:hidden">Delete</span>
+                </button>
               </div>
             </div>
           ))}
