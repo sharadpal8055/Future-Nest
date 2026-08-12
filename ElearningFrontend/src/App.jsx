@@ -41,6 +41,7 @@ import NoteViewer from "./pages/NoteViewer";
 import Notes from "./pages/library/Notes";
 import FunCorner from "./components/Fun/FunCorner";
 import MovieRecommender from "./components/Fun/MovieRecommender";
+import SavedResources from "./components/Resources/SavedResources";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
@@ -148,6 +149,12 @@ function App() {
   path="/fun/movie"
   element={<MovieRecommender/>}
 />
+<Route
+  path="/mylinks"
+  element={<SavedResources/>}
+/>
+
+
 
           {/* ===== Admin Routes ===== */}
           <Route
