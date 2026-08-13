@@ -70,7 +70,8 @@ RESPONSES = {
 DEFAULT_RESPONSE = (
     "I'm FutureNestMate 🤖.\n\n"
     "I can help you with courses, learning resources, "
-    "interview preparation, and technical issues."
+    "interview preparation, and technical issues."\
+    "for any further query mail to sp6430161@gmail.com"
 )
 
 
