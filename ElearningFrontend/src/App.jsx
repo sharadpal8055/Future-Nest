@@ -42,6 +42,7 @@ import Notes from "./pages/library/Notes";
 import FunCorner from "./components/Fun/FunCorner";
 import MovieRecommender from "./components/Fun/MovieRecommender";
 import SavedResources from "./components/Resources/SavedResources";
+import Chatbot from "./components/Chat/Chatbot";
 
 function App() {
   const [serverReady, setServerReady] = useState(false);
@@ -74,6 +75,7 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+     
 
           {/* ===== User Protected Routes ===== */}
           <Route
@@ -185,6 +187,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      
+         <Chatbot/>
       <Footer />
     </>
   );
