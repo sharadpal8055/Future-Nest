@@ -7,8 +7,12 @@ Built using the **MERN Stack (MongoDB, Express.js, React, Node.js)** with **Stri
 🌐 **Live Demo:** https://future-nest-jet.vercel.app
 
 🚀 **Backend API:** https://elearningbackend-dhi6.onrender.com
+
+
 **Movie Recommendation API:**  
 https://futurenest-movie-api.onrender.com
+**Chatbot API:**  
+https://future-nest-chatbot.onrender.com/
 
 ---
 
