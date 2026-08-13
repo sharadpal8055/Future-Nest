@@ -1,1 +1,18 @@
 @import "tailwindcss";
+/* =========================================
+   FutureNestMate - Dialogflow Messenger
+========================================= */
+
+df-messenger {
+  --df-messenger-bot-message: #f3f4f6;
+  --df-messenger-button-titlebar-color: #6d28d9;
+  --df-messenger-button-titlebar-font-color: #ffffff;
+  --df-messenger-chat-background-color: #ffffff;
+  --df-messenger-font-color: #111827;
+  --df-messenger-send-icon: #6d28d9;
+  --df-messenger-user-message: #6d28d9;
+  --df-messenger-input-box-color: #ffffff;
+
+  --df-messenger-chat-window-width: 380px;
+  --df-messenger-chat-window-height: 600px;
+}
