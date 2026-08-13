@@ -1,18 +1,75 @@
 @import "tailwindcss";
+
 /* =========================================
    FutureNestMate - Dialogflow Messenger
-========================================= */
+   ========================================= */
 
 df-messenger {
-  --df-messenger-bot-message: #f3f4f6;
+  /* ---------- Brand ---------- */
   --df-messenger-button-titlebar-color: #6d28d9;
   --df-messenger-button-titlebar-font-color: #ffffff;
-  --df-messenger-chat-background-color: #ffffff;
-  --df-messenger-font-color: #111827;
-  --df-messenger-send-icon: #6d28d9;
-  --df-messenger-user-message: #6d28d9;
-  --df-messenger-input-box-color: #ffffff;
 
+  /* ---------- Messages ---------- */
+  --df-messenger-bot-message: #f3f4f6;
+  --df-messenger-user-message: #6d28d9;
+  --df-messenger-font-color: #111827;
+
+  /* ---------- Chat Window ---------- */
+  --df-messenger-chat-background-color: #ffffff;
   --df-messenger-chat-window-width: 380px;
   --df-messenger-chat-window-height: 600px;
+
+  /* ---------- Input ---------- */
+  --df-messenger-input-box-color: #ffffff;
+  --df-messenger-send-icon: #6d28d9;
+
+  z-index: 9999;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+  df-messenger {
+    --df-messenger-chat-window-width: calc(100vw - 32px);
+    --df-messenger-chat-window-height: 75vh;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+  df-messenger {
+    --df-messenger-chat-window-width: calc(100vw - 24px);
+    --df-messenger-chat-window-height: 78vh;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 360px) {
+  df-messenger {
+    --df-messenger-chat-window-width: calc(100vw - 20px);
+    --df-messenger-chat-window-height: 75vh;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL DEVICES
+   ========================================= */
+
+@media (max-width: 320px) {
+  df-messenger {
+    --df-messenger-chat-window-width: calc(100vw - 16px);
+    --df-messenger-chat-window-height: 72vh;
+  }
 }
